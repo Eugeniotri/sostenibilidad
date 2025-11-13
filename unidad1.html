@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UF1 · Sostenibilidad y sus retos</title>
+  <style>
+    :root{
+      --bg: #050510;
+      --card: rgba(255,255,255,0.09);
+      --text: #f7f7fb;
+      --muted: #cfd3dd;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(0,0,0,.55);
+    }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background: linear-gradient(135deg,
+        #ff3e3e 0%, #ff7a00 18%, #ffec00 36%, #00d26a 54%, #007bff 72%, #b026ff 90%, #ff59c7 100%) fixed;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .page{
+      width:min(960px,100%);
+      background:
+        radial-gradient(1200px 600px at -10% -20%,rgba(255,255,255,.35),transparent 55%),
+        radial-gradient(1000px 500px at 120% 120%,rgba(0,0,0,.65),transparent 60%),
+        rgba(4,4,12,.86);
+      backdrop-filter: blur(10px);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 22px 26px;
+    }
+    header{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding-bottom:14px;
+      border-bottom:1px solid rgba(255,255,255,.2);
+    }
+    .title{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: conic-gradient(from 0deg,
+        #e63946 0 16%,#f4a261 16% 32%,#f6bd20 32% 48%,#2a9d8f 48% 64%,#457b9d 64% 80%,#7b2cbf 80% 100%);
+      box-shadow:0 0 0 3px rgba(0,0,0,.4);
+    }
+    h1{
+      margin:0;
+      font-size:1.25rem;
+    }
+    .subtitle{
+      font-size:.9rem;
+      color:var(--muted);
+    }
+    .back{
+      text-decoration:none;
+      font-size:.85rem;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.7);
+      color:var(--text);
+      background:rgba(0,0,0,.35);
+    }
+    .back:hover{
+      background:rgba(0,0,0,.65);
+    }
+    main{
+      margin-top:16px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    section{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:10px 14px 12px;
+      border:1px solid rgba(255,255,255,.16);
+    }
+    section h2{
+      margin:0 0 6px;
+      font-size:.98rem;
+    }
+    p{
+      margin:0 0 6px;
+      font-size:.9rem;
+      line-height:1.4;
+    }
+    ul{
+      margin:0;
+      padding-left:18px;
+      font-size:.88rem;
+    }
+    li{ margin-bottom:4px; }
+    .badge{
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#111;
+      background:#fff;
+      padding:2px 8px;
+      border-radius:999px;
+      display:inline-block;
+      margin-bottom:4px;
+      font-weight:700;
+    }
+    .triple{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:8px;
+      margin-top:6px;
+      font-size:.86rem;
+    }
+    .pill{
+      background:rgba(0,0,0,.25);
+      border-radius:12px;
+      padding:7px 9px;
+    }
+    .pill strong{ display:block; margin-bottom:2px; }
+    footer{
+      margin-top:10px;
+      text-align:right;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="title">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>UF1 · Sostenibilidad y sus retos</h1>
+          <div class="subtitle">Resumen muy al grano para estudiar rápido.</div>
+        </div>
+      </div>
+      <a href="index.html" class="back">⬅ Volver al índice</a>
+    </header>
+
+    <main>
+      <!-- 1. Qué es la sostenibilidad -->
+      <section>
+        <span class="badge">1 · Definición</span>
+        <h2>¿Qué es la sostenibilidad?</h2>
+        <ul>
+          <li>Satisfacer las necesidades del presente sin comprometer las de las generaciones futuras.</li>
+          <li>Equilibrio entre <strong>crecimiento económico, equidad social y protección ambiental</strong>.</li>
+          <li>Si una de las tres falla, el sistema deja de ser sostenible.</li>
+        </ul>
+      </section>
+
+      <!-- 2. Ecosistemas y actividad humana -->
+      <section>
+        <span class="badge">2 · Ecosistemas</span>
+        <h2>Actividad humana y ecosistemas</h2>
+        <ul>
+          <li>Un <strong>ecosistema</strong> es una comunidad de seres vivos y el medio físico donde se relacionan.</li>
+          <li>Las especies están en <strong>interdependencia</strong>: su relación mantiene el equilibrio.</li>
+          <li>Las sociedades humanas forman parte del ecosistema global, del que dependen para sobrevivir y prosperar.</li>
+        </ul>
+      </section>
+
+      <!-- 3. Huella ecológica y biocapacidad -->
+      <section>
+        <span class="badge">3 · Impacto</span>
+        <h2>Huella ecológica y biocapacidad</h2>
+        <ul>
+          <li>Extraemos materiales de la naturaleza y generamos residuos al producir.</li>
+          <li>Un sistema es sostenible si <strong>huella ecológica &lt; biocapacidad</strong> del planeta.</li>
+          <li><strong>Huella ecológica:</strong> superficie necesaria para producir lo que consumimos y absorber nuestros residuos.</li>
+          <li><strong>Biocapacidad:</strong> capacidad de un área para generar recursos renovables y absorber desechos.</li>
+          <li><strong>Huella de carbono:</strong> parte de la huella ecológica que mide solo las emisiones de gases de efecto invernadero.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Desarrollo sostenible y 3 pilares -->
+      <section>
+        <span class="badge">4 · Triple dimensión</span>
+        <h2>Desarrollo sostenible y sus tres pilares</h2>
+        <p>Para que haya desarrollo sostenible, las tres dimensiones deben estar en armonía:</p>
+        <div class="triple">
+          <div class="pill">
+            <strong>Pilar económico</strong>
+            Crecimiento económico inclusivo y viable a largo plazo. Uso eficiente de recursos, empleo digno,
+            innovación y competitividad sin destruir el entorno.
+          </div>
+          <div class="pill">
+            <strong>Pilar social</strong>
+            Derechos humanos, buenas condiciones laborales, equidad y cohesión social. Que todas las personas
+            puedan vivir con dignidad y acceder a oportunidades.
+          </div>
+          <div class="pill">
+            <strong>Pilar ambiental</strong>
+            Proteger y restaurar ecosistemas, usar de forma responsable los recursos naturales y reducir
+            emisiones y contaminación.
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Retos y cambio climático -->
+      <section>
+        <span class="badge">5 · Retos</span>
+        <h2>Retos del desarrollo sostenible y cambio climático</h2>
+        <ul>
+          <li>Se ha superado la <strong>capacidad de carga</strong> de muchos ecosistemas: modelo actual ≠ sostenible.</li>
+          <li>Retos sociales: aumento de desigualdades, pobreza, migraciones y subdesarrollo.</li>
+          <li><strong>Cambio climático:</strong> aumento de la temperatura global por gases de efecto invernadero (CO₂, CH₄, N₂O).</li>
+          <li>Consecuencias: deshielo de polos, fenómenos meteorológicos extremos, sequías y falta de agua.</li>
+        </ul>
+      </section>
+
+      <!-- 6. Consecuencias para la empresa -->
+      <section>
+        <span class="badge">6 · Empresa</span>
+        <h2>Consecuencias del cambio climático para las empresas</h2>
+        <ul>
+          <li><strong>Agricultura menos productiva:</strong> sequías y calor reducen cosechas y encarecen productos.</li>
+          <li><strong>Infraestructuras inadecuadas:</strong> edificios y redes no preparados para calor extremo ni tormentas.</li>
+          <li><strong>Energía:</strong> baja la demanda de calefacción pero sube la de climatización en verano.</li>
+          <li><strong>Turismo:</strong> demasiado calor en zonas como el sur de Europa, menos atractivo turístico.</li>
+          <li><strong>Trabajo y salud:</strong> peor productividad y más riesgos para la salud, sobre todo al aire libre.</li>
+          <li><strong>Seguros más caros</strong> y <strong>políticas ambientales más estrictas</strong> (por ejemplo, en la Unión Europea).</li>
+        </ul>
+      </section>
+
+      <!-- 7. Desandar el camino del cambio climático -->
+      <section>
+        <span class="badge">7 · Respuesta</span>
+        <h2>Desandar el camino del cambio climático</h2>
+        <ul>
+          <li>Cambiar las formas de producir y consumir para usar <strong>menos materiales y energía</strong>.</li>
+          <li><strong>Reciclar</strong> no es perfecto, pero es mejor que no reciclar (menor impacto total).</li>
+          <li>Claves para la empresa:
+            <ul>
+              <li><strong>Descarbonizar:</strong> reducir emisiones de CO₂ y otros gases de efecto invernadero.</li>
+              <li><strong>Desmaterializar:</strong> necesitar menos materiales para producir.</li>
+              <li><strong>3R:</strong> reducir, reutilizar y reciclar.</li>
+            </ul>
+          </li>
+          <li>Ejemplos: usar renovables (placas solares, aerogeneradores), biomasa, plantar bosques, diseñar productos con menos material y más reciclado, recuperar materiales y reducir el papel (documentación electrónica).</li>
+        </ul>
+      </section>
+
+      <!-- 8. Alianzas, ODS y Agenda 2030 -->
+      <section>
+        <span class="badge">8 · Alianzas</span>
+        <h2>Alianzas, ODS y Agenda 2030</h2>
+        <ul>
+          <li>Los retos son globales: se necesitan <strong>alianzas</strong> entre países, empresas y sociedad.</li>
+          <li>Las medidas suelen tener un coste para quien las aplica, pero el beneficio es para toda la humanidad.</li>
+          <li><strong>ODS (Objetivos de Desarrollo Sostenible):</strong> 17 objetivos y 169 metas para lograr un futuro sostenible.</li>
+          <li>Se integran en la <strong>Agenda 2030</strong>, que cada país adapta a su realidad.</li>
+          <li>En la Unión Europea destaca el <strong>Pacto Verde Europeo</strong>: objetivo de neutralidad en carbono para 2050.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      UF1 · Sostenibilidad y sus retos · Resumen basado en el material de clase.
+    </footer>
+  </div>
+</body>
+</html>
