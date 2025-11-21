@@ -1,552 +1,691 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Test ODS y Sostenibilidad</title>
+  <meta charset="UTF-8" />
+  <title>UF2 – Cuestionario ODS (25 preguntas)</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-      margin: 20px;
-      max-width: 900px;
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
     }
-    h1 {
-      text-align: center;
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 0, 0, 0.55)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .app-subtitle {
+      font-size: 0.95rem;
+      color: #d0d3ff;
+    }
+
+    .header-status {
+      font-size: 0.9rem;
+      color: #cbd5ff;
+    }
+
+    .btn-correct {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #04210f;
+      background: linear-gradient(135deg, #2df28f, #91ffa7);
+      box-shadow: 0 0 10px rgba(71, 255, 166, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-correct:hover {
+      filter: brightness(1.05);
+    }
+
+    .scroll-area {
+      max-height: calc(100vh - 150px);
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .scroll-area::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scroll-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-area::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+    }
+
     fieldset {
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 6px;
+      margin-bottom: 14px;
+      padding: 14px 16px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
     }
+
     legend {
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0 4px;
     }
+
     .question-text {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 500;
+      font-size: 0.95rem;
     }
+
     label {
       display: block;
       margin-bottom: 4px;
       cursor: pointer;
+      font-size: 0.93rem;
     }
-    .controls {
-      text-align: center;
-      margin: 20px 0;
+
+    input[type="radio"] {
+      margin-right: 4px;
+      transform: translateY(1px);
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+
     #result {
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-top: 4px;
+      color: #fef9c3;
     }
+
     .correct-answer {
-      background-color: #d4edda;
+      background-color: rgba(34, 197, 94, 0.16);
+      border-radius: 10px;
+      padding: 2px 4px;
     }
+
     .incorrect-answer {
-      background-color: #f8d7da;
+      background-color: rgba(239, 68, 68, 0.2);
+      border-radius: 10px;
+      padding: 2px 4px;
     }
   </style>
 </head>
 <body>
-  <h1>Test ODS y Sostenibilidad</h1>
-  <form id="testForm">
-
-    <!-- PREGUNTA 1 -->
-    <fieldset>
-      <legend>Pregunta 1</legend>
-      <p class="question-text">Los ODS:</p>
-      <label><input type="radio" name="q1" value="a">
-        a. Son objetivos de obligado cumplimiento por las Administraciones Públicas, las empresas y las personas de todos los países.
-      </label>
-      <label><input type="radio" name="q1" value="b">
-        b. Son objetivos de obligado cumplimiento por las empresas de todos los países, y la ONU invita a las Administraciones Públicas a sumarse a ellos.
-      </label>
-      <label data-correct="true"><input type="radio" name="q1" value="c">
-        c. Son objetivos de obligado cumplimiento por las Administraciones Públicas, y la ONU invita a todas las personas y empresas a sumarse a ellos.
-      </label>
-      <label><input type="radio" name="q1" value="d">
-        d. Son objetivos de obligado cumplimiento por todas las personas, y la ONU invita a todas las Administraciones Públicas a sumarse a ellos.
-      </label>
-    </fieldset>
-
-    <!-- PREGUNTA 2 -->
-    <fieldset>
-      <legend>Pregunta 2</legend>
-      <p class="question-text">¿Cuál es la función de los indicadores de desempeño?</p>
-      <label><input type="radio" name="q2" value="a">
-        a. Especificar situaciones de llegada concretas en relación con cada ODS.
-      </label>
-      <label><input type="radio" name="q2" value="b">
-        b. Guiar y coordinar las acciones de la humanidad para lograr el desarrollo sostenible.
-      </label>
-      <label data-correct="true"><input type="radio" name="q2" value="c">
-        c. Medir nuestra distancia de las metas del desarrollo sostenible.
-      </label>
-      <label><input type="radio" name="q2" value="d">
-        d. Garantizar que el desarrollo económico sea sostenible.
-      </label>
-    </fieldset>
-
-    <!-- PREGUNTA 3 -->
-    <fieldset>
-      <legend>Pregunta 3</legend>
-      <p class="question-text">
-        Lo más recomendable para una empresa que quiere integrar los ODS en las estrategias y los planes de la empresa es implicarse en el logro de:
+  <div class="app">
+    <header class="app-header">
+      <div class="header-top">
+        <div>
+          <div class="app-title">Cuestionario · UF2 ODS y Sostenibilidad</div>
+          <div class="badge">25 preguntas tipo test</div>
+        </div>
+        <button type="button" class="btn-correct" onclick="corregirTest()">
+          ✓ Corregir cuestionario
+        </button>
+      </div>
+      <p class="app-subtitle">
+        Practica primero contestando todas las preguntas. Cuando termines, pulsa
+        en <strong>“Corregir cuestionario”</strong> para ver tu nota y qué has
+        acertado o fallado.
       </p>
-      <label><input type="radio" name="q3" value="a">
-        a. Todos los ODS al mismo tiempo.
-      </label>
-      <label><input type="radio" name="q3" value="b">
-        b. Un ODS concreto.
-      </label>
-      <label data-correct="true"><input type="radio" name="q3" value="c">
-        c. Una meta concreta.
-      </label>
-      <label><input type="radio" name="q3" value="d">
-        d. Un indicador de desempeño concreto.
-      </label>
-    </fieldset>
+      <div class="header-status" id="result">
+        Aún no has corregido. Tienes 25 preguntas tipo test.
+      </div>
+    </header>
 
-    <!-- PREGUNTA 4 -->
-    <fieldset>
-      <legend>Pregunta 4</legend>
-      <p class="question-text">Señale la respuesta correcta respecto a los ODS:</p>
-      <label><input type="radio" name="q4" value="a">
-        a. Cada uno de los 17 ODS se centra en los tres ámbitos del desarrollo sostenible.
-      </label>
-      <label><input type="radio" name="q4" value="b">
-        b. Cada ODS tiene asignados varios indicadores concretos y cada indicador tiene asignadas metas específicas.
-      </label>
-      <label><input type="radio" name="q4" value="c">
-        c. Cada ODS tiene asignadas una serie de metas que deben alcanzarse en 2050.
-      </label>
-      <label data-correct="true"><input type="radio" name="q4" value="d">
-        d. Cada ODS tiene asignadas varias metas concretas y cada meta tiene asignados indicadores específicos.
-      </label>
-    </fieldset>
+    <div class="scroll-area">
+      <form id="testForm">
 
-    <!-- PREGUNTA 5 -->
-    <fieldset>
-      <legend>Pregunta 5</legend>
-      <p class="question-text">¿Cuál de los siguientes acuerdos internacionales están promovidos por la ONU para promover el desarrollo sostenible?</p>
-      <label><input type="radio" name="q5" value="a">
-        a. El Protocolo de Kioto.
-      </label>
-      <label><input type="radio" name="q5" value="b">
-        b. Los Objetivos de Desarrollo Sostenible.
-      </label>
-      <label data-correct="true"><input type="radio" name="q5" value="c">
-        c. Todas las respuestas anteriores son correctas.
-      </label>
-      <label><input type="radio" name="q5" value="d">
-        d. El Pacto de París.
-      </label>
-    </fieldset>
+        <!-- P1 -->
+        <fieldset>
+          <legend>Pregunta 1</legend>
+          <p class="question-text">Los ODS:</p>
+          <label><input type="radio" name="q1" value="a">
+            a. Son objetivos de obligado cumplimiento por las Administraciones Públicas, las empresas y las personas de todos los países.
+          </label>
+          <label><input type="radio" name="q1" value="b">
+            b. Son objetivos de obligado cumplimiento por las empresas de todos los países, y la ONU invita a las Administraciones Públicas a sumarse a ellos.
+          </label>
+          <label data-correct="true"><input type="radio" name="q1" value="c">
+            c. Son objetivos de obligado cumplimiento por las Administraciones Públicas, y la ONU invita a todas las personas y empresas a sumarse a ellos.
+          </label>
+          <label><input type="radio" name="q1" value="d">
+            d. Son objetivos de obligado cumplimiento por todas las personas, y la ONU invita a todas las Administraciones Públicas a sumarse a ellos.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 6 -->
-    <fieldset>
-      <legend>Pregunta 6</legend>
-      <p class="question-text">
-        El objetivo 8. Trabajo decente y crecimiento económico, que implica promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos. ¿A qué rama de actividad no estaría dirigido especialmente?
-      </p>
-      <label><input type="radio" name="q6" value="a">
-        a. Administración y finanzas.
-      </label>
-      <label><input type="radio" name="q6" value="b">
-        b. Comercio.
-      </label>
-      <label data-correct="true"><input type="radio" name="q6" value="c">
-        c. Sanidad.
-      </label>
-      <label><input type="radio" name="q6" value="d">
-        d. Industria manufacturera.
-      </label>
-    </fieldset>
+        <!-- P2 -->
+        <fieldset>
+          <legend>Pregunta 2</legend>
+          <p class="question-text">¿Cuál es la función de los indicadores de desempeño?</p>
+          <label><input type="radio" name="q2" value="a">
+            a. Especificar situaciones de llegada concretas en relación con cada ODS.
+          </label>
+          <label><input type="radio" name="q2" value="b">
+            b. Guiar y coordinar las acciones de la humanidad para lograr el desarrollo sostenible.
+          </label>
+          <label data-correct="true"><input type="radio" name="q2" value="c">
+            c. Medir nuestra distancia de las metas del desarrollo sostenible.
+          </label>
+          <label><input type="radio" name="q2" value="d">
+            d. Garantizar que el desarrollo económico sea sostenible.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 7 -->
-    <fieldset>
-      <legend>Pregunta 7</legend>
-      <p class="question-text">
-        Las iniciativas que la UE ha puesto en marcha para el logro de los ODS suponen ventajas para las empresas, como:
-      </p>
-      <label><input type="radio" name="q7" value="a">
-        a. Mayor posibilidad de recibir sanciones.
-      </label>
-      <label><input type="radio" name="q7" value="b">
-        b. Reducción de impuestos.
-      </label>
-      <label data-correct="true"><input type="radio" name="q7" value="c">
-        c. Ayudas para mejorar la resiliencia.
-      </label>
-      <label><input type="radio" name="q7" value="d">
-        d. Normas medioambientales cada vez más estrictas.
-      </label>
-    </fieldset>
+        <!-- P3 -->
+        <fieldset>
+          <legend>Pregunta 3</legend>
+          <p class="question-text">
+            Lo más recomendable para una empresa que quiere integrar los ODS en las estrategias y los planes de la empresa es implicarse en el logro de:
+          </p>
+          <label><input type="radio" name="q3" value="a">
+            a. Todos los ODS al mismo tiempo.
+          </label>
+          <label><input type="radio" name="q3" value="b">
+            b. Un ODS concreto.
+          </label>
+          <label data-correct="true"><input type="radio" name="q3" value="c">
+            c. Una meta concreta.
+          </label>
+          <label><input type="radio" name="q3" value="d">
+            d. Un indicador de desempeño concreto.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 8 -->
-    <fieldset>
-      <legend>Pregunta 8</legend>
-      <p class="question-text">Desplazarse a pie ayuda especialmente a cumplir el ODS:</p>
-      <label><input type="radio" name="q8" value="a">
-        a. 12. Producción y consumo responsables.
-      </label>
-      <label><input type="radio" name="q8" value="b">
-        b. 8. Trabajo decente y crecimiento económico.
-      </label>
-      <label><input type="radio" name="q8" value="c">
-        c. 15. Vida de ecosistemas terrestres.
-      </label>
-      <label data-correct="true"><input type="radio" name="q8" value="d">
-        d. 11. Ciudades y comunidades sostenibles.
-      </label>
-    </fieldset>
+        <!-- P4 -->
+        <fieldset>
+          <legend>Pregunta 4</legend>
+          <p class="question-text">Señale la respuesta correcta respecto a los ODS:</p>
+          <label><input type="radio" name="q4" value="a">
+            a. Cada uno de los 17 ODS se centra en los tres ámbitos del desarrollo sostenible.
+          </label>
+          <label><input type="radio" name="q4" value="b">
+            b. Cada ODS tiene asignados varios indicadores concretos y cada indicador tiene asignadas metas específicas.
+          </label>
+          <label><input type="radio" name="q4" value="c">
+            c. Cada ODS tiene asignadas una serie de metas que deben alcanzarse en 2050.
+          </label>
+          <label data-correct="true"><input type="radio" name="q4" value="d">
+            d. Cada ODS tiene asignadas varias metas concretas y cada meta tiene asignados indicadores específicos.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 9 -->
-    <fieldset>
-      <legend>Pregunta 9</legend>
-      <p class="question-text">
-        Un/a empleado/a de una empresa sin responsabilidades directivas puede ayudar al logro de los ODS:
-      </p>
-      <label><input type="radio" name="q9" value="a">
-        a. Esperando a que la dirección realice cambios que nos acerquen a los ODS.
-      </label>
-      <label><input type="radio" name="q9" value="b">
-        b. Sin responsabilidades de dirección no se puede trabajar por los ODS.
-      </label>
-      <label><input type="radio" name="q9" value="c">
-        c. Basta con hacer lo mismo que las/os compañeras/os.
-      </label>
-      <label data-correct="true"><input type="radio" name="q9" value="d">
-        d. Procurando aplicar en el puesto de trabajo principios similares a los del consumo responsable.
-      </label>
-    </fieldset>
+        <!-- P5 -->
+        <fieldset>
+          <legend>Pregunta 5</legend>
+          <p class="question-text">¿Cuál de los siguientes acuerdos internacionales están promovidos por la ONU para promover el desarrollo sostenible?</p>
+          <label><input type="radio" name="q5" value="a">
+            a. El Protocolo de Kioto.
+          </label>
+          <label><input type="radio" name="q5" value="b">
+            b. Los Objetivos de Desarrollo Sostenible.
+          </label>
+          <label data-correct="true"><input type="radio" name="q5" value="c">
+            c. Todas las respuestas anteriores son correctas.
+          </label>
+          <label><input type="radio" name="q5" value="d">
+            d. El Pacto de París.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 10 -->
-    <fieldset>
-      <legend>Pregunta 10</legend>
-      <p class="question-text">No es una dimensión como tal de los ODS:</p>
-      <label><input type="radio" name="q10" value="a">
-        a. La económica.
-      </label>
-      <label><input type="radio" name="q10" value="b">
-        b. La social.
-      </label>
-      <label data-correct="true"><input type="radio" name="q10" value="c">
-        c. La cultural.
-      </label>
-      <label><input type="radio" name="q10" value="d">
-        d. La ecológica.
-      </label>
-    </fieldset>
+        <!-- P6 -->
+        <fieldset>
+          <legend>Pregunta 6</legend>
+          <p class="question-text">
+            El objetivo 8. Trabajo decente y crecimiento económico, que implica promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos. ¿A qué rama de actividad no estaría dirigido especialmente?
+          </p>
+          <label><input type="radio" name="q6" value="a">
+            a. Administración y finanzas.
+          </label>
+          <label><input type="radio" name="q6" value="b">
+            b. Comercio.
+          </label>
+          <label data-correct="true"><input type="radio" name="q6" value="c">
+            c. Sanidad.
+          </label>
+          <label><input type="radio" name="q6" value="d">
+            d. Industria manufacturera.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 11 -->
-    <fieldset>
-      <legend>Pregunta 11</legend>
-      <p class="question-text">No es un ámbito del consumo responsable:</p>
-      <label><input type="radio" name="q11" value="a">
-        a. El transporte.
-      </label>
-      <label><input type="radio" name="q11" value="b">
-        b. El agua.
-      </label>
-      <label><input type="radio" name="q11" value="c">
-        c. Los bienes de consumo duradero.
-      </label>
-      <label data-correct="true"><input type="radio" name="q11" value="d">
-        d. La producción.
-      </label>
-    </fieldset>
+        <!-- P7 -->
+        <fieldset>
+          <legend>Pregunta 7</legend>
+          <p class="question-text">
+            Las iniciativas que la UE ha puesto en marcha para el logro de los ODS suponen ventajas para las empresas, como:
+          </p>
+          <label><input type="radio" name="q7" value="a">
+            a. Mayor posibilidad de recibir sanciones.
+          </label>
+          <label><input type="radio" name="q7" value="b">
+            b. Reducción de impuestos.
+          </label>
+          <label data-correct="true"><input type="radio" name="q7" value="c">
+            c. Ayudas para mejorar la resiliencia.
+          </label>
+          <label><input type="radio" name="q7" value="d">
+            d. Normas medioambientales cada vez más estrictas.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 12 -->
-    <fieldset>
-      <legend>Pregunta 12</legend>
-      <p class="question-text">
-        ¿Qué podríamos hacer en nuestra casa para contribuir a alcanzar el objetivo 12. Producción y consumo responsables?
-      </p>
-      <label><input type="radio" name="q12" value="a">
-        a. Poner el lavaplatos o la lavadora solo cuando estén llenos.
-      </label>
-      <label><input type="radio" name="q12" value="b">
-        b. Comprar bienes de comercio justo.
-      </label>
-      <label><input type="radio" name="q12" value="c">
-        c. Mejorar el aislamiento de muros, ventanas y tejados para reducir la pérdida de calor en invierno o la entrada de calor en verano.
-      </label>
-      <label data-correct="true"><input type="radio" name="q12" value="d">
-        d. Separar y reciclar la mayor cantidad posible de residuos.
-      </label>
-    </fieldset>
+        <!-- P8 -->
+        <fieldset>
+          <legend>Pregunta 8</legend>
+          <p class="question-text">Desplazarse a pie ayuda especialmente a cumplir el ODS:</p>
+          <label><input type="radio" name="q8" value="a">
+            a. 12. Producción y consumo responsables.
+          </label>
+          <label><input type="radio" name="q8" value="b">
+            b. 8. Trabajo decente y crecimiento económico.
+          </label>
+          <label><input type="radio" name="q8" value="c">
+            c. 15. Vida de ecosistemas terrestres.
+          </label>
+          <label data-correct="true"><input type="radio" name="q8" value="d">
+            d. 11. Ciudades y comunidades sostenibles.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 13 -->
-    <fieldset>
-      <legend>Pregunta 13</legend>
-      <p class="question-text">No es una iniciativa surgida en la UE:</p>
-      <label><input type="radio" name="q13" value="a">
-        a. La Estrategia de Movilidad Sostenible.
-      </label>
-      <label><input type="radio" name="q13" value="b">
-        b. La Nueva Estrategia Industrial para Europa.
-      </label>
-      <label data-correct="true"><input type="radio" name="q13" value="c">
-        c. El Acuerdo de París.
-      </label>
-      <label><input type="radio" name="q13" value="d">
-        d. El Pacto Verde Europeo.
-      </label>
-    </fieldset>
+        <!-- P9 -->
+        <fieldset>
+          <legend>Pregunta 9</legend>
+          <p class="question-text">
+            Un/a empleado/a de una empresa sin responsabilidades directivas puede ayudar al logro de los ODS:
+          </p>
+          <label><input type="radio" name="q9" value="a">
+            a. Esperando a que la dirección realice cambios que nos acerquen a los ODS.
+          </label>
+          <label><input type="radio" name="q9" value="b">
+            b. Sin responsabilidades de dirección no se puede trabajar por los ODS.
+          </label>
+          <label><input type="radio" name="q9" value="c">
+            c. Basta con hacer lo mismo que las/os compañeras/os.
+          </label>
+          <label data-correct="true"><input type="radio" name="q9" value="d">
+            d. Procurando aplicar en el puesto de trabajo principios similares a los del consumo responsable.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 14 -->
-    <fieldset>
-      <legend>Pregunta 14</legend>
-      <p class="question-text">
-        ¿Qué iniciativa de la UE busca lograr la neutralidad de emisiones de carbono? Señala la respuesta más completa:
-      </p>
-      <label data-correct="true"><input type="radio" name="q14" value="a">
-        a. El Pacto Verde Europeo.
-      </label>
-      <label><input type="radio" name="q14" value="b">
-        b. La Nueva Estrategia Industrial para Europa.
-      </label>
-      <label><input type="radio" name="q14" value="c">
-        c. La Estrategia de Movilidad Sostenible.
-      </label>
-      <label><input type="radio" name="q14" value="d">
-        d. Todas las anteriores.
-      </label>
-    </fieldset>
+        <!-- P10 -->
+        <fieldset>
+          <legend>Pregunta 10</legend>
+          <p class="question-text">No es una dimensión como tal de los ODS:</p>
+          <label><input type="radio" name="q10" value="a">
+            a. La económica.
+          </label>
+          <label><input type="radio" name="q10" value="b">
+            b. La social.
+          </label>
+          <label data-correct="true"><input type="radio" name="q10" value="c">
+            c. La cultural.
+          </label>
+          <label><input type="radio" name="q10" value="d">
+            d. La ecológica.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 15 -->
-    <fieldset>
-      <legend>Pregunta 15</legend>
-      <p class="question-text">
-        Una acción concreta llevada a cabo por una empresa para conseguir el objetivo 7 Energía asequible y no contaminante, sería:
-      </p>
-      <label><input type="radio" name="q15" value="a">
-        a. Reparar y mantener correctamente los equipos.
-      </label>
-      <label><input type="radio" name="q15" value="b">
-        b. Instalar sistemas de control de flujo en grifos y cisternas.
-      </label>
-      <label><input type="radio" name="q15" value="c">
-        c. Usar productos de limpieza biodegradables.
-      </label>
-      <label data-correct="true"><input type="radio" name="q15" value="d">
-        d. Instalar placas solares.
-      </label>
-    </fieldset>
+        <!-- P11 -->
+        <fieldset>
+          <legend>Pregunta 11</legend>
+          <p class="question-text">No es un ámbito del consumo responsable:</p>
+          <label><input type="radio" name="q11" value="a">
+            a. El transporte.
+          </label>
+          <label><input type="radio" name="q11" value="b">
+            b. El agua.
+          </label>
+          <label><input type="radio" name="q11" value="c">
+            c. Los bienes de consumo duradero.
+          </label>
+          <label data-correct="true"><input type="radio" name="q11" value="d">
+            d. La producción.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 16 (extra 1) -->
-    <fieldset>
-      <legend>Pregunta 16</legend>
-      <p class="question-text">
-        Según el PDF, ¿cuál es el punto de partida fundamental para que una empresa pueda plantear acciones correctoras en materia de sostenibilidad?
-      </p>
-      <label><input type="radio" name="q16" value="a">
-        a. Analizar las ayudas y subvenciones disponibles en la Unión Europea.
-      </label>
-      <label><input type="radio" name="q16" value="b">
-        b. Revisar el modelo de negocio completo antes de actuar.
-      </label>
-      <label data-correct="true"><input type="radio" name="q16" value="c">
-        c. Realizar un diagnóstico de la situación actual para detectar impactos negativos.
-      </label>
-      <label><input type="radio" name="q16" value="d">
-        d. Implementar directamente medidas de movilidad sostenible.
-      </label>
-    </fieldset>
+        <!-- P12 -->
+        <fieldset>
+          <legend>Pregunta 12</legend>
+          <p class="question-text">
+            ¿Qué podríamos hacer en nuestra casa para contribuir a alcanzar el objetivo 12. Producción y consumo responsables?
+          </p>
+          <label><input type="radio" name="q12" value="a">
+            a. Poner el lavaplatos o la lavadora solo cuando estén llenos.
+          </label>
+          <label><input type="radio" name="q12" value="b">
+            b. Comprar bienes de comercio justo.
+          </label>
+          <label><input type="radio" name="q12" value="c">
+            c. Mejorar el aislamiento de muros, ventanas y tejados para reducir la pérdida de calor en invierno o la entrada de calor en verano.
+          </label>
+          <label data-correct="true"><input type="radio" name="q12" value="d">
+            d. Separar y reciclar la mayor cantidad posible de residuos.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 17 (extra 2) -->
-    <fieldset>
-      <legend>Pregunta 17</legend>
-      <p class="question-text">
-        ¿Cuál de los siguientes ámbitos NO forma parte del consumo responsable según la tabla del PDF?
-      </p>
-      <label><input type="radio" name="q17" value="a">
-        a. Energía.
-      </label>
-      <label><input type="radio" name="q17" value="b">
-        b. Residuos.
-      </label>
-      <label><input type="radio" name="q17" value="c">
-        c. Transporte.
-      </label>
-      <label data-correct="true"><input type="radio" name="q17" value="d">
-        d. Educación.
-      </label>
-    </fieldset>
+        <!-- P13 -->
+        <fieldset>
+          <legend>Pregunta 13</legend>
+          <p class="question-text">No es una iniciativa surgida en la UE:</p>
+          <label><input type="radio" name="q13" value="a">
+            a. La Estrategia de Movilidad Sostenible.
+          </label>
+          <label><input type="radio" name="q13" value="b">
+            b. La Nueva Estrategia Industrial para Europa.
+          </label>
+          <label data-correct="true"><input type="radio" name="q13" value="c">
+            c. El Acuerdo de París.
+          </label>
+          <label><input type="radio" name="q13" value="d">
+            d. El Pacto Verde Europeo.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 18 (extra 3) -->
-    <fieldset>
-      <legend>Pregunta 18</legend>
-      <p class="question-text">
-        Según el documento, ¿qué ODS se utiliza como ejemplo para ilustrar la relación entre metas, indicadores y desempeño?
-      </p>
-      <label><input type="radio" name="q18" value="a">
-        a. ODS 6 – Agua limpia y saneamiento.
-      </label>
-      <label data-correct="true"><input type="radio" name="q18" value="b">
-        b. ODS 8 – Trabajo decente y crecimiento económico.
-      </label>
-      <label><input type="radio" name="q18" value="c">
-        c. ODS 12 – Producción y consumo responsables.
-      </label>
-      <label><input type="radio" name="q18" value="d">
-        d. ODS 13 – Acción por el clima.
-      </label>
-    </fieldset>
+        <!-- P14 -->
+        <fieldset>
+          <legend>Pregunta 14</legend>
+          <p class="question-text">
+            ¿Qué iniciativa de la UE busca lograr la neutralidad de emisiones de carbono? Señala la respuesta más completa:
+          </p>
+          <label data-correct="true"><input type="radio" name="q14" value="a">
+            a. El Pacto Verde Europeo.
+          </label>
+          <label><input type="radio" name="q14" value="b">
+            b. La Nueva Estrategia Industrial para Europa.
+          </label>
+          <label><input type="radio" name="q14" value="c">
+            c. La Estrategia de Movilidad Sostenible.
+          </label>
+          <label><input type="radio" name="q14" value="d">
+            d. Todas las anteriores.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 19 (extra 4) -->
-    <fieldset>
-      <legend>Pregunta 19</legend>
-      <p class="question-text">
-        ¿Cuál de los siguientes es un riesgo para las empresas derivado de las iniciativas de sostenibilidad de la Unión Europea?
-      </p>
-      <label><input type="radio" name="q19" value="a">
-        a. Nuevos puestos de trabajo relacionados con las energías renovables.
-      </label>
-      <label data-correct="true"><input type="radio" name="q19" value="b">
-        b. Normas medioambientales cada vez más estrictas.
-      </label>
-      <label><input type="radio" name="q19" value="c">
-        c. Financiación de proyectos que combatan el cambio climático por parte del Banco Europeo de Inversiones.
-      </label>
-      <label><input type="radio" name="q19" value="d">
-        d. Fondos Next Generation EU.
-      </label>
-    </fieldset>
+        <!-- P15 -->
+        <fieldset>
+          <legend>Pregunta 15</legend>
+          <p class="question-text">
+            Una acción concreta llevada a cabo por una empresa para conseguir el objetivo 7 Energía asequible y no contaminante, sería:
+          </p>
+          <label><input type="radio" name="q15" value="a">
+            a. Reparar y mantener correctamente los equipos.
+          </label>
+          <label><input type="radio" name="q15" value="b">
+            b. Instalar sistemas de control de flujo en grifos y cisternas.
+          </label>
+          <label><input type="radio" name="q15" value="c">
+            c. Usar productos de limpieza biodegradables.
+          </label>
+          <label data-correct="true"><input type="radio" name="q15" value="d">
+            d. Instalar placas solares.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 20 (extra 5) -->
-    <fieldset>
-      <legend>Pregunta 20</legend>
-      <p class="question-text">
-        Según el PDF, ¿cuál de los siguientes ODS se relaciona directamente con la eficiencia energética en hogares, como usar bombillas de bajo consumo o mejorar el aislamiento?
-      </p>
-      <label data-correct="true"><input type="radio" name="q20" value="a">
-        a. ODS 7 – Energía asequible y no contaminante.
-      </label>
-      <label><input type="radio" name="q20" value="b">
-        b. ODS 11 – Ciudades y comunidades sostenibles.
-      </label>
-      <label><input type="radio" name="q20" value="c">
-        c. ODS 12 – Producción y consumo responsables.
-      </label>
-      <label><input type="radio" name="q20" value="d">
-        d. ODS 13 – Acción por el clima.
-      </label>
-    </fieldset>
+        <!-- P16 -->
+        <fieldset>
+          <legend>Pregunta 16</legend>
+          <p class="question-text">
+            Según el PDF, ¿cuál es el punto de partida fundamental para que una empresa pueda plantear acciones correctoras en materia de sostenibilidad?
+          </p>
+          <label><input type="radio" name="q16" value="a">
+            a. Analizar las ayudas y subvenciones disponibles en la Unión Europea.
+          </label>
+          <label><input type="radio" name="q16" value="b">
+            b. Revisar el modelo de negocio completo antes de actuar.
+          </label>
+          <label data-correct="true"><input type="radio" name="q16" value="c">
+            c. Realizar un diagnóstico de la situación actual para detectar impactos negativos.
+          </label>
+          <label><input type="radio" name="q16" value="d">
+            d. Implementar directamente medidas de movilidad sostenible.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 21 (extra 6) -->
-    <fieldset>
-      <legend>Pregunta 21</legend>
-      <p class="question-text">
-        ¿Para qué año deben alcanzarse las metas de los ODS según el documento?
-      </p>
-      <label><input type="radio" name="q21" value="a">
-        a. 2025.
-      </label>
-      <label data-correct="true"><input type="radio" name="q21" value="b">
-        b. 2030.
-      </label>
-      <label><input type="radio" name="q21" value="c">
-        c. 2040.
-      </label>
-      <label><input type="radio" name="q21" value="d">
-        d. 2050.
-      </label>
-    </fieldset>
+        <!-- P17 -->
+        <fieldset>
+          <legend>Pregunta 17</legend>
+          <p class="question-text">
+            ¿Cuál de los siguientes ámbitos NO forma parte del consumo responsable según la tabla del PDF?
+          </p>
+          <label><input type="radio" name="q17" value="a">
+            a. Energía.
+          </label>
+          <label><input type="radio" name="q17" value="b">
+            b. Residuos.
+          </label>
+          <label><input type="radio" name="q17" value="c">
+            c. Transporte.
+          </label>
+          <label data-correct="true"><input type="radio" name="q17" value="d">
+            d. Educación.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 22 (extra 7) -->
-    <fieldset>
-      <legend>Pregunta 22</legend>
-      <p class="question-text">
-        Según el PDF, ¿cuál de los siguientes NO es un ejemplo de acción para reducir el consumo de agua?
-      </p>
-      <label><input type="radio" name="q22" value="a">
-        a. Ducharse rápidamente y cerrar el grifo al enjabonarse.
-      </label>
-      <label><input type="radio" name="q22" value="b">
-        b. Colocar economizadores de agua en los grifos.
-      </label>
-      <label data-correct="true"><input type="radio" name="q22" value="c">
-        c. Consumir alimentos orgánicos o biológicos.
-      </label>
-      <label><input type="radio" name="q22" value="d">
-        d. Mantener en buen estado las conducciones para evitar fugas.
-      </label>
-    </fieldset>
+        <!-- P18 -->
+        <fieldset>
+          <legend>Pregunta 18</legend>
+          <p class="question-text">
+            Según el documento, ¿qué ODS se utiliza como ejemplo para ilustrar la relación entre metas, indicadores y desempeño?
+          </p>
+          <label><input type="radio" name="q18" value="a">
+            a. ODS 6 – Agua limpia y saneamiento.
+          </label>
+          <label data-correct="true"><input type="radio" name="q18" value="b">
+            b. ODS 8 – Trabajo decente y crecimiento económico.
+          </label>
+          <label><input type="radio" name="q18" value="c">
+            c. ODS 12 – Producción y consumo responsables.
+          </label>
+          <label><input type="radio" name="q18" value="d">
+            d. ODS 13 – Acción por el clima.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 23 (extra 8) -->
-    <fieldset>
-      <legend>Pregunta 23</legend>
-      <p class="question-text">
-        ¿Cuál de los siguientes sí forma parte de las iniciativas de la Unión Europea mencionadas en el PDF?
-      </p>
-      <label><input type="radio" name="q23" value="a">
-        a. Fondo Mundial para el Clima.
-      </label>
-      <label><input type="radio" name="q23" value="b">
-        b. Acuerdo de Montreal.
-      </label>
-      <label data-correct="true"><input type="radio" name="q23" value="c">
-        c. Estrategia de Movilidad Sostenible.
-      </label>
-      <label><input type="radio" name="q23" value="d">
-        d. Protocolo de San José.
-      </label>
-    </fieldset>
+        <!-- P19 -->
+        <fieldset>
+          <legend>Pregunta 19</legend>
+          <p class="question-text">
+            ¿Cuál de los siguientes es un riesgo para las empresas derivado de las iniciativas de sostenibilidad de la Unión Europea?
+          </p>
+          <label><input type="radio" name="q19" value="a">
+            a. Nuevos puestos de trabajo relacionados con las energías renovables.
+          </label>
+          <label data-correct="true"><input type="radio" name="q19" value="b">
+            b. Normas medioambientales cada vez más estrictas.
+          </label>
+          <label><input type="radio" name="q19" value="c">
+            c. Financiación de proyectos que combatan el cambio climático por parte del Banco Europeo de Inversiones.
+          </label>
+          <label><input type="radio" name="q19" value="d">
+            d. Fondos Next Generation EU.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 24 (extra 9) -->
-    <fieldset>
-      <legend>Pregunta 24</legend>
-      <p class="question-text">
-        Según el PDF, ¿cuál de los siguientes es un ejemplo de oportunidad para las empresas derivada de las iniciativas europeas de sostenibilidad?
-      </p>
-      <label><input type="radio" name="q24" value="a">
-        a. Aumento de los impuestos a las actividades contaminantes.
-      </label>
-      <label><input type="radio" name="q24" value="b">
-        b. Riesgos económicos por necesidad de invertir en nuevas tecnologías.
-      </label>
-      <label data-correct="true"><input type="radio" name="q24" value="c">
-        c. Financiación de proyectos que combatan el cambio climático por parte del Banco Europeo de Inversiones.
-      </label>
-      <label><input type="radio" name="q24" value="d">
-        d. Normas medioambientales más estrictas.
-      </label>
-    </fieldset>
+        <!-- P20 -->
+        <fieldset>
+          <legend>Pregunta 20</legend>
+          <p class="question-text">
+            Según el PDF, ¿cuál de los siguientes ODS se relaciona directamente con la eficiencia energética en hogares, como usar bombillas de bajo consumo o mejorar el aislamiento?
+          </p>
+          <label data-correct="true"><input type="radio" name="q20" value="a">
+            a. ODS 7 – Energía asequible y no contaminante.
+          </label>
+          <label><input type="radio" name="q20" value="b">
+            b. ODS 11 – Ciudades y comunidades sostenibles.
+          </label>
+          <label><input type="radio" name="q20" value="c">
+            c. ODS 12 – Producción y consumo responsables.
+          </label>
+          <label><input type="radio" name="q20" value="d">
+            d. ODS 13 – Acción por el clima.
+          </label>
+        </fieldset>
 
-    <!-- PREGUNTA 25 (extra 10) -->
-    <fieldset>
-      <legend>Pregunta 25</legend>
-      <p class="question-text">
-        ¿Cuál de los siguientes NO es un ODS de los 17 establecidos por la ONU?
-      </p>
-      <label><input type="radio" name="q25" value="a">
-        a. Acción por el clima.
-      </label>
-      <label><input type="radio" name="q25" value="b">
-        b. Igualdad de género.
-      </label>
-      <label><input type="radio" name="q25" value="c">
-        c. Energía asequible y no contaminante.
-      </label>
-      <label data-correct="true"><input type="radio" name="q25" value="d">
-        d. Protección de la cultura y las tradiciones.
-      </label>
-    </fieldset>
+        <!-- P21 -->
+        <fieldset>
+          <legend>Pregunta 21</legend>
+          <p class="question-text">
+            ¿Para qué año deben alcanzarse las metas de los ODS según el documento?
+          </p>
+          <label><input type="radio" name="q21" value="a">
+            a. 2025.
+          </label>
+          <label data-correct="true"><input type="radio" name="q21" value="b">
+            b. 2030.
+          </label>
+          <label><input type="radio" name="q21" value="c">
+            c. 2040.
+          </label>
+          <label><input type="radio" name="q21" value="d">
+            d. 2050.
+          </label>
+        </fieldset>
 
-    <div class="controls">
-      <button type="button" onclick="corregirTest()">Corregir test</button>
-      <div id="result"></div>
+        <!-- P22 -->
+        <fieldset>
+          <legend>Pregunta 22</legend>
+          <p class="question-text">
+            Según el PDF, ¿cuál de los siguientes NO es un ejemplo de acción para reducir el consumo de agua?
+          </p>
+          <label><input type="radio" name="q22" value="a">
+            a. Ducharse rápidamente y cerrar el grifo al enjabonarse.
+          </label>
+          <label><input type="radio" name="q22" value="b">
+            b. Colocar economizadores de agua en los grifos.
+          </label>
+          <label data-correct="true"><input type="radio" name="q22" value="c">
+            c. Consumir alimentos orgánicos o biológicos.
+          </label>
+          <label><input type="radio" name="q22" value="d">
+            d. Mantener en buen estado las conducciones para evitar fugas.
+          </label>
+        </fieldset>
+
+        <!-- P23 -->
+        <fieldset>
+          <legend>Pregunta 23</legend>
+          <p class="question-text">
+            ¿Cuál de los siguientes sí forma parte de las iniciativas de la Unión Europea mencionadas en el PDF?
+          </p>
+          <label><input type="radio" name="q23" value="a">
+            a. Fondo Mundial para el Clima.
+          </label>
+          <label><input type="radio" name="q23" value="b">
+            b. Acuerdo de Montreal.
+          </label>
+          <label data-correct="true"><input type="radio" name="q23" value="c">
+            c. Estrategia de Movilidad Sostenible.
+          </label>
+          <label><input type="radio" name="q23" value="d">
+            d. Protocolo de San José.
+          </label>
+        </fieldset>
+
+        <!-- P24 -->
+        <fieldset>
+          <legend>Pregunta 24</legend>
+          <p class="question-text">
+            Según el PDF, ¿cuál de los siguientes es un ejemplo de oportunidad para las empresas derivada de las iniciativas europeas de sostenibilidad?
+          </p>
+          <label><input type="radio" name="q24" value="a">
+            a. Aumento de los impuestos a las actividades contaminantes.
+          </label>
+          <label><input type="radio" name="q24" value="b">
+            b. Riesgos económicos por necesidad de invertir en nuevas tecnologías.
+          </label>
+          <label data-correct="true"><input type="radio" name="q24" value="c">
+            c. Financiación de proyectos que combatan el cambio climático por parte del Banco Europeo de Inversiones.
+          </label>
+          <label><input type="radio" name="q24" value="d">
+            d. Normas medioambientales más estrictas.
+          </label>
+        </fieldset>
+
+        <!-- P25 -->
+        <fieldset>
+          <legend>Pregunta 25</legend>
+          <p class="question-text">
+            ¿Cuál de los siguientes NO es un ODS de los 17 establecidos por la ONU?
+          </p>
+          <label><input type="radio" name="q25" value="a">
+            a. Acción por el clima.
+          </label>
+          <label><input type="radio" name="q25" value="b">
+            b. Igualdad de género.
+          </label>
+          <label><input type="radio" name="q25" value="c">
+            c. Energía asequible y no contaminante.
+          </label>
+          <label data-correct="true"><input type="radio" name="q25" value="d">
+            d. Protección de la cultura y las tradiciones.
+          </label>
+        </fieldset>
+
+      </form>
     </div>
-
-  </form>
+  </div>
 
   <script>
     function corregirTest() {
@@ -555,7 +694,7 @@
       let correctas = 0;
       const total = fieldsets.length;
 
-      // Limpiar estilos previos
+      // limpiar estilos previos
       fieldsets.forEach(fs => {
         const labels = fs.querySelectorAll('label');
         labels.forEach(label => {
@@ -564,16 +703,13 @@
       });
 
       fieldsets.forEach(fs => {
-        const labels = fs.querySelectorAll('label');
         const correctLabel = fs.querySelector('label[data-correct="true"]');
         const selectedInput = fs.querySelector('input[type="radio"]:checked');
 
-        // Marcar siempre la correcta en verde
         if (correctLabel) {
           correctLabel.classList.add('correct-answer');
         }
 
-        // Si ha respondido algo, comprobar si es correcto
         if (selectedInput) {
           const selectedLabel = selectedInput.parentElement;
           if (selectedLabel.hasAttribute('data-correct')) {
@@ -586,7 +722,8 @@
 
       const resultDiv = document.getElementById('result');
       const nota = ((correctas / total) * 10).toFixed(2);
-      resultDiv.textContent = Has acertado ${correctas} de ${total} preguntas. Nota aproximada: ${nota}/10;
+      resultDiv.textContent =
+        `Has acertado ${correctas} de ${total} preguntas. Nota aproximada: ${nota}/10`;
     }
   </script>
 </body>

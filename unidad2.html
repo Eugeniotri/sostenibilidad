@@ -1,369 +1,563 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Resumen ODS y Sostenibilidad - Teoría Esquematizada</title>
+  <meta charset="UTF-8" />
+  <title>UF2 – ODS y Sostenibilidad | Resumen</title>
   <style>
+    /* ====== LAYOUT GENERAL ====== */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px;
-      max-width: 900px;
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
     }
-    h1, h2, h3 {
-      color: #1e4b4b;
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
     }
+
+    /* ====== CABECERA ====== */
+
+    .app-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 0, 0, 0.55)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .app-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-title span.badge {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .app-subtitle {
+      font-size: 0.95rem;
+      color: #d0d3ff;
+    }
+
+    /* ====== BLOQUES / TARJETAS ====== */
+
+    .scroll-area {
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
     .bloque {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      background-color: #f9f9f9;
+      border-radius: 18px;
+      padding: 16px 18px 14px;
+      margin-bottom: 12px;
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
+
     .bloque h2 {
-      margin-top: 0;
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
+    .bloque h2::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #ffb300;
+      box-shadow: 0 0 6px #ffb300;
+    }
+
     .tag {
       display: inline-block;
       padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 12px;
+      border-radius: 999px;
+      font-size: 0.7rem;
       margin-right: 5px;
-      background-color: #e0f2f1;
-      color: #004d40;
+      background-color: rgba(0, 230, 189, 0.16);
+      color: #9ef7f0;
+      border: 1px solid rgba(158, 247, 240, 0.3);
     }
+
     ul {
       margin-top: 5px;
       margin-bottom: 5px;
+      padding-left: 20px;
+      font-size: 0.95rem;
     }
+
     .subtitulo {
-      font-weight: bold;
+      font-weight: 600;
       margin-top: 10px;
+      font-size: 0.95rem;
     }
+
     .importante {
-      background-color: #fff3cd;
+      background-color: rgba(255, 243, 205, 0.08);
       border-left: 4px solid #ffb300;
       padding: 8px 10px;
       margin-top: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
     }
+
     .mini {
-      font-size: 0.9em;
-      color: #555;
+      font-size: 0.88em;
+      color: #c6c6db;
     }
-    /* Estilo Verdadero/Falso */
+
+    /* ====== VERDADERO / FALSO ====== */
+
     .vf-list {
       list-style: none;
       padding-left: 0;
+      margin: 8px 0 0;
+      font-size: 0.95rem;
     }
+
     .vf-list li {
       margin-bottom: 6px;
     }
+
     .vf-label {
-      font-weight: bold;
+      font-weight: 600;
       margin-right: 6px;
+      color: #ffdd91;
+    }
+
+    .vf-tip {
+      font-size: 0.85rem;
+      color: #cbd5ff;
+      margin-top: 4px;
+    }
+
+    /* Scrollbar fino para el panel de contenido */
+    .scroll-area::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scroll-area::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-area::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
     }
   </style>
 </head>
 <body>
+  <div class="app">
+    <header class="app-header">
+      <div class="app-title">
+        <div>UF2 · Las metas de la sostenibilidad: los ODS</div>
+        <span class="badge">Resumen + V/F</span>
+      </div>
+      <p class="app-subtitle">
+        Repasa la teoría más importante de la unidad y luego utiliza las preguntas
+        Verdadero/Falso del final para comprobar si lo dominas antes del examen.
+      </p>
+    </header>
 
-<h1>Resumen Esquematizado – ODS y Sostenibilidad</h1>
+    <div class="scroll-area">
+      <div class="bloque">
+        <h2>1. ¿Qué son los ODS?</h2>
+        <p><span class="tag">ONU</span><span class="tag">Agenda 2030</span></p>
+        <ul>
+          <li>Surgen en <strong>2015</strong> con la <strong>Agenda 2030</strong> de la ONU.</li>
+          <li>Son <strong>17 Objetivos de Desarrollo Sostenible (ODS)</strong>.</li>
+          <li>Buscan un desarrollo que sea:
+            <ul>
+              <li><strong>Medioambientalmente</strong> sostenible.</li>
+              <li><strong>Socialmente</strong> justo.</li>
+              <li><strong>Económicamente</strong> viable.</li>
+            </ul>
+          </li>
+          <li>Son <strong>de obligado cumplimiento</strong> para las
+            <strong>Administraciones Públicas</strong> de todos los países.</li>
+          <li>La ONU <strong>invita</strong> a <strong>empresas</strong> y
+            <strong>personas</strong> a sumarse.</li>
+        </ul>
 
-<div class="bloque">
-  <h2>1. ¿Qué son los ODS?</h2>
-  <p><span class="tag">ONU</span><span class="tag">Agenda 2030</span></p>
-  <ul>
-    <li>Surgen en <strong>2015</strong> con la <strong>Agenda 2030</strong> de la ONU.</li>
-    <li>Son <strong>17 Objetivos de Desarrollo Sostenible (ODS)</strong>.</li>
-    <li>Buscan un desarrollo que sea:
-      <ul>
-        <li><strong>Medioambientalmente</strong> sostenible.</li>
-        <li><strong>Socialmente</strong> justo.</li>
-        <li><strong>Económicamente</strong> viable.</li>
-      </ul>
-    </li>
-    <li>Son <strong>de obligado cumplimiento</strong> para las <strong>Administraciones Públicas</strong> de todos los países.</li>
-    <li>La ONU <strong>invita</strong> a <strong>empresas</strong> y <strong>personas</strong> a sumarse.</li>
-  </ul>
+        <div class="importante">
+          <strong>Idea clave:</strong> Los ODS marcan el marco global de sostenibilidad
+          hasta el año <strong>2030</strong>.
+        </div>
+      </div>
 
-  <div class="importante">
-    <strong>Idea clave:</strong> Los ODS marcan el marco global de sostenibilidad hasta el año <strong>2030</strong>.
+      <div class="bloque">
+        <h2>2. Dimensiones de la sostenibilidad</h2>
+        <p><span class="tag">Tres dimensiones</span></p>
+        <p>Los ODS abarcan tres grandes dimensiones:</p>
+        <ul>
+          <li><strong>Medioambiental</strong> (ecológica)</li>
+          <li><strong>Social</strong></li>
+          <li><strong>Económica</strong></li>
+        </ul>
+        <p>La dimensión <strong>cultural</strong> <u>no</u> se considera una dimensión básica de los ODS.</p>
+      </div>
+
+      <div class="bloque">
+        <h2>3. Estructura de los ODS: ODS → Metas → Indicadores</h2>
+        <p><span class="tag">ODS</span><span class="tag">Metas</span><span class="tag">Indicadores</span></p>
+        <ul>
+          <li>Cada <strong>ODS</strong> tiene asignadas varias <strong>metas concretas</strong>
+            que deben alcanzarse en <strong>2030</strong>.</li>
+          <li>Cada <strong>meta</strong> tiene uno o varios
+            <strong>indicadores de desempeño</strong>.</li>
+          <li>Los <strong>indicadores</strong> sirven para:
+            <ul>
+              <li><strong>Medir</strong> si nos acercamos o nos alejamos de la meta.</li>
+              <li>Determinar el <strong>grado de cumplimiento</strong> de los ODS.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="subtitulo">Ejemplo del PDF:</p>
+        <ul>
+          <li><strong>ODS 8 – Trabajo decente y crecimiento económico</strong>:
+            <ul>
+              <li>Tiene hasta <strong>12 metas</strong>.</li>
+              <li>Cada meta tiene <strong>1–2 indicadores</strong>.</li>
+              <li>Se analizan datos del <strong>INE</strong> y de fichas de país
+                (Red de Soluciones para el Desarrollo Sostenible).</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <h2>4. Los ODS y el consumo responsable (nivel personal)</h2>
+        <p><span class="tag">Consumo responsable</span><span class="tag">Personas</span></p>
+        <p>El <strong>consumo responsable</strong> es consumir de forma
+          <strong>consciente y crítica</strong>, teniendo en cuenta el impacto ambiental y social.</p>
+
+        <p class="subtitulo">Ámbitos del consumo responsable:</p>
+        <ul>
+          <li><strong>Agua</strong>:
+            <ul>
+              <li>Ducharse rápidamente y cerrar el grifo al enjabonarse.</li>
+              <li>Poner lavadora y lavavajillas solo llenos.</li>
+              <li>Evitar fugas y colocar economizadores.</li>
+            </ul>
+          </li>
+          <li><strong>Alimentos</strong>:
+            <ul>
+              <li>Dieta con <strong>menos carne</strong> y más alimentos <strong>vegetales</strong>.</li>
+              <li>Consumir productos <strong>locales</strong>, de <strong>temporada</strong> y
+                <strong>ecológicos</strong>.</li>
+              <li>Planificar la compra para evitar <strong>desperdicio</strong>.</li>
+            </ul>
+          </li>
+          <li><strong>Energía</strong>:
+            <ul>
+              <li>Usar <strong>bombillas de bajo consumo</strong> y aparatos eficientes (A o A+).</li>
+              <li>Mejorar el <strong>aislamiento</strong> de la vivienda.</li>
+              <li>No subir el termostato por encima de <strong>21 ºC</strong>.</li>
+              <li>Desenchufar aparatos que no se usan.</li>
+            </ul>
+          </li>
+          <li><strong>Transporte</strong>:
+            <ul>
+              <li>Desplazarse a <strong>pie</strong> o en <strong>bicicleta</strong>.</li>
+              <li>Usar <strong>transporte público</strong> o compartir coche.</li>
+              <li>Practicar conducción eficiente.</li>
+            </ul>
+          </li>
+          <li><strong>Bienes de consumo duradero</strong>:
+            <ul>
+              <li>Comprar <strong>menos ropa</strong> y usar de segunda mano.</li>
+              <li>Comprar productos <strong>biodegradables</strong> y de
+                <strong>comercio justo</strong>.</li>
+              <li><strong>Reutilizar, regalar o vender</strong> lo que no se usa.</li>
+              <li>Evitar la cultura de “<strong>usar y tirar</strong>”.</li>
+            </ul>
+          </li>
+          <li><strong>Residuos</strong>:
+            <ul>
+              <li>Evitar envases y productos desechables.</li>
+              <li><strong>Separar y reciclar</strong> correctamente.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="importante">
+          <strong>Idea clave de examen:</strong> Ámbitos del consumo responsable:
+          <span class="mini">agua, alimentos, energía, transporte, bienes de consumo
+            duradero y residuos.</span>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <h2>5. Los ODS en el ámbito profesional</h2>
+        <p><span class="tag">Trabajo</span><span class="tag">Acción individual</span></p>
+        <ul>
+          <li>No hace falta ser directivo para contribuir a los ODS.</li>
+          <li>Desde cualquier puesto se puede:
+            <ul>
+              <li>Aplicar principios de <strong>consumo responsable</strong> en el trabajo.</li>
+              <li><strong>Sugerir</strong> mejoras a la dirección.</li>
+              <li>Apoyar cambios en favor de la <strong>sostenibilidad</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <h2>6. Los ODS en la empresa</h2>
+        <p><span class="tag">Empresa</span><span class="tag">Estrategia</span></p>
+
+        <p class="subtitulo">6.1. Punto de partida: diagnóstico</p>
+        <ul>
+          <li>Antes de actuar, la empresa debe hacer un <strong>diagnóstico</strong>:
+            <ul>
+              <li>Analizar la <strong>situación actual</strong>.</li>
+              <li>Identificar <strong>impactos negativos</strong>, especialmente ambientales.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="subtitulo">6.2. Fijar metas de desarrollo sostenible</p>
+        <ul>
+          <li>Los ODS sirven de <strong>marco general</strong>, pero lo más útil son las
+            <strong>metas vinculadas</strong>.</li>
+          <li>Cada empresa debe:
+            <ul>
+              <li>Identificar qué <strong>ODS</strong> son más relevantes para su rama de actividad.</li>
+              <li>Elegir <strong>metas concretas</strong> asociadas a esos ODS.</li>
+              <li>Diseñar <strong>acciones</strong> para contribuir a esas metas.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="subtitulo">6.3. Ejemplo del PDF (Distribuciones Torreón S.A.)</p>
+        <ul>
+          <li>Selecciona ODS relevantes (4, 5, 8, 9, 13, 7, 11 y 12).</li>
+          <li>Escoge metas como: <strong>4.4</strong>, <strong>4.7</strong>,
+            <strong>8.8</strong>, <strong>12.5</strong>, <strong>13.3</strong>.</li>
+          <li>Crea el plan de formación <strong>"Líderes de la Sostenibilidad"</strong>:
+            <ul>
+              <li>Formación en buenas prácticas a toda la plantilla (de arriba abajo).</li>
+              <li>Sistema de puntos por liderazgo en sostenibilidad.</li>
+              <li>Los puntos se tienen en cuenta para <strong>ascensos</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <h2>7. Iniciativas de la Unión Europea relacionadas con los ODS</h2>
+        <p><span class="tag">UE</span><span class="tag">Políticas</span></p>
+
+        <p class="subtitulo">Principales iniciativas de la UE:</p>
+        <ul>
+          <li><strong>Pacto Verde Europeo (2019)</strong>:
+            <ul>
+              <li>Estrategia de crecimiento basada en la <strong>sostenibilidad</strong>.</li>
+              <li>Objetivo: <strong>neutralidad de emisiones de carbono en 2050</strong>.</li>
+              <li>Promueve energías limpias, eficiencia energética y protección de la biodiversidad.</li>
+            </ul>
+          </li>
+          <li><strong>Nueva Estrategia Industrial para Europa (2020)</strong>:
+            <ul>
+              <li>Industria más <strong>sostenible</strong>, <strong>digital</strong> y
+                <strong>autónoma</strong>.</li>
+            </ul>
+          </li>
+          <li><strong>Estrategia de Movilidad Sostenible (2020)</strong>:
+            <ul>
+              <li>Metas para 2030:
+                <ul>
+                  <li>Neutralidad de emisiones en 100 ciudades.</li>
+                  <li>30 millones de vehículos eléctricos o híbridos en la UE.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><strong>Régimen de Comercio de Derechos de Emisión (EU ETS)</strong>:
+            <ul>
+              <li>En funcionamiento desde <strong>2005</strong>.</li>
+              <li>Fija un <strong>límite de emisiones</strong> anual para sectores contaminantes.</li>
+              <li>Permite comprar y vender <strong>derechos de emisión</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="subtitulo">Riesgos para las empresas:</p>
+        <ul>
+          <li><strong>Normas ambientales más estrictas</strong>.</li>
+          <li>Mayor <strong>riesgo de sanciones</strong>.</li>
+          <li><strong>Aumento de impuestos</strong> a actividades contaminantes.</li>
+          <li>Necesidad de hacer <strong>grandes inversiones</strong> (riesgos económicos).</li>
+        </ul>
+
+        <p class="subtitulo">Oportunidades para las empresas:</p>
+        <ul>
+          <li><strong>Fondos Next Generation EU</strong> y programa <strong>LIFE</strong>.</li>
+          <li><strong>Nuevos empleos</strong> en electrificación y renovables.</li>
+          <li><strong>Financiación</strong> a proyectos climáticos por parte del
+            <strong>Banco Europeo de Inversiones</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <h2>8. Acuerdos internacionales relevantes (ONU)</h2>
+        <p><span class="tag">Acuerdo de París</span><span class="tag">Protocolo de Kioto</span></p>
+        <ul>
+          <li><strong>Acuerdo de París (2015)</strong>:
+            <ul>
+              <li>Objetivo: que el <strong>calentamiento global</strong> no supere los
+                <strong>2 ºC</strong>.</li>
+              <li>Obliga a los países a fijar metas de <strong>reducción de emisiones</strong>.</li>
+            </ul>
+          </li>
+          <li><strong>Protocolo de Kioto (1997)</strong>:
+            <ul>
+              <li>Incluye mecanismos para el <strong>comercio de derechos de emisión</strong> de
+                gases de efecto invernadero.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <h2>9. Ideas clave de examen (resumen ultra corto)</h2>
+        <ul>
+          <li><strong>17 ODS</strong> → metas concretas → indicadores para medir avance.</li>
+          <li>Dimensiones: <strong>medioambiental, social, económica</strong>.</li>
+          <li>Obligatorios para <strong>Administraciones Públicas</strong>, resto invitados.</li>
+          <li>Fecha clave: <strong>2030</strong>.</li>
+          <li>Consumo responsable: agua, alimentos, energía, transporte, bienes duraderos, residuos.</li>
+          <li>Empresa: primer paso, <strong>diagnóstico</strong>.</li>
+          <li>UE: <strong>Pacto Verde Europeo</strong> → neutralidad de carbono 2050.</li>
+          <li>Riesgo típico: <strong>normas ambientales más estrictas</strong>.</li>
+          <li>Oportunidad típica: <strong>financiación del BEI</strong> y fondos
+            <strong>Next Generation</strong>.</li>
+          <li>Acuerdos clima: <strong>Protocolo de Kioto</strong> y <strong>Acuerdo de París</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- BLOQUE DE VERDADERO/FALSO -->
+      <div class="bloque">
+        <h2>10. Preguntas de repaso – Verdadero / Falso</h2>
+        <p class="vf-tip">
+          Intenta responder sin mirar arriba. Después, comprueba tu respuesta con la solución entre paréntesis.
+        </p>
+        <ol class="vf-list">
+          <li><span class="vf-label">1.</span>
+            Los ODS forman parte de la Agenda 2030 aprobada por la ONU en 2015.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">2.</span>
+            Existen 20 Objetivos de Desarrollo Sostenible.
+            <strong>(F – son 17)</strong>
+          </li>
+          <li><span class="vf-label">3.</span>
+            Las tres dimensiones básicas de la sostenibilidad son: medioambiental, social y económica.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">4.</span>
+            La dimensión cultural se considera una de las tres dimensiones oficiales de los ODS.
+            <strong>(F)</strong>
+          </li>
+          <li><span class="vf-label">5.</span>
+            Cada ODS tiene metas concretas que deben alcanzarse en el año 2030.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">6.</span>
+            Los indicadores de desempeño sirven para medir el grado de cumplimiento de las metas.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">7.</span>
+            El consumo responsable solo se refiere al uso del agua.
+            <strong>(F)</strong>
+          </li>
+          <li><span class="vf-label">8.</span>
+            Los ámbitos del consumo responsable incluyen el agua, los alimentos, la energía,
+            el transporte, los bienes de consumo duradero y los residuos.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">9.</span>
+            Un empleado sin cargo directivo no puede hacer nada para contribuir a los ODS en su empresa.
+            <strong>(F)</strong>
+          </li>
+          <li><span class="vf-label">10.</span>
+            El punto de partida para que una empresa mejore su sostenibilidad es realizar un diagnóstico de su situación actual.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">11.</span>
+            El Pacto Verde Europeo busca que la Unión Europea alcance la neutralidad de emisiones de carbono en 2050.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">12.</span>
+            Las políticas de sostenibilidad de la UE nunca suponen riesgos económicos para las empresas.
+            <strong>(F)</strong>
+          </li>
+          <li><span class="vf-label">13.</span>
+            Los Fondos Next Generation EU y el programa LIFE pueden ser una oportunidad para las empresas.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">14.</span>
+            El Protocolo de Kioto y el Acuerdo de París son acuerdos internacionales relacionados con la lucha contra el cambio climático.
+            <strong>(V)</strong>
+          </li>
+          <li><span class="vf-label">15.</span>
+            Los ODS son de obligado cumplimiento únicamente para las personas, pero no para las administraciones públicas.
+            <strong>(F)</strong>
+          </li>
+        </ol>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="bloque">
-  <h2>2. Dimensiones de la sostenibilidad</h2>
-  <p><span class="tag">Tres dimensiones</span></p>
-  <p>Los ODS abarcan tres grandes dimensiones:</p>
-  <ul>
-    <li><strong>Medioambiental</strong> (ecológica)</li>
-    <li><strong>Social</strong></li>
-    <li><strong>Económica</strong></li>
-  </ul>
-  <p>La dimensión <strong>cultural</strong> <u>no</u> se considera una dimensión básica de los ODS.</p>
-</div>
-
-<div class="bloque">
-  <h2>3. Estructura de los ODS: ODS → Metas → Indicadores</h2>
-  <p><span class="tag">ODS</span><span class="tag">Metas</span><span class="tag">Indicadores</span></p>
-  <ul>
-    <li>Cada <strong>ODS</strong> tiene asignadas varias <strong>metas concretas</strong> que deben alcanzarse en <strong>2030</strong>.</li>
-    <li>Cada <strong>meta</strong> tiene uno o varios <strong>indicadores de desempeño</strong>.</li>
-    <li>Los <strong>indicadores</strong> sirven para:
-      <ul>
-        <li><strong>Medir</strong> si nos acercamos o nos alejamos de la meta.</li>
-        <li>Determinar el <strong>grado de cumplimiento</strong> de los ODS.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p class="subtitulo">Ejemplo del PDF:</p>
-  <ul>
-    <li><strong>ODS 8 – Trabajo decente y crecimiento económico</strong>:
-      <ul>
-        <li>Tiene hasta <strong>12 metas</strong>.</li>
-        <li>Cada meta tiene <strong>1–2 indicadores</strong>.</li>
-        <li>Se analizan datos del <strong>INE</strong> y de fichas de país (Red de Soluciones para el Desarrollo Sostenible).</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="bloque">
-  <h2>4. Los ODS y el consumo responsable (nivel personal)</h2>
-  <p><span class="tag">Consumo responsable</span><span class="tag">Personas</span></p>
-  <p>El <strong>consumo responsable</strong> es consumir de forma <strong>consciente y crítica</strong>, teniendo en cuenta el impacto ambiental y social.</p>
-
-  <p class="subtitulo">Ámbitos del consumo responsable:</p>
-  <ul>
-    <li><strong>Agua</strong>:
-      <ul>
-        <li>Ducharse rápidamente y cerrar el grifo al enjabonarse.</li>
-        <li>Poner lavadora y lavavajillas solo llenos.</li>
-        <li>Evitar fugas y colocar economizadores.</li>
-      </ul>
-    </li>
-    <li><strong>Alimentos</strong>:
-      <ul>
-        <li>Dieta con <strong>menos carne</strong> y más alimentos <strong>vegetales</strong>.</li>
-        <li>Consumir productos <strong>locales</strong>, de <strong>temporada</strong> y <strong>ecológicos</strong>.</li>
-        <li>Planificar la compra para evitar <strong>desperdicio</strong>.</li>
-      </ul>
-    </li>
-    <li><strong>Energía</strong>:
-      <ul>
-        <li>Usar <strong>bombillas de bajo consumo</strong> y aparatos eficientes (A o A+).</li>
-        <li>Mejorar el <strong>aislamiento</strong> de la vivienda.</li>
-        <li>No subir el termostato por encima de <strong>21 ºC</strong>.</li>
-        <li>Desenchufar aparatos que no se usan.</li>
-      </ul>
-    </li>
-    <li><strong>Transporte</strong>:
-      <ul>
-        <li>Desplazarse a <strong>pie</strong> o en <strong>bicicleta</strong>.</li>
-        <li>Usar <strong>transporte público</strong> o compartir coche.</li>
-        <li>Practicar conducción eficiente.</li>
-      </ul>
-    </li>
-    <li><strong>Bienes de consumo duradero</strong>:
-      <ul>
-        <li>Comprar <strong>menos ropa</strong> y usar de segunda mano.</li>
-        <li>Comprar productos <strong>biodegradables</strong> y de <strong>comercio justo</strong>.</li>
-        <li><strong>Reutilizar, regalar o vender</strong> lo que no se usa.</li>
-        <li>Evitar la cultura de “<strong>usar y tirar</strong>”.</li>
-      </ul>
-    </li>
-    <li><strong>Residuos</strong>:
-      <ul>
-        <li>Evitar envases y productos desechables.</li>
-        <li><strong>Separar y reciclar</strong> correctamente.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <div class="importante">
-    <strong>Idea clave de examen:</strong> Los ámbitos del consumo responsable son:
-    <span class="mini">agua, alimentos, energía, transporte, bienes de consumo duradero y residuos.</span>
-  </div>
-</div>
-
-<div class="bloque">
-  <h2>5. Los ODS en el ámbito profesional</h2>
-  <p><span class="tag">Trabajo</span><span class="tag">Acción individual</span></p>
-  <ul>
-    <li>No hace falta ser directivo para contribuir a los ODS.</li>
-    <li>Desde cualquier puesto se puede:
-      <ul>
-        <li>Aplicar principios de <strong>consumo responsable</strong> en el trabajo.</li>
-        <li><strong>Sugerir</strong> mejoras a la dirección.</li>
-        <li>Apoyar cambios en favor de la <strong>sostenibilidad</strong>.</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="bloque">
-  <h2>6. Los ODS en la empresa</h2>
-  <p><span class="tag">Empresa</span><span class="tag">Estrategia</span></p>
-
-  <p class="subtitulo">6.1. Punto de partida: diagnóstico</p>
-  <ul>
-    <li>Antes de actuar, la empresa debe hacer un <strong>diagnóstico</strong>:
-      <ul>
-        <li>Analizar la <strong>situación actual</strong>.</li>
-        <li>Identificar <strong>impactos negativos</strong>, especialmente ambientales.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p class="subtitulo">6.2. Fijar metas de desarrollo sostenible</p>
-  <ul>
-    <li>Los ODS sirven de <strong>marco general</strong>, pero lo más útil son las <strong>metas vinculadas</strong>.</li>
-    <li>Cada empresa debe:
-      <ul>
-        <li>Identificar qué <strong>ODS</strong> son más relevantes para su <strong>rama de actividad</strong>.</li>
-        <li>Elegir <strong>metas concretas</strong> asociadas a esos ODS.</li>
-        <li>Diseñar <strong>acciones</strong> para contribuir a esas metas.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p class="subtitulo">6.3. Ejemplo del PDF (Distribuciones Torreón S.A.)</p>
-  <ul>
-    <li>Selecciona ODS relevantes (4, 5, 8, 9, 13, 7, 11 y 12).</li>
-    <li>Escoge metas como:
-      <ul>
-        <li><strong>4.4</strong>, <strong>4.7</strong>, <strong>8.8</strong>, <strong>12.5</strong>, <strong>13.3</strong>.</li>
-      </ul>
-    </li>
-    <li>Crea un plan de formación: <strong>"Líderes de la Sostenibilidad"</strong>:
-      <ul>
-        <li>Formación en buenas prácticas a toda la plantilla (de arriba abajo).</li>
-        <li>Sistema de puntos por liderazgo en sostenibilidad.</li>
-        <li>Los puntos influyen en <strong>ascensos</strong>.</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="bloque">
-  <h2>7. Iniciativas de la Unión Europea relacionadas con los ODS</h2>
-  <p><span class="tag">UE</span><span class="tag">Políticas</span></p>
-  <p class="subtitulo">Principales iniciativas de la UE:</p>
-  <ul>
-    <li><strong>Pacto Verde Europeo (2019)</strong>:
-      <ul>
-        <li>Estrategia de crecimiento basada en la <strong>sostenibilidad</strong>.</li>
-        <li>Objetivo: <strong>neutralidad de emisiones de carbono en 2050</strong>.</li>
-        <li>Promueve:
-          <ul>
-            <li>Energías limpias.</li>
-            <li>Eficiencia energética.</li>
-            <li>Protección de aire, agua, suelo y biodiversidad.</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><strong>Nueva Estrategia Industrial para Europa (2020)</strong>:
-      <ul>
-        <li>Industria más <strong>sostenible</strong>, <strong>digital</strong> y <strong>autónoma</strong>.</li>
-      </ul>
-    </li>
-    <li><strong>Estrategia de Movilidad Sostenible (2020)</strong>:
-      <ul>
-        <li>Metas para 2030:
-          <ul>
-            <li>Alcanzar la <strong>neutralidad de emisiones</strong> en 100 ciudades.</li>
-            <li>Llegar a <strong>30 millones de vehículos eléctricos o híbridos</strong> en la UE.</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><strong>Régimen de Comercio de Derechos de Emisión (EU ETS)</strong>:
-      <ul>
-        <li>En funcionamiento desde <strong>2005</strong>.</li>
-        <li>Fija un <strong>límite de emisiones</strong> anual para sectores contaminantes.</li>
-        <li>Permite comprar y vender <strong>derechos de emisión</strong>.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p class="subtitulo">Riesgos para las empresas:</p>
-  <ul>
-    <li><strong>Normas ambientales más estrictas</strong>.</li>
-    <li>Mayor <strong>riesgo de sanciones</strong>.</li>
-    <li><strong>Aumento de impuestos</strong> a actividades contaminantes.</li>
-    <li>Necesidad de hacer <strong>grandes inversiones</strong> (riesgos económicos).</li>
-  </ul>
-
-  <p class="subtitulo">Oportunidades para las empresas:</p>
-  <ul>
-    <li><strong>Fondos Next Generation EU</strong> y <strong>programa LIFE</strong> (ayudas y resiliencia).</li>
-    <li><strong>Nuevos empleos</strong> en electrificación y renovables.</li>
-    <li><strong>Financiación</strong> a proyectos contra el cambio climático por parte del <strong>Banco Europeo de Inversiones</strong>.</li>
-  </ul>
-</div>
-
-<div class="bloque">
-  <h2>8. Acuerdos internacionales relevantes (ONU)</h2>
-  <p><span class="tag">Acuerdo de París</span><span class="tag">Protocolo de Kioto</span></p>
-  <ul>
-    <li><strong>Acuerdo de París (2015)</strong>:
-      <ul>
-        <li>Objetivo: que el <strong>calentamiento global no supere los 2 ºC</strong>.</li>
-        <li>Obliga a los países a fijar metas de <strong>reducción de emisiones</strong>.</li>
-      </ul>
-    </li>
-    <li><strong>Protocolo de Kioto (1997)</strong>:
-      <ul>
-        <li>Incluye mecanismos para el <strong>comercio de derechos de emisión</strong> de gases de efecto invernadero.</li>
-      </ul>
-    </li>
-  </ul>
-</div>
-
-<div class="bloque">
-  <h2>9. Ideas clave de examen (resumen ultra corto)</h2>
-  <ul>
-    <li><strong>17 ODS</strong> → metas concretas → indicadores para medir avance.</li>
-    <li>Dimensiones: <strong>medioambiental, social, económica</strong>.</li>
-    <li>Obligatorios para <strong>Administraciones Públicas</strong>, el resto invitados.</li>
-    <li>Fecha clave: <strong>2030</strong> (cumplimiento de metas).</li>
-    <li>Ámbitos del consumo responsable: agua, alimentos, energía, transporte, bienes duraderos y residuos.</li>
-    <li>Primer paso en la empresa: <strong>diagnóstico</strong> de impactos.</li>
-    <li>La UE impulsa el <strong>Pacto Verde Europeo</strong> → neutralidad de carbono en 2050.</li>
-    <li>Riesgo típico: <strong>normas ambientales más estrictas</strong>.</li>
-    <li>Oportunidad típica: <strong>financiación del Banco Europeo de Inversiones</strong>, fondos Next Generation.</li>
-    <li>Acuerdos ONU clave: <strong>Protocolo de Kioto</strong> y <strong>Acuerdo de París</strong>.</li>
-  </ul>
-</div>
-
-<!-- NUEVO BLOQUE: PREGUNTAS VERDADERO/FALSO -->
-<div class="bloque">
-  <h2>10. Preguntas de repaso – Verdadero / Falso</h2>
-  <p>Marca mentalmente (V) si la afirmación es verdadera o (F) si es falsa. Puedes escribirlo en papel si quieres practicar como en examen.</p>
-  <ol class="vf-list">
-    <li><span class="vf-label">1.</span> Los ODS forman parte de la Agenda 2030 aprobada por la ONU en 2015. <strong>(V)</strong></li>
-    <li><span class="vf-label">2.</span> Existen 20 Objetivos de Desarrollo Sostenible. <strong>(F – son 17)</strong></li>
-    <li><span class="vf-label">3.</span> Las tres dimensiones básicas de la sostenibilidad son: medioambiental, social y económica. <strong>(V)</strong></li>
-    <li><span class="vf-label">4.</span> La dimensión cultural se considera una de las tres dimensiones oficiales de los ODS. <strong>(F)</strong></li>
-    <li><span class="vf-label">5.</span> Cada ODS tiene metas concretas que deben alcanzarse en el año 2030. <strong>(V)</strong></li>
-    <li><span class="vf-label">6.</span> Los indicadores de desempeño sirven para medir el grado de cumplimiento de las metas. <strong>(V)</strong></li>
-    <li><span class="vf-label">7.</span> El consumo responsable solo se refiere al uso del agua. <strong>(F)</strong></li>
-    <li><span class="vf-label">8.</span> Los ámbitos del consumo responsable incluyen el agua, los alimentos, la energía, el transporte, los bienes de consumo duradero y los residuos. <strong>(V)</strong></li>
-    <li><span class="vf-label">9.</span> Un empleado sin cargo directivo no puede hacer nada para contribuir a los ODS en su empresa. <strong>(F)</strong></li>
-    <li><span class="vf-label">10.</span> El punto de partida para que una empresa mejore su sostenibilidad es realizar un diagnóstico de su situación actual. <strong>(V)</strong></li>
-    <li><span class="vf-label">11.</span> El Pacto Verde Europeo busca que la Unión Europea alcance la neutralidad de emisiones de carbono en 2050. <strong>(V)</strong></li>
-    <li><span class="vf-label">12.</span> Las políticas de sostenibilidad de la UE nunca suponen riesgos económicos para las empresas. <strong>(F)</strong></li>
-    <li><span class="vf-label">13.</span> Los Fondos Next Generation EU y el programa LIFE pueden ser una oportunidad para las empresas. <strong>(V)</strong></li>
-    <li><span class="vf-label">14.</span> El Protocolo de Kioto y el Acuerdo de París son acuerdos internacionales relacionados con la lucha contra el cambio climático. <strong>(V)</strong></li>
-    <li><span class="vf-label">15.</span> Los ODS son de obligado cumplimiento únicamente para las personas, pero no para las administraciones públicas. <strong>(F)</strong></li>
-  </ol>
-</div>
-
 </body>
 </html>
