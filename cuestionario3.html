@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuestionario · UF3 ASG y Sostenibilidad</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0.55));
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge {
+      font-size: .85rem;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2df28f, #91ffa7);
+      font-weight: 600;
+      color: #04210f;
+      border: none;
+      cursor: pointer;
+    }
+
+    fieldset {
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    legend { font-weight: 600; }
+
+    .question-text { margin-bottom: 8px; font-weight: 500; }
+
+    label { display: block; margin-bottom: 6px; cursor: pointer; }
+
+    input[type="radio"] { margin-right: 6px; }
+
+    #result {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffe9a6;
+      font-weight: 600;
+    }
+
+    .correct-answer {
+      background: rgba(34,197,94,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+
+    .incorrect-answer {
+      background: rgba(239,68,68,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <header class="app-header">
+    <h1>
+      Cuestionario · UF3 ASG y Sostenibilidad
+      <span class="badge">25 preguntas</span>
+    </h1>
+    <p>Selecciona tus respuestas y pulsa <b>Corregir</b> al finalizar.</p>
+    <button class="btn" onclick="corregirTest()">✓ Corregir cuestionario</button>
+    <div id="result">Aún no has corregido.</div>
+  </header>
+
+  <form id="testForm">
+
+    <!-- Preguntas mezcladas -->
+
+    <!-- P1 -->
+    <fieldset>
+      <legend>Pregunta 1</legend>
+      <p class="question-text">La integración de aspectos ASG en la empresa supone:</p>
+      <label><input type="radio" name="p1" value="a">Un peor acceso a financiación</label>
+      <label><input type="radio" name="p1" value="b">Un menor beneficio a la larga</label>
+      <label><input type="radio" name="p1" value="c">Una peor retención del talento</label>
+      <label data-correct="true"><input type="radio" name="p1" value="d">Una mejor imagen de marca</label>
+    </fieldset>
+
+    <!-- P2 -->
+    <fieldset>
+      <legend>Pregunta 2</legend>
+      <p class="question-text">Las normas NEIS han sido creadas por:</p>
+      <label data-correct="true"><input type="radio" name="p2" value="a">La Unión Europea</label>
+      <label><input type="radio" name="p2" value="b">Las Naciones Unidas</label>
+      <label><input type="radio" name="p2" value="c">La Consejería de Medio Ambiente</label>
+      <label><input type="radio" name="p2" value="d">El Gobierno de España</label>
+    </fieldset>
+
+    <!-- P3 -->
+    <fieldset>
+      <legend>Pregunta 3</legend>
+      <p class="question-text">Las y los clientes son un grupo de interés que busca:</p>
+      <label data-correct="true"><input type="radio" name="p3" value="a">El mejor producto posible al menor precio</label>
+      <label><input type="radio" name="p3" value="b">Obtener beneficios</label>
+      <label><input type="radio" name="p3" value="c">Gestionar la empresa</label>
+      <label><input type="radio" name="p3" value="d">Fijar las leyes del mercado</label>
+    </fieldset>
+
+    <!-- P4 -->
+    <fieldset>
+      <legend>Pregunta 4</legend>
+      <p class="question-text">¿Cuál de los siguientes NO es un grupo de interés interno?</p>
+      <label><input type="radio" name="p4" value="a">Propietarios</label>
+      <label><input type="radio" name="p4" value="b">Dirección</label>
+      <label><input type="radio" name="p4" value="c">Plantilla</label>
+      <label data-correct="true"><input type="radio" name="p4" value="d">Clientes</label>
+    </fieldset>
+
+    <!-- P5 -->
+    <fieldset>
+      <legend>Pregunta 5</legend>
+      <p class="question-text">El informe de gestión obligatorio del EINF tiene periodicidad:</p>
+      <label><input type="radio" name="p5" value="a">Semestral</label>
+      <label><input type="radio" name="p5" value="b">Trienal</label>
+      <label data-correct="true"><input type="radio" name="p5" value="c">Anual</label>
+      <label><input type="radio" name="p5" value="d">Mensual</label>
+    </fieldset>
+
+    <!-- P6 -->
+    <fieldset>
+      <legend>Pregunta 6</legend>
+      <p class="question-text">Los aspectos ASG relacionados con el trato a personas internas y externas son:</p>
+      <label data-correct="true"><input type="radio" name="p6" value="a">Aspectos sociales</label>
+      <label><input type="radio" name="p6" value="b">Aspectos de gobernanza</label>
+      <label><input type="radio" name="p6" value="c">Aspectos financieros</label>
+      <label><input type="radio" name="p6" value="d">Aspectos ambientales</label>
+    </fieldset>
+
+    <!-- P7 -->
+    <fieldset>
+      <legend>Pregunta 7</legend>
+      <p class="question-text">La corrupción pertenece al aspecto:</p>
+      <label><input type="radio" name="p7" value="a">Ambiental</label>
+      <label><input type="radio" name="p7" value="b">Social</label>
+      <label data-correct="true"><input type="radio" name="p7" value="c">Gobernanza</label>
+      <label><input type="radio" name="p7" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P8 -->
+    <fieldset>
+      <legend>Pregunta 8</legend>
+      <p class="question-text">La mitigación del cambio climático es un aspecto:</p>
+      <label data-correct="true"><input type="radio" name="p8" value="a">Ambiental</label>
+      <label><input type="radio" name="p8" value="b">Social</label>
+      <label><input type="radio" name="p8" value="c">Gobernanza</label>
+      <label><input type="radio" name="p8" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P9 -->
+    <fieldset>
+      <legend>Pregunta 9</legend>
+      <p class="question-text">¿En qué aspecto ASG se ubica la igualdad de oportunidades?</p>
+      <label><input type="radio" name="p9" value="a">Ambiental</label>
+      <label data-correct="true"><input type="radio" name="p9" value="b">Social</label>
+      <label><input type="radio" name="p9" value="c">Gobernanza</label>
+      <label><input type="radio" name="p9" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P10 -->
+    <fieldset>
+      <legend>Pregunta 10</legend>
+      <p class="question-text">La economía circular se encuentra en la NEIS:</p>
+      <label><input type="radio" name="p10" value="a">S1</label>
+      <label data-correct="true"><input type="radio" name="p10" value="b">E5</label>
+      <label><input type="radio" name="p10" value="c">G1</label>
+      <label><input type="radio" name="p10" value="d">E3</label>
+    </fieldset>
+
+    <!-- P11 -->
+    <fieldset>
+      <legend>Pregunta 11</legend>
+      <p class="question-text">¿Cuál de los siguientes bloques NEIS trata sobre consumidores?</p>
+      <label><input type="radio" name="p11" value="a">E2</label>
+      <label><input type="radio" name="p11" value="b">S2</label>
+      <label data-correct="true"><input type="radio" name="p11" value="c">S4</label>
+      <label><input type="radio" name="p11" value="d">G1</label>
+    </fieldset>
+
+    <!-- P12 -->
+    <fieldset>
+      <legend>Pregunta 12</legend>
+      <p class="question-text">Un riesgo ASG social sería:</p>
+      <label data-correct="true"><input type="radio" name="p12" value="a">Desigualdad salarial</label>
+      <label><input type="radio" name="p12" value="b">Emisiones contaminantes</label>
+      <label><input type="radio" name="p12" value="c">Corrupción</label>
+      <label><input type="radio" name="p12" value="d">Pérdida de biodiversidad</label>
+    </fieldset>
+
+    <!-- P13 -->
+    <fieldset>
+      <legend>Pregunta 13</legend>
+      <p class="question-text">¿Cuál de los siguientes es una ventaja ASG?</p>
+      <label><input type="radio" name="p13" value="a">Peor acceso a financiación</label>
+      <label><input type="radio" name="p13" value="b">Peor imagen de marca</label>
+      <label data-correct="true"><input type="radio" name="p13" value="c">Mejor retención de talento</label>
+      <label><input type="radio" name="p13" value="d">Menor rentabilidad</label>
+    </fieldset>
+
+    <!-- P14 -->
+    <fieldset>
+      <legend>Pregunta 14</legend>
+      <p class="question-text">El ODS 4 (educación de calidad) pertenece a:</p>
+      <label data-correct="true"><input type="radio" name="p14" value="a">Social</label>
+      <label><input type="radio" name="p14" value="b">Ambiental</label>
+      <label><input type="radio" name="p14" value="c">Gobernanza</label>
+      <label><input type="radio" name="p14" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P15 -->
+    <fieldset>
+      <legend>Pregunta 15</legend>
+      <p class="question-text">Un grupo de interés interno es:</p>
+      <label data-correct="true"><input type="radio" name="p15" value="a">Propietarios</label>
+      <label><input type="radio" name="p15" value="b">Clientes</label>
+      <label><input type="radio" name="p15" value="c">Proveedores</label>
+      <label><input type="radio" name="p15" value="d">Competidores</label>
+    </fieldset>
+
+    <!-- P16 -->
+    <fieldset>
+      <legend>Pregunta 16</legend>
+      <p class="question-text">¿Quién aporta la gestión a la empresa?</p>
+      <label><input type="radio" name="p16" value="a">Propietarios</label>
+      <label data-correct="true"><input type="radio" name="p16" value="b">Dirección</label>
+      <label><input type="radio" name="p16" value="c">Plantilla</label>
+      <label><input type="radio" name="p16" value="d">Clientes</label>
+    </fieldset>
+
+    <!-- P17 -->
+    <fieldset>
+      <legend>Pregunta 17</legend>
+      <p class="question-text">La relación con comunidades corresponde al aspecto:</p>
+      <label><input type="radio" name="p17" value="a">Ambiental</label>
+      <label data-correct="true"><input type="radio" name="p17" value="b">Social</label>
+      <label><input type="radio" name="p17" value="c">Gobernanza</label>
+      <label><input type="radio" name="p17" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P18 -->
+    <fieldset>
+      <legend>Pregunta 18</legend>
+      <p class="question-text">Las NEIS E1 tratan sobre:</p>
+      <label data-correct="true"><input type="radio" name="p18" value="a">Cambio climático</label>
+      <label><input type="radio" name="p18" value="b">Personal propio</label>
+      <label><input type="radio" name="p18" value="c">Gobernanza ética</label>
+      <label><input type="radio" name="p18" value="d">Contaminación del agua</label>
+    </fieldset>
+
+    <!-- P19 -->
+    <fieldset>
+      <legend>Pregunta 19</legend>
+      <p class="question-text">¿Qué bloque NEIS incluye la ética empresarial?</p>
+      <label><input type="radio" name="p19" value="a">E3</label>
+      <label><input type="radio" name="p19" value="b">S2</label>
+      <label data-correct="true"><input type="radio" name="p19" value="c">G1</label>
+      <label><input type="radio" name="p19" value="d">S1</label>
+    </fieldset>
+
+    <!-- P20 -->
+    <fieldset>
+      <legend>Pregunta 20</legend>
+      <p class="question-text">¿Qué ventaja ASG está relacionada directamente con atraer talento?</p>
+      <label><input type="radio" name="p20" value="a">Inflación baja</label>
+      <label data-correct="true"><input type="radio" name="p20" value="b">Buen clima laboral</label>
+      <label><input type="radio" name="p20" value="c">Alta rotación</label>
+      <label><input type="radio" name="p20" value="d">Ausencia de competencia</label>
+    </fieldset>
+
+    <!-- P21 -->
+    <fieldset>
+      <legend>Pregunta 21</legend>
+      <p class="question-text">Las decisiones de la empresa influyen en:</p>
+      <label data-correct="true"><input type="radio" name="p21" value="a">Sus grupos de interés</label>
+      <label><input type="radio" name="p21" value="b">Solo en los empleados</label>
+      <label><input type="radio" name="p21" value="c">Solo en la dirección</label>
+      <label><input type="radio" name="p21" value="d">Nadie externo</label>
+    </fieldset>
+
+    <!-- P22 -->
+    <fieldset>
+      <legend>Pregunta 22</legend>
+      <p class="question-text">¿Qué aspecto ASG analiza el uso de recursos marinos?</p>
+      <label data-correct="true"><input type="radio" name="p22" value="a">Ambiental</label>
+      <label><input type="radio" name="p22" value="b">Social</label>
+      <label><input type="radio" name="p22" value="c">Gobernanza</label>
+      <label><input type="radio" name="p22" value="d">Económico</label>
+    </fieldset>
+
+    <!-- P23 -->
+    <fieldset>
+      <legend>Pregunta 23</legend>
+      <p class="question-text">¿Qué organización obliga a las empresas a usar las NEIS?</p>
+      <label data-correct="true"><input type="radio" name="p23" value="a">La Unión Europea</label>
+      <label><input type="radio" name="p23" value="b">ONU</label>
+      <label><input type="radio" name="p23" value="c">NATO</label>
+      <label><input type="radio" name="p23" value="d">Ministerio de Educación</label>
+    </fieldset>
+
+    <!-- P24 -->
+    <fieldset>
+      <legend>Pregunta 24</legend>
+      <p class="question-text">¿Qué busca un banco como grupo de interés?</p>
+      <label><input type="radio" name="p24" value="a">Productos baratos</label>
+      <label data-correct="true"><input type="radio" name="p24" value="b">Ingresos por financiación</label>
+      <label><input type="radio" name="p24" value="c">Contratar personal</label>
+      <label><input type="radio" name="p24" value="d">Menos proveedores</label>
+    </fieldset>
+
+    <!-- P25 -->
+    <fieldset>
+      <legend>Pregunta 25</legend>
+      <p class="question-text">¿Cuál de los siguientes elementos pertenece al aspecto ambiental?</p>
+      <label data-correct="true"><input type="radio" name="p25" value="a">Biodiversidad</label>
+      <label><input type="radio" name="p25" value="b">Igualdad de género</label>
+      <label><input type="radio" name="p25" value="c">Ética empresarial</label>
+      <label><input type="radio" name="p25" value="d">Transparencia política</label>
+    </fieldset>
+
+  </form>
+</div>
+
+<script>
+  function corregirTest() {
+    const form = document.getElementById("testForm");
+    const questions = form.querySelectorAll("fieldset");
+    let correctas = 0;
+
+    questions.forEach(q => {
+      const correct = q.querySelector("label[data-correct]");
+      const selected = q.querySelector("input[type=radio]:checked");
+
+      q.querySelectorAll("label").forEach(l => {
+        l.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      if (correct) correct.classList.add("correct-answer");
+
+      if (selected) {
+        if (selected.parentElement.hasAttribute("data-correct")) {
+          correctas++;
+        } else {
+          selected.parentElement.classList.add("incorrect-answer");
+        }
+      }
+    });
+
+    const nota = ((correctas / questions.length) * 10).toFixed(2);
+    document.getElementById("result").textContent =
+      `Has acertado ${correctas} de ${questions.length} preguntas. Nota final: ${nota}/10`;
+  }
+</script>
+
+</body>
+</html>
