@@ -59,7 +59,7 @@
     .logo{
       width:34px;height:34px;border-radius:12px;
       background: conic-gradient(from 0deg,
-        #e63946 0 16%,#f4a261 16% 32%,#f6bd20 32% 48%,#2a9d8f 48% 64%,#457b9d 64% 80%,#7b2cbf 80% 100%);
+        #e63946 0 16%,#f4a261 16 32%,#f6bd20 32 48%,#2a9d8f 48 64%,#457b9d 64 80%,#7b2cbf 80 100%);
       box-shadow:0 0 0 3px rgba(0,0,0,.4);
     }
     h1{
@@ -226,7 +226,7 @@
     <div class="content">
       <div class="info">
         <div>
-          <strong>Instrucciones:</strong> las preguntas tipo test se corrigen solas.  
+          <strong>Instrucciones:</strong> las preguntas tipo test se corrigen solas.
           Las de texto muestran una solución para que te compares.
         </div>
         <div>
@@ -247,7 +247,7 @@
         <textarea class="open-answer" placeholder="Escribe con tus palabras la definición..."></textarea>
         <div class="solution">
           <strong>Solución orientativa:</strong> Capacidad de satisfacer las necesidades del presente
-          sin comprometer la capacidad de las futuras generaciones para satisfacer sus propias necesidades.
+          sin comprometer la capacidad de futuras generaciones para satisfacer sus propias necesidades.
         </div>
       </article>
 
@@ -846,13 +846,13 @@
             q.classList.add("incorrect");
           }
         } else if (type === "open") {
-          // Mostrar siempre la solución para autoevaluación
           const solution = q.querySelector(".solution");
           if (solution) solution.style.display = "block";
         }
       });
 
-      scoreBox.textContent = `Has acertado ${correctCount} de ${totalTest} preguntas tipo test.`;
+      scoreBox.textContent =
+        `Has acertado ${correctCount} de ${totalTest} preguntas tipo test.`;
     });
   </script>
 </body>

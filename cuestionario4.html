@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuestionario · UF4 Diseño y Producción Sostenible</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0.55));
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge {
+      font-size: .85rem;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+
+    .app-header p {
+      margin: 8px 0 4px;
+      font-size: .95rem;
+      color: #d0d3ff;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2df28f, #91ffa7);
+      font-weight: 600;
+      color: #04210f;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    fieldset {
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    legend { font-weight: 600; }
+
+    .question-text { margin-bottom: 8px; font-weight: 500; }
+
+    label { display: block; margin-bottom: 6px; cursor: pointer; }
+
+    input[type="radio"] { margin-right: 6px; }
+
+    #result {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffe9a6;
+      font-weight: 600;
+    }
+
+    .correct-answer {
+      background: rgba(34,197,94,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+
+    .incorrect-answer {
+      background: rgba(239,68,68,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <header class="app-header">
+    <h1>
+      Cuestionario UF4 · Diseño y Producción Sostenible
+      <span class="badge">30 preguntas</span>
+    </h1>
+    <p>Responde a todas las preguntas y pulsa <strong>“Corregir cuestionario”</strong> para ver tu nota.</p>
+    <button class="btn" onclick="corregirTest()">✓ Corregir cuestionario</button>
+    <div id="result">Aún no has corregido.</div>
+  </header>
+
+  <form id="testForm">
+
+    <!-- P1 -->
+    <fieldset>
+      <legend>Pregunta 1</legend>
+      <p class="question-text">
+        El ciclo de vida de un producto se refiere a:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p1" value="a">
+        a. El conjunto de etapas desde la extracción de recursos hasta la gestión del residuo.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="b">
+        b. Solo a la fase de producción industrial.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="c">
+        c. Al tiempo que tarda el producto en venderse.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="d">
+        d. Únicamente al transporte desde la fábrica al punto de venta.
+      </label>
+    </fieldset>
+
+    <!-- P2 (antes tu Pregunta 1) -->
+    <fieldset>
+      <legend>Pregunta 2</legend>
+      <p class="question-text">
+        En el modelo lineal de producción y consumo, cada fase del ciclo de vida del producto se relaciona directamente:
+      </p>
+      <label>
+        <input type="radio" name="p2" value="a">
+        a. Con todas las demás al mismo tiempo.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p2" value="b">
+        b. Con la inmediatamente anterior y la inmediatamente posterior.
+      </label>
+      <label>
+        <input type="radio" name="p2" value="c">
+        c. Solo con la inmediata posterior.
+      </label>
+      <label>
+        <input type="radio" name="p2" value="d">
+        d. Solo con la inmediata anterior.
+      </label>
+    </fieldset>
+
+    <!-- P3 -->
+    <fieldset>
+      <legend>Pregunta 3</legend>
+      <p class="question-text">
+        ¿En qué fase del ciclo de vida suele concentrarse la mayor parte del consumo de energía y materias primas?
+      </p>
+      <label>
+        <input type="radio" name="p3" value="a">
+        a. Distribución.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="b">
+        b. Consumo.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p3" value="c">
+        c. Producción.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="d">
+        d. Desecho.
+      </label>
+    </fieldset>
+
+    <!-- P4 (antes tu P10) -->
+    <fieldset>
+      <legend>Pregunta 4</legend>
+      <p class="question-text">
+        Para poder optimizar la vida útil de un producto, debe ser:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p4" value="a">
+        a. Todas las respuestas anteriores son correctas.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="b">
+        b. Sencillo de desmontar.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="c">
+        c. Sencillo de reparar.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="d">
+        d. Sencillo de separar en piezas.
+      </label>
+    </fieldset>
+
+    <!-- P5 -->
+    <fieldset>
+      <legend>Pregunta 5</legend>
+      <p class="question-text">
+        La economía circular busca principalmente:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p5" value="a">
+        a. Mantener el valor de materiales y productos el mayor tiempo posible y generar menos residuos.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="b">
+        b. Aumentar el volumen de producción sin límite.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="c">
+        c. Reducir los salarios para ser más competitivos.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="d">
+        d. Incrementar el consumo energético.
+      </label>
+    </fieldset>
+
+    <!-- P6 (antes tu P9) -->
+    <fieldset>
+      <legend>Pregunta 6</legend>
+      <p class="question-text">
+        Dos procesos asociados a la economía circular son:
+      </p>
+      <label>
+        <input type="radio" name="p6" value="a">
+        a. La descarbonización y la deslocalización.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p6" value="b">
+        b. La desmaterialización y la descarbonización.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="c">
+        c. La descentralización y la concentración.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="d">
+        d. La deslocalización y la externalización.
+      </label>
+    </fieldset>
+
+    <!-- P7 (antes tu P12) -->
+    <fieldset>
+      <legend>Pregunta 7</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes opciones no corresponde a una de las 7R de la economía circular?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p7" value="a">
+        a. Relocalizar.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="b">
+        b. Reciclar.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="c">
+        c. Rediseñar.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="d">
+        d. Reutilizar.
+      </label>
+    </fieldset>
+
+    <!-- P8 -->
+    <fieldset>
+      <legend>Pregunta 8</legend>
+      <p class="question-text">
+        En la jerarquía de las 7R, ¿qué acción suele considerarse prioritaria para reducir el impacto ambiental?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p8" value="a">
+        a. Reducir el consumo de recursos.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="b">
+        b. Reciclar lo máximo posible.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="c">
+        c. Recuperar envases.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="d">
+        d. Reutilizar siempre que sea posible.
+      </label>
+    </fieldset>
+
+    <!-- P9 (antes tu P4) -->
+    <fieldset>
+      <legend>Pregunta 9</legend>
+      <p class="question-text">
+        Si utilizamos recursos no renovables para producir nuestro bien o servicio, nos exponemos al riesgo de:
+      </p>
+      <label>
+        <input type="radio" name="p9" value="a">
+        a. Problemas de seguridad en el trabajo.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="b">
+        b. Menores oportunidades de expansión a otros mercados.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p9" value="c">
+        c. Escasez de recursos y precios cada vez mayores.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="d">
+        d. Problemas de salud.
+      </label>
+    </fieldset>
+
+    <!-- P10 -->
+    <fieldset>
+      <legend>Pregunta 10</legend>
+      <p class="question-text">
+        La desmaterialización consiste en:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p10" value="a">
+        a. Ofrecer la misma función utilizando menos materiales.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="b">
+        b. Sustituir todos los materiales por productos digitales.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="c">
+        c. Usar más tipos de materiales diferentes.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="d">
+        d. Aumentar el peso del producto.
+      </label>
+    </fieldset>
+
+    <!-- P11 (antes tu P3) -->
+    <fieldset>
+      <legend>Pregunta 11</legend>
+      <p class="question-text">
+        Si conservamos el valor de los recursos y de los productos:
+      </p>
+      <label>
+        <input type="radio" name="p11" value="a">
+        a. Necesitaremos más materiales.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p11" value="b">
+        b. Generaremos menos residuos.
+      </label>
+      <label>
+        <input type="radio" name="p11" value="c">
+        c. Se producirán más productos.
+      </label>
+      <label>
+        <input type="radio" name="p11" value="d">
+        d. Recuperaremos más envases.
+      </label>
+    </fieldset>
+
+    <!-- P12 (antes tu P6) -->
+    <fieldset>
+      <legend>Pregunta 12</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes opciones es correcta para implantar la producción limpia?
+      </p>
+      <label>
+        <input type="radio" name="p12" value="a">
+        a. Tecnología que reduzcan el consumo de energía.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p12" value="b">
+        b. Todas las respuestas anteriores son correctas.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="c">
+        c. Reducción de materiales peligrosos.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="d">
+        d. Rediseño de productos existentes.
+      </label>
+    </fieldset>
+
+    <!-- P13 -->
+    <fieldset>
+      <legend>Pregunta 13</legend>
+      <p class="question-text">
+        El objetivo principal de la producción limpia es:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p13" value="a">
+        a. Reducir los impactos ambientales y mejorar la eficiencia en el uso de recursos.
+      </label>
+      <label>
+        <input type="radio" name="p13" value="b">
+        b. Aumentar los residuos generados para reciclar más.
+      </label>
+      <label>
+        <input type="radio" name="p13" value="c">
+        c. Incrementar la producción sin considerar el medio ambiente.
+      </label>
+      <label>
+        <input type="radio" name="p13" value="d">
+        d. Sustituir a la economía circular.
+      </label>
+    </fieldset>
+
+    <!-- P14 (antes tu P13) -->
+    <fieldset>
+      <legend>Pregunta 14</legend>
+      <p class="question-text">
+        La primera fase en un proceso de evaluación de producción limpia es:
+      </p>
+      <label>
+        <input type="radio" name="p14" value="a">
+        a. Análisis de la viabilidad.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="b">
+        b. La implementación.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="c">
+        c. La generación de opciones.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p14" value="d">
+        d. La recogida y análisis de datos.
+      </label>
+    </fieldset>
+
+    <!-- P15 -->
+    <fieldset>
+      <legend>Pregunta 15</legend>
+      <p class="question-text">
+        En la fase de análisis de viabilidad de la producción limpia se evalúa:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p15" value="a">
+        a. La viabilidad técnica, económica y ambiental de las opciones propuestas.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="b">
+        b. Solo la viabilidad económica de las opciones.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="c">
+        c. Únicamente el impacto social de las medidas.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="d">
+        d. El número de trabajadores disponibles.
+      </label>
+    </fieldset>
+
+    <!-- P16 (antes tu P15) -->
+    <fieldset>
+      <legend>Pregunta 16</legend>
+      <p class="question-text">
+        La fase de la evaluación de producción limpia en la que se diseña y ejecuta un plan de acción es la de:
+      </p>
+      <label>
+        <input type="radio" name="p16" value="a">
+        a. Generación de opciones.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p16" value="b">
+        b. Implementación.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="c">
+        c. Evaluación y control.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="d">
+        d. Recogida y análisis de datos.
+      </label>
+    </fieldset>
+
+    <!-- P17 -->
+    <fieldset>
+      <legend>Pregunta 17</legend>
+      <p class="question-text">
+        ¿Qué estrategia de ecodiseño está más relacionada con el embalaje y el transporte del producto?
+      </p>
+      <label>
+        <input type="radio" name="p17" value="a">
+        a. Optimizar la vida útil.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p17" value="b">
+        b. Optimizar la distribución.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="c">
+        c. Nuevo concepto de producto.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="d">
+        d. Optimizar el fin de vida.
+      </label>
+    </fieldset>
+
+    <!-- P18 (antes tu P11) -->
+    <fieldset>
+      <legend>Pregunta 18</legend>
+      <p class="question-text">
+        El ecodiseño busca:
+      </p>
+      <label>
+        <input type="radio" name="p18" value="a">
+        a. La integración de aspectos medioambientales en la distribución del producto.
+      </label>
+      <label>
+        <input type="radio" name="p18" value="b">
+        b. La integración de aspectos medioambientales en las decisiones de los consumidores.
+      </label>
+      <label>
+        <input type="radio" name="p18" value="c">
+        c. La implantación de procesos de producción más respetuosos con el medio ambiente.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p18" value="d">
+        d. La integración de aspectos medioambientales en el diseño.
+      </label>
+    </fieldset>
+
+    <!-- P19 (antes tu P5) -->
+    <fieldset>
+      <legend>Pregunta 19</legend>
+      <p class="question-text">
+        Una forma de usar materiales de impacto reducido es:
+      </p>
+      <label>
+        <input type="radio" name="p19" value="a">
+        a. Reducir el número de procesos en la producción.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p19" value="b">
+        b. Usar materiales de proveedores locales.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="c">
+        c. Uso de materiales no reciclados.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="d">
+        d. Añadir multifuncionalidad al producto.
+      </label>
+    </fieldset>
+
+    <!-- P20 -->
+    <fieldset>
+      <legend>Pregunta 20</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes opciones también describe un material de impacto reducido?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p20" value="a">
+        a. Material reciclado o fácilmente reciclable.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="b">
+        b. Material escaso y difícil de extraer.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="c">
+        c. Material muy tóxico pero barato.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="d">
+        d. Material que se transporta desde muy lejos.
+      </label>
+    </fieldset>
+
+    <!-- P21 (antes tu P7) -->
+    <fieldset>
+      <legend>Pregunta 21</legend>
+      <p class="question-text">
+        NO es una opción de implantación de la producción limpia:
+      </p>
+      <label>
+        <input type="radio" name="p21" value="a">
+        a. Los cambios en el producto.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="b">
+        b. Los cambios en el diseño.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p21" value="c">
+        c. Los cambios en la demanda.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="d">
+        d. Los cambios en los materiales.
+      </label>
+    </fieldset>
+
+    <!-- P22 (antes tu P2) -->
+    <fieldset>
+      <legend>Pregunta 22</legend>
+      <p class="question-text">
+        La fase del ciclo de vida del producto en la que el producto es puesto al servicio del consumidor se conoce como:
+      </p>
+      <label>
+        <input type="radio" name="p22" value="a">
+        a. Distribución.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="b">
+        b. Diseño.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p22" value="c">
+        c. Consumo.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="d">
+        d. Producción.
+      </label>
+    </fieldset>
+
+    <!-- P23 -->
+    <fieldset>
+      <legend>Pregunta 23</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes afirmaciones es una ventaja empresarial de aplicar economía circular y producción limpia?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p23" value="a">
+        a. Ahorro de costes en energía y materias primas y mejora de la imagen de marca.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="b">
+        b. Mayor generación de residuos para tener más actividad.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="c">
+        c. Mayor dependencia de recursos no renovables.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="d">
+        d. Aumento de sanciones por incumplir normas ambientales.
+      </label>
+    </fieldset>
+
+    <!-- P24 (antes tu P8) -->
+    <fieldset>
+      <legend>Pregunta 24</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes afirmaciones es correcta?
+      </p>
+      <label>
+        <input type="radio" name="p24" value="a">
+        a. La economía lineal es más factible si la relación de la empresa con los proveedores es más estable.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="b">
+        b. Las prácticas de economía lineal se alinean con la normativa actual y la previsible en un futuro en materia de medio ambiente.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p24" value="c">
+        c. La innovación en ética y sostenibilidad proyecta una imagen positiva de la empresa hacia su clientela y, con ello, la lealtad a la marca.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="d">
+        d. La eficiencia consiste en obtener menos con más.
+      </label>
+    </fieldset>
+
+    <!-- P25 -->
+    <fieldset>
+      <legend>Pregunta 25</legend>
+      <p class="question-text">
+        La descarbonización consiste en:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p25" value="a">
+        a. Reducir las emisiones de gases de efecto invernadero asociadas a la actividad.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="b">
+        b. Eliminar todos los materiales que contengan carbono.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="c">
+        c. Utilizar más combustibles fósiles.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="d">
+        d. Aumentar la huella ecológica.
+      </label>
+    </fieldset>
+
+    <!-- P26 (antes tu P14) -->
+    <fieldset>
+      <legend>Pregunta 26</legend>
+      <p class="question-text">
+        Todo proceso de ecodiseño debe comenzar por:
+      </p>
+      <label>
+        <input type="radio" name="p26" value="a">
+        a. Identificar estrategias de mejora medioambiental del producto.
+      </label>
+      <label>
+        <input type="radio" name="p26" value="b">
+        b. Fijar objetivos o metas medioambientales.
+      </label>
+      <label>
+        <input type="radio" name="p26" value="c">
+        c. Reducir los recursos para producir los bienes.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p26" value="d">
+        d. Identificar las fases del ciclo de vida del producto.
+      </label>
+    </fieldset>
+
+    <!-- P27 -->
+    <fieldset>
+      <legend>Pregunta 27</legend>
+      <p class="question-text">
+        La fase del ciclo de vida del producto en la que se realiza el transporte hasta el punto de venta y su almacenamiento se denomina:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p27" value="a">
+        a. Distribución.
+      </label>
+      <label>
+        <input type="radio" name="p27" value="b">
+        b. Producción.
+      </label>
+      <label>
+        <input type="radio" name="p27" value="c">
+        c. Consumo.
+      </label>
+      <label>
+        <input type="radio" name="p27" value="d">
+        d. Desecho.
+      </label>
+    </fieldset>
+
+    <!-- P28 -->
+    <fieldset>
+      <legend>Pregunta 28</legend>
+      <p class="question-text">
+        ¿Qué par de acciones forma parte de las 7R de la economía circular?
+      </p>
+      <label>
+        <input type="radio" name="p28" value="a">
+        a. Relocalizar y Resegmentar.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p28" value="b">
+        b. Reutilizar y Reciclar.
+      </label>
+      <label>
+        <input type="radio" name="p28" value="c">
+        c. Reemplazar y Redistribuir.
+      </label>
+      <label>
+        <input type="radio" name="p28" value="d">
+        d. Reforestar y Reubicar.
+      </label>
+    </fieldset>
+
+    <!-- P29 -->
+    <fieldset>
+      <legend>Pregunta 29</legend>
+      <p class="question-text">
+        ¿En qué etapa del proceso de ecodiseño se concretan las metas ambientales que se quieren alcanzar?
+      </p>
+      <label>
+        <input type="radio" name="p29" value="a">
+        a. Identificación de fases del ciclo de vida.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p29" value="b">
+        b. Fijar objetivos o metas medioambientales.
+      </label>
+      <label>
+        <input type="radio" name="p29" value="c">
+        c. Desarrollar soluciones técnicas.
+      </label>
+      <label>
+        <input type="radio" name="p29" value="d">
+        d. Especificar el producto.
+      </label>
+    </fieldset>
+
+    <!-- P30 -->
+    <fieldset>
+      <legend>Pregunta 30</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes prácticas es más propia de un modelo de economía lineal que de uno circular?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p30" value="a">
+        a. Tirar un producto roto sin intentar repararlo ni reciclarlo.
+      </label>
+      <label>
+        <input type="radio" name="p30" value="b">
+        b. Reparar un electrodoméstico para alargar su vida útil.
+      </label>
+      <label>
+        <input type="radio" name="p30" value="c">
+        c. Diseñar productos fáciles de desmontar.
+      </label>
+      <label>
+        <input type="radio" name="p30" value="d">
+        d. Usar materiales reciclados en el producto.
+      </label>
+    </fieldset>
+
+  </form>
+</div>
+
+<script>
+  function corregirTest() {
+    const form = document.getElementById("testForm");
+    const questions = form.querySelectorAll("fieldset");
+    let correctas = 0;
+
+    questions.forEach(q => {
+      const correct = q.querySelector("label[data-correct]");
+      const selected = q.querySelector("input[type=radio]:checked");
+
+      q.querySelectorAll("label").forEach(l => {
+        l.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      if (correct) correct.classList.add("correct-answer");
+
+      if (selected) {
+        if (selected.parentElement.hasAttribute("data-correct")) {
+          correctas++;
+        } else {
+          selected.parentElement.classList.add("incorrect-answer");
+        }
+      }
+    });
+
+    const nota = ((correctas / questions.length) * 10).toFixed(2);
+    document.getElementById("result").textContent =
+      `Has acertado ${correctas} de ${questions.length} preguntas. Nota final: ${nota}/10`;
+  }
+</script>
+
+</body>
+</html>

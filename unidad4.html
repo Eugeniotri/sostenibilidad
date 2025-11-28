@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UF4 · Diseño y Producción Sostenible</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+      color: #f5f5f7;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    h1, h2 {
+      color: #ffffff;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .highlight {
+      color: #a5b4ff;
+      font-weight: bold;
+    }
+
+    .item-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+
+    .title-box {
+      font-weight: bold;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .important {
+      background: rgba(255, 243, 205, 0.09);
+      border-left: 4px solid #ffb300;
+      padding: 8px 10px;
+      margin-top: 8px;
+      border-radius: 10px;
+      font-size: .9rem;
+    }
+
+    .mini {
+      font-size: .86rem;
+      color: #d4d4f6;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>UF4 · Diseño y Producción Sostenible</h1>
+
+    <!-- 1. Ciclo de Vida -->
+    <div class="section">
+      <h2>1️⃣ Ciclo de Vida del Producto (CVP)</h2>
+      <p>
+        El <span class="highlight">ciclo de vida</span> es el recorrido completo que sigue un producto desde la extracción de recursos
+        hasta su desecho. Consta de <span class="highlight">6 etapas</span> fundamentales:
+      </p>
+      <ul>
+        <li><strong>1. Aprovisionamiento</strong> – extracción de materias primas.</li>
+        <li><strong>2. Diseño</strong> – prototipos, pruebas, selección de materiales.</li>
+        <li><strong>3. Producción</strong> – fabricación, alto consumo de energía.</li>
+        <li><strong>4. Distribución</strong> – transporte, embalaje, logística.</li>
+        <li><strong>5. Consumo</strong> – uso del producto.</li>
+        <li><strong>6. Desecho</strong> – eliminación, reciclaje o abandono.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Pregunta típica:</strong> Explicar las fases del ciclo de vida y por qué la fase de
+        <span class="highlight">producción</span> es la de mayor impacto.
+      </div>
+    </div>
+
+    <!-- 2. Economía lineal -->
+    <div class="section">
+      <h2>2️⃣ Economía Lineal: el modelo tradicional</h2>
+
+      <p>La economía lineal sigue la secuencia:</p>
+      <p class="highlight">Extraer → Producir → Consumir → Tirar</p>
+
+      <p>Las consecuencias son:</p>
+      <ul>
+        <li>Alta presión sobre <strong>fuentes</strong> (recursos naturales).</li>
+        <li>Alta presión sobre <strong>sumideros</strong> (capacidad de absorber residuos).</li>
+        <li>Generación de residuos y contaminación.</li>
+        <li>Riesgo para empresas: escasez, costes altos, sanciones, pérdida de mercado.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Frase de examen:</strong>
+        La economía lineal es “insostenible” porque consume recursos a mayor velocidad de lo que la naturaleza los regenera.
+      </div>
+    </div>
+
+    <!-- 3. Economía Circular -->
+    <div class="section">
+      <h2>3️⃣ Economía Circular y Economía Verde</h2>
+
+      <p>
+        La economía circular mantiene en uso los recursos el máximo tiempo posible,
+        minimizando residuos y cerrando los ciclos.
+      </p>
+
+      <h3 class="title-box">Las 7R (aprender de memoria)</h3>
+      <ul>
+        <li><strong>Rediseñar</strong> – crear productos más eficientes.</li>
+        <li><strong>Reducir</strong> – consumir menos recursos.</li>
+        <li><strong>Renovar</strong> – actualizar productos existentes.</li>
+        <li><strong>Reparar</strong> – arreglar antes de tirar.</li>
+        <li><strong>Reutilizar</strong> – dar nuevos usos.</li>
+        <li><strong>Recuperar</strong> – recoger productos para reintroducirlos.</li>
+        <li><strong>Reciclar</strong> – transformar residuos en materias primas.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Pregunta típica:</strong> ¿Cuál es la R más sostenible?  
+        <span class="highlight">Reducir</span>.
+      </div>
+    </div>
+
+    <!-- 4. Producción limpia -->
+    <div class="section">
+      <h2>4️⃣ Producción Limpia</h2>
+
+      <p>
+        La <strong>Producción Limpia</strong> busca minimizar impactos ambientales y mejorar la eficiencia energética
+        durante la fabricación.
+      </p>
+
+      <h3 class="title-box">Fases de la Producción Limpia</h3>
+      <ul>
+        <li><strong>1. Recogida y análisis de datos</strong> – recursos, residuos y energía.</li>
+        <li><strong>2. Generación de opciones</strong> – ideas para reducir impactos.</li>
+        <li><strong>3. Análisis de viabilidad</strong> – técnica, económica y ambiental.</li>
+        <li><strong>4. Implementación</strong> – aplicación del plan.</li>
+        <li><strong>5. Control y evaluación</strong> – seguimiento continuo.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Clásico de examen:</strong> las 5 fases del diagnóstico de producción limpia.
+      </div>
+    </div>
+
+    <!-- 5. Opciones Producción Limpia -->
+    <div class="section">
+      <h2>5️⃣ Opciones para implantar Producción Limpia</h2>
+
+      <ul>
+        <li><strong>Cambios en materiales</strong> – menos tóxicos, reciclables.</li>
+        <li><strong>Cambios tecnológicos</strong> – máquinas más eficientes.</li>
+        <li><strong>Buenas prácticas ambientales</strong> – reducción de papel, gestión de residuos.</li>
+        <li><strong>Cambios en el producto</strong> – diseño más sostenible.</li>
+        <li><strong>Reciclaje interno</strong> – reaprovechar residuos dentro de la fábrica.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Enunciado típico:</strong>
+        “Indica opciones de producción limpia a nivel de materiales, tecnología y proceso”.
+      </div>
+    </div>
+
+    <!-- 6. Ecodiseño -->
+    <div class="section">
+      <h2>6️⃣ Ecodiseño (Diseño sostenible)</h2>
+
+      <p>
+        El <strong>Ecodiseño</strong> incorpora criterios ambientales en la fase de diseño,
+        para reducir el impacto durante todo el ciclo de vida.
+      </p>
+
+      <h3 class="title-box">Estrategias del Ecodiseño (8 puntos clave)</h3>
+      <ul>
+        <li><strong>1. Nuevo concepto</strong> – reducir materiales (desmaterialización).</li>
+        <li><strong>2. Materiales de bajo impacto</strong> – reciclados, renovables.</li>
+        <li><strong>3. Menos materiales</strong> – eliminar lo innecesario.</li>
+        <li><strong>4. Optimizar proceso productivo</strong>.</li>
+        <li><strong>5. Optimizar distribución</strong> – embalaje eficiente.</li>
+        <li><strong>6. Reducir impacto en el uso</strong> – bajo consumo energético.</li>
+        <li><strong>7. Optimizar vida útil</strong> – reparable y duradero.</li>
+        <li><strong>8. Fin de vida</strong> – fácil desmontaje, reciclable.</li>
+      </ul>
+
+      <h3 class="title-box">Beneficios del Ecodiseño</h3>
+      <ul>
+        <li>Ahorro de costes.</li>
+        <li>Mayor innovación.</li>
+        <li>Mejor imagen y competitividad.</li>
+        <li>Cumplimiento legal.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Pregunta típica:</strong> Menciona 3 estrategias de ecodiseño y ejemplos.
+      </div>
+    </div>
+
+    <!-- 7. Etapas proceso ecodiseño -->
+    <div class="section">
+      <h2>7️⃣ Etapas del proceso de Ecodiseño</h2>
+
+      <ul>
+        <li><strong>1. Definir funciones del producto</strong>.</li>
+        <li><strong>2. Identificar impactos ambientales del CVP</strong>.</li>
+        <li><strong>3. Seleccionar estrategias de ecodiseño</strong>.</li>
+        <li><strong>4. Establecer objetivos ambientales</strong>.</li>
+        <li><strong>5. Especificar el producto</strong>.</li>
+        <li><strong>6. Desarrollar las soluciones técnicas</strong>.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Muy común en examen:</strong> “Enumera las 6 fases del proceso de ecodiseño”.
+      </div>
+    </div>
+
+    <!-- Super resumen final -->
+    <div class="section">
+      <h2>8️⃣ Súper resumen final (lo imprescindible)</h2>
+
+      <ul>
+        <li><strong>Ciclo de vida</strong> → 6 fases.</li>
+        <li><strong>Economía lineal</strong> → extraer, producir, consumir, tirar.</li>
+        <li><strong>Economía circular</strong> → las <span class="highlight">7R</span>.</li>
+        <li><strong>Producción limpia</strong> → 5 pasos del diagnóstico.</li>
+        <li><strong>Opciones de PL</strong> → materiales, tecnología, proceso, producto.</li>
+        <li><strong>Ecodiseño</strong> → 8 estrategias + 6 etapas.</li>
+      </ul>
+
+      <div class="important">
+        <strong>Si memorizas estos 6 bloques, apruebas la UF4 seguro.</strong>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

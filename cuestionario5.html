@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuestionario · UF5 Midiendo la Sostenibilidad</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0.55));
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge {
+      font-size: .85rem;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+
+    .app-header p {
+      margin: 8px 0 4px;
+      font-size: .95rem;
+      color: #d0d3ff;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2df28f, #91ffa7);
+      font-weight: 600;
+      color: #04210f;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    fieldset {
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    legend { font-weight: 600; }
+
+    .question-text { margin-bottom: 8px; font-weight: 500; }
+
+    label { display: block; margin-bottom: 6px; cursor: pointer; }
+
+    input[type="radio"] { margin-right: 6px; }
+
+    #result {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffe9a6;
+      font-weight: 600;
+    }
+
+    .correct-answer {
+      background: rgba(34,197,94,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+
+    .incorrect-answer {
+      background: rgba(239,68,68,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <header class="app-header">
+    <h1>
+      Cuestionario UF5 · Midiendo la Sostenibilidad
+      <span class="badge">27 preguntas</span>
+    </h1>
+    <p>Responde a todas las preguntas y pulsa <strong>“Corregir cuestionario”</strong> para ver tu nota.</p>
+    <button class="btn" onclick="corregirTest()">✓ Corregir cuestionario</button>
+    <div id="result">Aún no has corregido.</div>
+  </header>
+
+  <form id="testForm">
+
+    <!-- P1 -->
+    <fieldset>
+      <legend>Pregunta 1</legend>
+      <p class="question-text">
+        Selecciona la respuesta más completa. El análisis de inversiones socialmente responsables (ISR) valora:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p1" value="a">
+        a. Todo lo anterior.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="b">
+        b. La rentabilidad.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="c">
+        c. El riesgo.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="d">
+        d. Los aspectos ASG.
+      </label>
+    </fieldset>
+
+    <!-- P2 -->
+    <fieldset>
+      <legend>Pregunta 2</legend>
+      <p class="question-text">
+        De los siguientes agentes, ¿cuál es una entidad certificadora?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p2" value="a">
+        a. AENOR
+      </label>
+      <label>
+        <input type="radio" name="p2" value="b">
+        b. UNE
+      </label>
+      <label>
+        <input type="radio" name="p2" value="c">
+        c. Standard &amp; Poor’s.
+      </label>
+      <label>
+        <input type="radio" name="p2" value="d">
+        d. ISO
+      </label>
+    </fieldset>
+
+    <!-- P3 -->
+    <fieldset>
+      <legend>Pregunta 3</legend>
+      <p class="question-text">
+        Los índices de inversión socialmente responsable (ISR) con integración de aspectos ASG:
+      </p>
+      <label>
+        <input type="radio" name="p3" value="a">
+        a. Son listados que excluyen a empresas que se dedican a actividades abiertamente incompatibles con los ODS y la sostenibilidad.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p3" value="b">
+        b. Incluyen títulos de empresas que cumplen con los criterios ASG de acuerdo con los estándares fijados por las agencias que han creado y gestionan esos índices.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="c">
+        c. Consideran los aspectos ASG, solamente.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="d">
+        d. Incluyen solo a empresas que se dedican a actividades especialmente vinculadas con la sostenibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P4 -->
+    <fieldset>
+      <legend>Pregunta 4</legend>
+      <p class="question-text">
+        ¿Cuál es el orden de las fases de la evaluación del desempeño ambiental (ciclo PHVA)?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p4" value="a">
+        a. Planear, hacer, verificar y actuar.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="b">
+        b. Planear, hacer, actuar y verificar.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="c">
+        c. Actuar, planear, hacer y verificar.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="d">
+        d. Planear, actuar, verificar y hacer.
+      </label>
+    </fieldset>
+
+    <!-- P5 -->
+    <fieldset>
+      <legend>Pregunta 5</legend>
+      <p class="question-text">
+        ¿Cuál de las afirmaciones siguientes NO se refiere a la inversión financiera?
+      </p>
+      <label>
+        <input type="radio" name="p5" value="a">
+        a. Se refleja en unos documentos llamados títulos.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p5" value="b">
+        b. Consiste en producir un bien o servicio para venderlo en el mercado.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="c">
+        c. Tiene relación con la inversión productiva.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="d">
+        d. En su análisis se tiene en cuenta la rentabilidad, el riesgo y la liquidez.
+      </label>
+    </fieldset>
+
+    <!-- P6 -->
+    <fieldset>
+      <legend>Pregunta 6</legend>
+      <p class="question-text">
+        El objetivo de la evaluación del desempeño medioambiental es:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p6" value="a">
+        a. Lograr la mejora continua en los procesos y en la empresa.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="b">
+        b. Implantar indicadores clave de desempeño en la empresa.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="c">
+        c. Encontrar culpables de que los planes no se cumplan.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="d">
+        d. Establecer fórmulas que indiquen cómo calcular los indicadores.
+      </label>
+    </fieldset>
+
+    <!-- P7 -->
+    <fieldset>
+      <legend>Pregunta 7</legend>
+      <p class="question-text">
+        En la fijación de objetivos para la empresa, es importante tomar como punto de partida:
+      </p>
+      <label>
+        <input type="radio" name="p7" value="a">
+        a. El análisis de cada proceso.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="b">
+        b. Comprobar los medios disponibles para cumplirlos.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="c">
+        c. Fijar un horizonte temporal.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p7" value="d">
+        d. Seleccionar objetivos relevantes.
+      </label>
+    </fieldset>
+
+    <!-- P8 -->
+    <fieldset>
+      <legend>Pregunta 8</legend>
+      <p class="question-text">
+        Sobre la Etiqueta Ecológica Europea (EEE), señala la afirmación FALSA:
+      </p>
+      <label>
+        <input type="radio" name="p8" value="a">
+        a. Es necesario pagar una tasa para gestionar su solicitud.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p8" value="b">
+        b. Requiere que la empresa redacte un informe sobre sus actividades.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="c">
+        c. Es gestionado directamente por la UE.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="d">
+        d. Es una etiqueta de tipo I.
+      </label>
+    </fieldset>
+
+    <!-- P9 -->
+    <fieldset>
+      <legend>Pregunta 9</legend>
+      <p class="question-text">
+        Un dato o un conjunto de datos que permite medir el rendimiento de una actividad en relación con un objetivo o una meta es:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p9" value="a">
+        a. Un indicador de desempeño.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="b">
+        b. Un sistema de gestión ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="c">
+        c. Una meta.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="d">
+        d. Un objetivo.
+      </label>
+    </fieldset>
+
+    <!-- P10 -->
+    <fieldset>
+      <legend>Pregunta 10</legend>
+      <p class="question-text">
+        ¿Qué son los bonos?
+      </p>
+      <label>
+        <input type="radio" name="p10" value="a">
+        a. Representan una pequeña parte del capital de una sociedad anónima, y dan derecho a participar en sus beneficios, cuando los hay.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="b">
+        b. Se componen de una gran cantidad de títulos de procedencia variada, lo que permite reducir el riesgo de la inversión.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p10" value="c">
+        c. Son documentos de deuda, emitidos en su mayoría por el Estado, que se compromete a pagar a su portador cantidades de dinero fijas en unos plazos determinados.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="d">
+        d. Representan una pequeña parte del capital de una sociedad limitada, y dan derecho a participar en sus beneficios, cuando los hay.
+      </label>
+    </fieldset>
+
+    <!-- P11 -->
+    <fieldset>
+      <legend>Pregunta 11</legend>
+      <p class="question-text">
+        ¿Qué tipo de certificados de sostenibilidad medioambiental reconocidos en normas ISO no requieren de entidades externas a la empresa que los utiliza?
+      </p>
+      <label>
+        <input type="radio" name="p11" value="a">
+        a. Los de tipo I (ecoetiquetas).
+      </label>
+      <label>
+        <input type="radio" name="p11" value="b">
+        b. Los de tipo III (declaraciones ambientales de producto).
+      </label>
+      <label>
+        <input type="radio" name="p11" value="c">
+        c. Los no cubiertos por normas ISO.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p11" value="d">
+        d. Los de tipo II (autodeclaraciones ambientales).
+      </label>
+    </fieldset>
+
+    <!-- P12 -->
+    <fieldset>
+      <legend>Pregunta 12</legend>
+      <p class="question-text">
+        Las organizaciones normalizadoras:
+      </p>
+      <label>
+        <input type="radio" name="p12" value="a">
+        a. Crean las leyes que rigen la actividad de las empresas y las personas, y toman decisiones de gobierno y gestión diaria.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="b">
+        b. Son empresas acreditadas para extender certificados de sostenibilidad, entre otros.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="c">
+        c. Califican inversiones y empresas en función del grado de cumplimiento de los aspectos ASG.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p12" value="d">
+        d. Crean normas especializadas que regulan actividades y procesos concretos.
+      </label>
+    </fieldset>
+
+    <!-- P13 -->
+    <fieldset>
+      <legend>Pregunta 13</legend>
+      <p class="question-text">
+        ¿Cuál de los siguientes índices es un indicador de ISR?
+      </p>
+      <label>
+        <input type="radio" name="p13" value="a">
+        a. Índice FTSE 100
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p13" value="b">
+        b. Índice de exclusión
+      </label>
+      <label>
+        <input type="radio" name="p13" value="c">
+        c. Ibex 35
+      </label>
+      <label>
+        <input type="radio" name="p13" value="d">
+        d. S&amp;P 500
+      </label>
+    </fieldset>
+
+    <!-- P14 -->
+    <fieldset>
+      <legend>Pregunta 14</legend>
+      <p class="question-text">
+        Para que las empresas puedan saber si se están alcanzando las metas que se han propuesto en sostenibilidad deben seguir un proceso. ¿Cuál es la opción correcta?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p14" value="a">
+        a. Fijar objetivos, seleccionar indicadores clave y establecer las metas.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="b">
+        b. Conocer los ODS, trabajar en ellos y sacar conclusiones sobre su cumplimiento.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="c">
+        c. Fijar objetivos, comprobar su grado de cumplimiento y publicar esta actividad.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="d">
+        d. Trabajar sobre los ODS, buscar metas que alcanzar en cada uno de ellos y sacar conclusiones.
+      </label>
+    </fieldset>
+
+    <!-- P15 -->
+    <fieldset>
+      <legend>Pregunta 15</legend>
+      <p class="question-text">
+        Las metas a alcanzar en el proceso de implantación de la sostenibilidad deben ser:
+      </p>
+      <label>
+        <input type="radio" name="p15" value="a">
+        a. Medibles, importantes, ambiciosos e ilimitados.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p15" value="b">
+        b. Medibles, relevantes, alcanzables y finitos.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="c">
+        c. Medibles, relevantes, alcanzables e ilimitados.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="d">
+        d. Importantes, alcanzables y finitos.
+      </label>
+    </fieldset>
+
+    <!-- P16 -->
+    <fieldset>
+      <legend>Pregunta 16</legend>
+      <p class="question-text">
+        Para integrar un indicador de desempeño en el sistema de gestión ambiental de la empresa, ¿cuál de las siguientes secuencias de fases es correcta?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p16" value="a">
+        a. Definir el indicador, establecer una fórmula de cálculo, fijar el nivel objetivo y efectuar el seguimiento del indicador.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="b">
+        b. Fijar el nivel objetivo, publicar resultados, definir el indicador y calcularlo.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="c">
+        c. Seleccionar metas, definir indicadores, analizar resultados y cambiar la política ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="d">
+        d. Establecer una fórmula de cálculo, fijar metas generales, definir indicadores y redactar un informe.
+      </label>
+    </fieldset>
+
+    <!-- P17 -->
+    <fieldset>
+      <legend>Pregunta 17</legend>
+      <p class="question-text">
+        Los certificados desarrollados por instituciones ajenas a las empresas que conceden licencias que autorizan el uso de etiquetas ecológicas en productos se llaman:
+      </p>
+      <label>
+        <input type="radio" name="p17" value="a">
+        a. Autodeclaraciones ambientales.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="b">
+        b. Declaraciones ambientales de productos.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p17" value="c">
+        c. Ecoetiquetas.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="d">
+        d. Etiquetas certificadas.
+      </label>
+    </fieldset>
+
+    <!-- P18 -->
+    <fieldset>
+      <legend>Pregunta 18</legend>
+      <p class="question-text">
+        Un certificado de gestión forestal sostenible (como FSC o similar) garantiza que:
+      </p>
+      <label>
+        <input type="radio" name="p18" value="a">
+        a. El producto ha sido elaborado mediante agricultura ecológica.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p18" value="b">
+        b. La madera o el papel proceden de bosques gestionados de forma sostenible.
+      </label>
+      <label>
+        <input type="radio" name="p18" value="c">
+        c. El edificio tiene un muy buen aislamiento térmico.
+      </label>
+      <label>
+        <input type="radio" name="p18" value="d">
+        d. El producto es reciclable al 100%.
+      </label>
+    </fieldset>
+
+    <!-- P19 -->
+    <fieldset>
+      <legend>Pregunta 19</legend>
+      <p class="question-text">
+        Una etiqueta de eficiencia energética en un edificio o electrodoméstico certifica:
+      </p>
+      <label>
+        <input type="radio" name="p19" value="a">
+        a. El valor nutricional de los alimentos.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="b">
+        b. La gestión forestal de los materiales usados.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p19" value="c">
+        c. La cantidad de energía necesaria para su funcionamiento o climatización en condiciones normales.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="d">
+        d. Que el producto es de comercio justo.
+      </label>
+    </fieldset>
+
+    <!-- P20 -->
+    <fieldset>
+      <legend>Pregunta 20</legend>
+      <p class="question-text">
+        En una inversión socialmente responsable, cuando se analiza si se incluyen empresas dedicadas a actividades claramente incompatibles con los ODS y la sostenibilidad, se utilizan:
+      </p>
+      <label>
+        <input type="radio" name="p20" value="a">
+        a. Indicadores selectivos.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p20" value="b">
+        b. Indicadores de exclusión.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="c">
+        c. Indicadores de integración de aspectos ASG.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="d">
+        d. Indicadores de incompatibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P21 -->
+    <fieldset>
+      <legend>Pregunta 21</legend>
+      <p class="question-text">
+        Cuando se analizan inversiones ISR e incluyen empresas dedicadas a actividades especialmente vinculadas con la sostenibilidad y el cumplimiento de los ODS, se usan:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p21" value="a">
+        a. Indicadores selectivos.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="b">
+        b. Indicadores de integración de aspectos ASG.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="c">
+        c. Indicadores de exclusión.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="d">
+        d. Indicadores de incompatibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P22 -->
+    <fieldset>
+      <legend>Pregunta 22</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad crea las leyes que rigen la actividad de las empresas y las personas, y toma decisiones de gobierno y gestión diaria?
+      </p>
+      <label>
+        <input type="radio" name="p22" value="a">
+        a. Organismos supervisores.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="b">
+        b. Organizaciones normalizadoras.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p22" value="d">
+        d. Instituciones públicas de gobierno.
+      </label>
+    </fieldset>
+
+    <!-- P23 -->
+    <fieldset>
+      <legend>Pregunta 23</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad son entidades públicas encargadas de desarrollar reglamentos y de asegurarse del buen funcionamiento de los aspectos relativos a la sostenibilidad?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p23" value="a">
+        a. Organismos supervisores.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="b">
+        b. Agencias de calificación ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="d">
+        d. Instituciones públicas de gobierno.
+      </label>
+    </fieldset>
+
+    <!-- P24 -->
+    <fieldset>
+      <legend>Pregunta 24</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad califican inversiones y empresas en función del grado de cumplimiento de los aspectos ASG?
+      </p>
+      <label>
+        <input type="radio" name="p24" value="a">
+        a. Consultorías medioambientales.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p24" value="b">
+        b. Agencias de calificación ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="d">
+        d. Instituciones públicas de gobierno.
+      </label>
+    </fieldset>
+
+    <!-- P25 -->
+    <fieldset>
+      <legend>Pregunta 25</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad prestan servicios de asesoramiento a las empresas en materia medioambiental, y les ayudan en la toma de decisiones y en los trámites administrativos?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p25" value="a">
+        a. Consultorías medioambientales.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="b">
+        b. Agencias de calificación ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="d">
+        d. Organizaciones normalizadoras.
+      </label>
+    </fieldset>
+
+    <!-- P26 -->
+    <fieldset>
+      <legend>Pregunta 26</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad son empresas acreditadas para extender certificados de sostenibilidad, entre otros?
+      </p>
+      <label>
+        <input type="radio" name="p26" value="a">
+        a. Consultorías medioambientales.
+      </label>
+      <label>
+        <input type="radio" name="p26" value="b">
+        b. Agencias de calificación ambiental.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p26" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label>
+        <input type="radio" name="p26" value="d">
+        d. Organizaciones normalizadoras.
+      </label>
+    </fieldset>
+
+    <!-- P27 -->
+    <fieldset>
+      <legend>Pregunta 27</legend>
+      <p class="question-text">
+        ¿Qué agente de sostenibilidad crean normas especializadas que regulan actividades y procesos concretos?
+      </p>
+      <label>
+        <input type="radio" name="p27" value="a">
+        a. Consultorías medioambientales.
+      </label>
+      <label>
+        <input type="radio" name="p27" value="b">
+        b. Agencias de calificación ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p27" value="c">
+        c. Entidades certificadoras.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p27" value="d">
+        d. Organizaciones normalizadoras.
+      </label>
+    </fieldset>
+
+  </form>
+</div>
+
+<script>
+  function corregirTest() {
+    const form = document.getElementById("testForm");
+    const questions = form.querySelectorAll("fieldset");
+    let correctas = 0;
+
+    questions.forEach(q => {
+      const correct = q.querySelector("label[data-correct]");
+      const selected = q.querySelector("input[type=radio]:checked");
+
+      q.querySelectorAll("label").forEach(l => {
+        l.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      if (correct) correct.classList.add("correct-answer");
+
+      if (selected) {
+        if (selected.parentElement.hasAttribute("data-correct")) {
+          correctas++;
+        } else {
+          selected.parentElement.classList.add("incorrect-answer");
+        }
+      }
+    });
+
+    const nota = ((correctas / questions.length) * 10).toFixed(2);
+    document.getElementById("result").textContent =
+      `Has acertado ${correctas} de ${questions.length} preguntas. Nota final: ${nota}/10`;
+  }
+</script>
+
+</body>
+</html>

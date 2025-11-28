@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Cuestionario · UF3 ASG y Sostenibilidad (45 preguntas)</title>
+  <title>Cuestionario · UF3 ASG y Sostenibilidad (52 preguntas)</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -70,6 +70,7 @@
       color: #04210f;
       border: none;
       cursor: pointer;
+      margin-top: 8px;
     }
 
     fieldset {
@@ -114,7 +115,7 @@
   <header class="app-header">
     <h1>
       Cuestionario UF3 · ASG y Sostenibilidad
-      <span class="badge">45 preguntas</span>
+      <span class="badge">52 preguntas</span>
     </h1>
     <p>Selecciona tus respuestas y pulsa <b>Corregir</b> al finalizar.</p>
     <button class="btn" onclick="corregirTest()">✓ Corregir cuestionario</button>
@@ -123,7 +124,7 @@
 
   <form id="testForm">
 
-    <!-- PREGUNTAS 1–15 -->
+    <!-- PREGUNTAS 1–45 ORIGINALES -->
 
     <!-- P1 -->
     <fieldset>
@@ -274,6 +275,7 @@
       <label><input type="radio" name="p15" value="c">Gobernanza</label>
       <label><input type="radio" name="p15" value="d">Económico</label>
     </fieldset>
+
     <!-- P16 -->
     <fieldset>
       <legend>Pregunta 16</legend>
@@ -423,6 +425,7 @@
       <label><input type="radio" name="p30" value="c">Solo los accionistas</label>
       <label><input type="radio" name="p30" value="d">Solo el gobierno</label>
     </fieldset>
+
     <!-- P31 -->
     <fieldset>
       <legend>Pregunta 31</legend>
@@ -528,7 +531,7 @@
       <legend>Pregunta 41</legend>
       <p class="question-text">Un ejemplo de aspecto de Gobernanza es:</p>
       <label><input type="radio" name="p41" value="a">Reciclaje</label>
-      <label><input type="radio" name="p41" value="b">Igualdad salariales</label>
+      <label><input type="radio" name="p41" value="b">Igualdad salarial</label>
       <label data-correct="true"><input type="radio" name="p41" value="c">Ética empresarial</label>
       <label><input type="radio" name="p41" value="d">Eficiencia energética</label>
     </fieldset>
@@ -573,6 +576,102 @@
       <label><input type="radio" name="p45" value="d">Económico</label>
     </fieldset>
 
+    <!-- NUEVAS PREGUNTAS 46–52 BASADAS EN EL PDF -->
+
+    <!-- P46 -->
+    <fieldset>
+      <legend>Pregunta 46</legend>
+      <p class="question-text">
+        Las organizaciones del sistema productivo compuestas por entidades privadas sin ánimo de lucro,
+        que no buscan obtener un beneficio por los bienes y servicios que producen, se conocen como…
+      </p>
+      <label><input type="radio" name="p46" value="a">Empresas privadas</label>
+      <label><input type="radio" name="p46" value="b">Empresas sociales</label>
+      <label data-correct="true"><input type="radio" name="p46" value="c">Tercer sector</label>
+      <label><input type="radio" name="p46" value="d">Administraciones públicas</label>
+    </fieldset>
+
+    <!-- P47 -->
+    <fieldset>
+      <legend>Pregunta 47</legend>
+      <p class="question-text">¿Cuál de las siguientes define mejor a un grupo de interés de la empresa?</p>
+      <label><input type="radio" name="p47" value="a">Conjunto de leyes que afectan a la empresa.</label>
+      <label><input type="radio" name="p47" value="b">Departamento interno responsable de la sostenibilidad.</label>
+      <label data-correct="true"><input type="radio" name="p47" value="c">
+        Colectivo humano que tiene objetivos propios cuyo cumplimiento depende de las decisiones y resultados de la empresa.
+      </label>
+      <label><input type="radio" name="p47" value="d">Conjunto de clientes que compran el mismo producto.</label>
+    </fieldset>
+
+    <!-- P48 -->
+    <fieldset>
+      <legend>Pregunta 48</legend>
+      <p class="question-text">¿Cuál de los siguientes es un grupo de interés de la empresa?</p>
+      <label data-correct="true"><input type="radio" name="p48" value="a">Las personas trabajadoras (plantilla)</label>
+      <label><input type="radio" name="p48" value="b">La maquinaria de producción</label>
+      <label><input type="radio" name="p48" value="c">El edificio de oficinas</label>
+      <label><input type="radio" name="p48" value="d">El almacén de la empresa</label>
+    </fieldset>
+
+    <!-- P49 -->
+    <fieldset>
+      <legend>Pregunta 49</legend>
+      <p class="question-text">
+        Los trabajadores, como grupo de interés de la empresa, pueden influir negativamente en ella…
+      </p>
+      <label><input type="radio" name="p49" value="a">Elevando los costes financieros.</label>
+      <label><input type="radio" name="p49" value="b">Elevando los impuestos.</label>
+      <label><input type="radio" name="p49" value="c">Aumentando el precio de venta de los productos.</label>
+      <label data-correct="true"><input type="radio" name="p49" value="d">Estando desmotivados y reduciendo su rendimiento.</label>
+    </fieldset>
+
+    <!-- P50 -->
+    <fieldset>
+      <legend>Pregunta 50</legend>
+      <p class="question-text">
+        El informe que las empresas deben presentar anualmente, donde se explica la evolución de los negocios,
+        los resultados y los principales riesgos, se llama…
+      </p>
+      <label><input type="radio" name="p50" value="a">Informe de riesgos</label>
+      <label data-correct="true"><input type="radio" name="p50" value="b">Informe de gestión</label>
+      <label><input type="radio" name="p50" value="c">Informe empresarial</label>
+      <label><input type="radio" name="p50" value="d">Informe anual global</label>
+    </fieldset>
+
+    <!-- P51 -->
+    <fieldset>
+      <legend>Pregunta 51</legend>
+      <p class="question-text">
+        El documento añadido al informe de gestión que debe incluir un análisis de los aspectos de sostenibilidad
+        relevantes para la empresa se denomina…
+      </p>
+      <label><input type="radio" name="p51" value="a">Informe sobre sostenibilidad.</label>
+      <label data-correct="true"><input type="radio" name="p51" value="b">Estado no financiero o de sostenibilidad.</label>
+      <label><input type="radio" name="p51" value="c">Estado de cuentas.</label>
+      <label><input type="radio" name="p51" value="d">Estado financiero y de sostenibilidad.</label>
+    </fieldset>
+
+    <!-- P52 -->
+    <fieldset>
+      <legend>Pregunta 52</legend>
+      <p class="question-text">
+        El Estado no financiero o de sostenibilidad se elabora siguiendo unas instrucciones de la Unión Europea
+        denominadas…
+      </p>
+      <label data-correct="true"><input type="radio" name="p52" value="a">
+        Normas Europeas de Información sobre Sostenibilidad (NEIS).
+      </label>
+      <label><input type="radio" name="p52" value="b">
+        Normas Europeas sobre Sostenibilidad en las Empresas (NESE).
+      </label>
+      <label><input type="radio" name="p52" value="c">
+        Normas Europeas sobre Gestión Sostenible (NEGS).
+      </label>
+      <label><input type="radio" name="p52" value="d">
+        Normas Europeas de Estados No Financieros (NEENF).
+      </label>
+    </fieldset>
+
   </form>
 </div>
 
@@ -609,4 +708,3 @@
 
 </body>
 </html>
-

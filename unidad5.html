@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UF5 · Midiendo la Sostenibilidad</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+      color: #f5f5f7;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    h1, h2 {
+      color: #ffffff;
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .highlight {
+      color: #a5b4ff;
+      font-weight: bold;
+    }
+
+    .item-box {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+
+    .title-box {
+      font-weight: bold;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .important {
+      background: rgba(255, 243, 205, 0.09);
+      border-left: 4px solid #ffb300;
+      padding: 8px 10px;
+      margin-top: 8px;
+      border-radius: 10px;
+      font-size: .9rem;
+    }
+
+    .mini {
+      font-size: .86rem;
+      color: #d4d4f6;
+    }
+
+    details {
+      margin-top: 8px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+
+    details[open] summary {
+      color: #a5b4ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>UF5 · Midiendo la Sostenibilidad</h1>
+
+    <!-- 1. Indicadores de desempeño -->
+    <div class="section">
+      <h2>1️⃣ Indicadores de desempeño</h2>
+      <p>
+        Un <span class="highlight">indicador de desempeño</span> es un dato o conjunto de datos
+        que permite <strong>medir el rendimiento</strong> de una actividad respecto a un objetivo.
+      </p>
+
+      <div class="item-box">
+        <div class="title-box">1.1. De objetivos a metas e indicadores</div>
+        <ul>
+          <li><strong>Objetivos</strong> → qué queremos conseguir (alineados con ODS y aspectos ASG).</li>
+          <li><strong>Indicadores</strong> → cómo lo medimos (KPI).</li>
+          <li><strong>Metas</strong> → valor concreto + fecha (cuánto y para cuándo).</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">1.2. Características de un buen indicador</div>
+        <ul>
+          <li><span class="highlight">Relevante</span> para el objetivo.</li>
+          <li><span class="highlight">Medible</span> con datos fiables.</li>
+          <li><span class="highlight">Comparable</span> en el tiempo o entre unidades.</li>
+          <li><span class="highlight">Comprensible</span> para quien lo usa.</li>
+        </ul>
+      </div>
+
+      <div class="important">
+        <strong>Para el examen:</strong> recuerda siempre la secuencia
+        <span class="highlight">Objetivos → Indicadores → Metas</span> y que los indicadores sirven
+        para <em>saber si estamos mejorando o empeorando</em>.
+      </div>
+    </div>
+
+    <!-- 2. Fases para crear y usar un indicador -->
+    <div class="section">
+      <h2>2️⃣ Fases para crear y utilizar un indicador</h2>
+
+      <p>Todo indicador bien planteado pasa por estas <span class="highlight">4 fases clave</span>:</p>
+      <ol>
+        <li><strong>Definición del indicador</strong>  
+          <span class="mini">¿Qué mide exactamente y para qué se usará?</span></li>
+        <li><strong>Fórmula de cálculo</strong>  
+          <span class="mini">Cómo se obtiene (datos de entrada, unidades…).</span></li>
+        <li><strong>Valor objetivo</strong>  
+          <span class="mini">Meta numérica: valor que queremos alcanzar en un plazo concreto.</span></li>
+        <li><strong>Seguimiento</strong>  
+          <span class="mini">Recoger datos periódicamente, compararlos con la meta y tomar decisiones.</span></li>
+      </ol>
+
+      <details>
+        <summary>📊 Ejemplo típico (emisiones de CO₂)</summary>
+        <ul>
+          <li><strong>Indicador:</strong> Emisiones netas de CO₂ equivalente.</li>
+          <li><strong>Fórmula:</strong> Emisiones totales – Capturas (sumideros, compensaciones).</li>
+          <li><strong>Meta:</strong> Reducir un % respecto a un año base.</li>
+          <li><strong>Seguimiento:</strong> Registro anual y comparación con la meta.</li>
+        </ul>
+      </details>
+
+      <div class="important">
+        <strong>Clásico de examen:</strong> “Enumera las fases en la creación de un indicador de desempeño”.
+      </div>
+    </div>
+
+    <!-- 3. Sistema de Gestión Ambiental (SGA) -->
+    <div class="section">
+      <h2>3️⃣ Sistema de Gestión Ambiental (SGA) e ISO 14001 / 14031</h2>
+
+      <p>
+        Un <span class="highlight">Sistema de Gestión Ambiental</span> es la parte de la organización
+        encargada de desarrollar e implementar la política ambiental de la empresa.
+      </p>
+
+      <div class="item-box">
+        <div class="title-box">3.1. Normas clave</div>
+        <ul>
+          <li><strong>ISO 14001</strong> → establece cómo debe ser un SGA (estructura, responsabilidades, procedimientos…).</li>
+          <li><strong>ISO 14031</strong> → da directrices para la <strong>evaluación del desempeño ambiental</strong> usando indicadores.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">3.2. Ciclo PHVA (Planificar – Hacer – Verificar – Actuar)</div>
+        <ul>
+          <li><strong>Planificar:</strong> objetivos, indicadores, metas.</li>
+          <li><strong>Hacer:</strong> poner en marcha las acciones.</li>
+          <li><strong>Verificar:</strong> medir con indicadores, auditar, comprobar resultados.</li>
+          <li><strong>Actuar:</strong> corregir, mejorar, actualizar objetivos.</li>
+        </ul>
+      </div>
+
+      <div class="important">
+        <strong>En el examen te pueden pedir:</strong> 
+        – Qué es un SGA,  
+        – Para qué sirven las ISO 14001 y 14031,  
+        – Qué significa el ciclo <span class="highlight">PHVA</span>.
+      </div>
+    </div>
+
+    <!-- 4. Certificados de sostenibilidad -->
+    <div class="section">
+      <h2>4️⃣ Certificados de sostenibilidad (ecoetiquetas y declaraciones)</h2>
+
+      <p>
+        Los <span class="highlight">certificados ambientales</span> ayudan a comunicar al mercado el
+        desempeño ambiental de productos y organizaciones.
+      </p>
+
+      <div class="item-box">
+        <div class="title-box">4.1. Tipos de certificación según la ISO</div>
+        <ul>
+          <li><strong>Tipo I – Ecoetiquetas (ISO 14024)</strong>  
+            Emitidas por un <strong>tercero independiente</strong>, verificadas y basadas en el ciclo de vida.
+            <span class="mini">Ej.: Etiqueta ecológica europea.</span></li>
+          <li><strong>Tipo II – Autodeclaraciones ambientales (ISO 14021)</strong>  
+            Declaraciones realizadas por la propia empresa (no verificadas por tercero).
+            <span class="mini">Ej.: “100% reciclable”, “libre de CFC”.</span></li>
+          <li><strong>Tipo III – Declaraciones ambientales de producto / EPD (ISO 14025)</strong>  
+            Información cuantificada del ciclo de vida, verificada por un organismo independiente.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">4.2. Otros certificados ambientales</div>
+        <ul>
+          <li><strong>FSC / PEFC</strong> → gestión forestal sostenible (madera, papel).</li>
+          <li><strong>Etiquetas de eficiencia energética</strong> en edificios y electrodomésticos.</li>
+          <li><strong>Certificados de pesca sostenible</strong>, etc.</li>
+        </ul>
+      </div>
+
+      <div class="important">
+        <strong>Muy típico de test:</strong> Diferenciar Tipo I (ecoetiquetas verificadas), Tipo II (autodeclaraciones) y Tipo III (EPD con datos del ciclo de vida).
+      </div>
+    </div>
+
+    <!-- 5. Inversión Socialmente Responsable -->
+    <div class="section">
+      <h2>5️⃣ Inversión Socialmente Responsable (ISR)</h2>
+
+      <p>
+        La <span class="highlight">Inversión Socialmente Responsable</span> integra
+        <strong>rentabilidad, riesgo y liquidez</strong> con el <strong>comportamiento ASG</strong> de las empresas.
+      </p>
+
+      <div class="item-box">
+        <div class="title-box">5.1. Tipos de inversión</div>
+        <ul>
+          <li><strong>Inversión productiva</strong> → en <em>bienes reales</em> de la empresa (maquinaria, materias primas, contratación de personal).</li>
+          <li><strong>Inversión financiera</strong> → en <em>activos financieros</em> (acciones, bonos, fondos, etc.).</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">5.2. Estrategias ISR (cómo se seleccionan las inversiones)</div>
+        <ul>
+          <li><strong>Exclusión (screening negativo)</strong>  
+            Se descartan empresas de sectores polémicos: armas, tabaco, combustibles fósiles, alta contaminación, etc.</li>
+          <li><strong>Selección positiva</strong>  
+            Se eligen empresas que destacan en energías renovables, gestión de residuos, transporte sostenible…</li>
+          <li><strong>Integración ASG</strong>  
+            Se incorporan <strong>criterios ambientales, sociales y de gobernanza</strong> en el análisis financiero.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">5.3. Certificación de productos financieros responsables</div>
+        <ul>
+          <li>En España, la norma <strong>UNE 165001</strong> permite certificar productos financieros
+            como socialmente responsables.</li>
+          <li>Existen índices bursátiles específicos (DJSI, MSCI, etc.) que recogen empresas con buen desempeño ASG.</li>
+        </ul>
+      </div>
+
+      <div class="important">
+        <strong>Preguntas típicas:</strong> definición de ISR, diferencia entre inversión productiva y financiera, y tipos de estrategias ISR (exclusión, selectiva, integración ASG).
+      </div>
+    </div>
+
+    <!-- 6. Organismos y agentes relacionados -->
+    <div class="section">
+      <h2>6️⃣ Organismos y agentes en la medición de la sostenibilidad</h2>
+
+      <p>En la UF5 tienes que ser capaz de distinguir <span class="highlight">qué hace cada tipo de organismo</span>:</p>
+
+      <div class="item-box">
+        <div class="title-box">6.1. Instituciones públicas</div>
+        <ul>
+          <li>Gobiernos, ministerios, consejerías, Comisión Europea…</li>
+          <li>Aprueban <strong>leyes, normativas y políticas</strong> ambientales y de sostenibilidad.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">6.2. Organismos supervisores</div>
+        <ul>
+          <li>Se aseguran de que se cumplan las normas.</li>
+          <li>Ej.: CNMV, Banco de España, agencias públicas de medio ambiente.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">6.3. Organismos normalizadores</div>
+        <ul>
+          <li>Definen <strong>normas técnicas</strong> (estándares).</li>
+          <li>Ej.: <strong>ISO</strong>, <strong>UNE</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">6.4. Entidades certificadoras</div>
+        <ul>
+          <li>Verifican el cumplimiento de normas y emiten certificados.</li>
+          <li>Ej.: <strong>AENOR</strong>, TÜV, SGS…</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">6.5. Consultorías ambientales y ASG</div>
+        <ul>
+          <li>Ayudan a las empresas a implantar sistemas de gestión, indicadores, informes, etc.</li>
+        </ul>
+      </div>
+
+      <div class="item-box">
+        <div class="title-box">6.6. Agencias de calificación ASG</div>
+        <ul>
+          <li>Evalúan el desempeño ambiental, social y de gobernanza de empresas.</li>
+          <li>Emiten <strong>ratings ASG</strong> que influyen en decisiones de inversión.</li>
+        </ul>
+      </div>
+
+      <div class="important">
+        <strong>En test suelen preguntarte:</strong> 
+        “¿Quién normaliza?”, “¿Quién certifica?”, “¿Quién supervisa?” →  
+        <span class="highlight">memoriza bien los roles</span>.
+      </div>
+    </div>
+
+    <!-- 7. Súper resumen final -->
+    <div class="section">
+      <h2>7️⃣ Súper resumen para la noche antes del examen</h2>
+      <ul>
+        <li><strong>Indicador</strong> = dato que mide el avance hacia un objetivo.</li>
+        <li>4 fases del indicador: <strong>definir – formular – fijar valor objetivo – hacer seguimiento</strong>.</li>
+        <li><strong>ISO 14001</strong> → Sistema de Gestión Ambiental.  
+            <strong>ISO 14031</strong> → evaluación del desempeño ambiental con indicadores.</li>
+        <li>Certificados ambientales: <strong>Tipo I (ecoetiquetas), Tipo II (autodeclaraciones), Tipo III (EPD)</strong>.</li>
+        <li><strong>ISR</strong>: combina rentabilidad + riesgo + liquidez + criterios ASG.</li>
+        <li>Estrategias ISR: <strong>exclusión, selección positiva, integración ASG</strong>.</li>
+        <li>Rol de organismos:  
+          <span class="mini">públicos (leyes) · supervisores (control) · normalizadores (normas) · certificadores (certificados) · agencias ASG (ratings).</span>
+        </li>
+      </ul>
+
+      <div class="important">
+        <strong>Si dominas esta página, tienes la UF5 muy bien encarrilada para el examen.</strong>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
