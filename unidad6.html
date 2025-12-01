@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UF6 · Súper resumen para examen</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+      color: #f5f5f7;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: .95rem;
+      color: #d4d4f6;
+      margin-bottom: 18px;
+    }
+    .block {
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 12px;
+    }
+    details { margin: 0; }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      outline: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .title {
+      font-weight: 600;
+      font-size: .96rem;
+    }
+    .badge {
+      font-size: .78rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    details[open] .title { color: #a5b4ff; }
+    .content {
+      margin-top: 8px;
+      font-size: .9rem;
+      line-height: 1.5;
+      color: #e5e5ff;
+    }
+    ul { margin: 4px 0 4px 20px; padding-left: 0; }
+    li { margin-bottom: 4px; }
+    .tag {
+      font-weight: 600;
+      color: #facc6b;
+    }
+    .important {
+      margin-top: 6px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border-left: 4px solid #ffb300;
+      background: rgba(255,243,205,0.08);
+      font-size: .86rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>UF6 · Súper resumen</h1>
+  <p class="subtitle">
+    Versión ultra corta para que se te quede rápido. Haz clic en cada bloque.
+  </p>
+
+  <!-- 1. De qué va UF6 -->
+  <div class="block">
+    <details open>
+      <summary class="head">
+        <span class="title">1. ¿De qué va realmente la UF6?</span>
+        <span class="badge">Idea global</span>
+      </summary>
+      <div class="content">
+        <p>La UF6 va de <span class="tag">cómo se cuenta la sostenibilidad</span> en la empresa:</p>
+        <ul>
+          <li>Qué <strong>documentos</strong> hay (plan, informes, impacto ambiental…).</li>
+          <li>Qué <strong>normas</strong> mandan (GRI, CSRD, NEIS, Ley 11/2018).</li>
+          <li>Cómo se decide <strong>qué es importante</strong> (doble materialidad, matriz impacto–factibilidad).</li>
+        </ul>
+        <div class="important">
+          Si recuerdas: <strong>documentos + normas + doble materialidad</strong>, tienes la unidad controlada.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 2. Normas y documentos -->
+  <div class="block">
+    <details>
+      <summary class="head">
+        <span class="title">2. Normas y documentos que sí caen</span>
+        <span class="badge">Memorizar</span>
+      </summary>
+      <div class="content">
+        <p><span class="tag">Normas:</span></p>
+        <ul>
+          <li><strong>GRI</strong>: estándar internacional de informes de sostenibilidad.</li>
+          <li><strong>CSRD</strong>: directiva UE que obliga a informar en sostenibilidad.</li>
+          <li><strong>NEIS/ESRS</strong>: normas europeas para esa información.</li>
+          <li><strong>Ley 11/2018</strong>: en España, exige el <strong>EINF</strong> a grandes empresas.</li>
+        </ul>
+        <p><span class="tag">Documentos básicos:</span></p>
+        <ul>
+          <li><strong>Plan de sostenibilidad</strong> → hoja de ruta ASG (voluntario, 3–5 años).</li>
+          <li><strong>EINF</strong> → estado de información no financiera (obligatorio, anual).</li>
+          <li><strong>Memoria de sostenibilidad</strong> → cuenta lo logrado en ASG cada año.</li>
+          <li><strong>EIA</strong> → estudio de impacto ambiental (lo hace el promotor).</li>
+          <li><strong>DIA</strong> → declaración de impacto ambiental (la hace la administración).</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- 3. Plan de sostenibilidad -->
+  <div class="block">
+    <details>
+      <summary class="head">
+        <span class="title">3. Plan de sostenibilidad en 5 frases</span>
+        <span class="badge">Esqueleto</span>
+      </summary>
+      <div class="content">
+        <ul>
+          <li>Es la <span class="tag">estrategia ASG</span> de la empresa a medio plazo.</li>
+          <li>Analiza <strong>contexto</strong> + <strong>impactos y dependencias</strong>.</li>
+          <li>Elige <strong>ODS prioritarios</strong>.</li>
+          <li>Define <strong>objetivos y acciones</strong> (qué, quién, cuándo, con qué recursos).</li>
+          <li>Incluye <strong>comunicación</strong> y <strong>seguimiento con indicadores</strong>.</li>
+        </ul>
+        <div class="important">
+          Si en un examen te piden “partes de un plan de sostenibilidad”, nómbralas en este orden: contexto, impactos, ODS, objetivos–acciones, comunicación, seguimiento.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 4. Doble materialidad + matriz -->
+  <div class="block">
+    <details>
+      <summary class="head">
+        <span class="title">4. Doble materialidad + matriz impacto–factibilidad</span>
+        <span class="badge">Priorizar</span>
+      </summary>
+      <div class="content">
+        <p><span class="tag">Doble materialidad:</span> un tema es <strong>material</strong> si:</p>
+        <ul>
+          <li>Afecta fuerte a <strong>personas o planeta</strong> (materialidad de impacto), y/o</li>
+          <li>Afecta fuerte a las <strong>finanzas de la empresa</strong> (materialidad financiera).</li>
+        </ul>
+        <p><span class="tag">Matriz impacto–factibilidad:</span></p>
+        <ul>
+          <li>Eje Y → <strong>impacto</strong> de la acción en la sostenibilidad.</li>
+          <li>Eje X → <strong>factibilidad</strong> (coste, tiempo, recursos).</li>
+          <li>Prioridad 1: acciones de <strong>alto impacto + alta factibilidad</strong>.</li>
+        </ul>
+        <div class="important">
+          Traducción rápida: primero hago lo que <strong>cambia mucho</strong> y es <strong>relativamente fácil</strong>.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 5. EIA vs DIA -->
+  <div class="block">
+    <details>
+      <summary class="head">
+        <span class="title">5. EIA y DIA en modo “chuleta”</span>
+        <span class="badge">Proyectos</span>
+      </summary>
+      <div class="content">
+        <ul>
+          <li><span class="tag">EIA</span> (Estudio de Impacto Ambiental) → lo hace el <strong>promotor</strong> del proyecto. Describe impactos y medidas.</li>
+          <li><span class="tag">DIA</span> (Declaración de Impacto Ambiental) → la hace la <strong>administración</strong>. Decide si se aprueba y con qué condiciones.</li>
+        </ul>
+        <div class="important">
+          Truco: EIA = “examen que entregas tú”; DIA = “nota que te ponen”.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 6. Súper resumen final -->
+  <div class="block">
+    <details open>
+      <summary class="head">
+        <span class="title">6. Súper resumen de 1 minuto</span>
+        <span class="badge">Último repaso</span>
+      </summary>
+      <div class="content">
+        <ul>
+          <li>Normas clave: <strong>GRI, CSRD, NEIS, Ley 11/2018</strong>.</li>
+          <li>Documentos clave: <strong>Plan, EINF, memoria, EIA, DIA</strong>.</li>
+          <li>Plan = estrategia ASG con contexto, ODS, objetivos–acciones, comunicación y seguimiento.</li>
+          <li>Doble materialidad = impacto en <strong>planeta/personas</strong> + impacto en <strong>finanzas</strong>.</li>
+          <li>Matriz impacto–factibilidad = para decidir qué acciones hacer antes.</li>
+          <li>EIA = lo hace la empresa; DIA = lo aprueba la administración.</li>
+        </ul>
+        <div class="important">
+          Si esta lista te la sabes sin mirar, llevas la UF6 lista para sacar muy buena nota.
+        </div>
+      </div>
+    </details>
+  </div>
+
+</div>
+
+</body>
+</html>

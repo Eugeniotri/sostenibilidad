@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cuestionario · UF6 Plan de sostenibilidad</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1000px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,0,0,0.55));
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge {
+      font-size: .85rem;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+
+    .app-header p {
+      margin: 8px 0 4px;
+      font-size: .95rem;
+      color: #d0d3ff;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2df28f, #91ffa7);
+      font-weight: 600;
+      color: #04210f;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    fieldset {
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #2f3148 0, #151827 45%);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    legend { font-weight: 600; }
+
+    .question-text { margin-bottom: 8px; font-weight: 500; }
+
+    label { display: block; margin-bottom: 6px; cursor: pointer; }
+
+    input[type="radio"] { margin-right: 6px; }
+
+    #result {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffe9a6;
+      font-weight: 600;
+    }
+
+    .correct-answer {
+      background: rgba(34,197,94,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+
+    .incorrect-answer {
+      background: rgba(239,68,68,0.18);
+      border-radius: 8px;
+      padding: 2px 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <header class="app-header">
+    <h1>
+      Cuestionario UF6 · Plan de sostenibilidad
+      <span class="badge">25 preguntas</span>
+    </h1>
+    <p>Responde a todas las preguntas y pulsa <strong>“Corregir cuestionario”</strong> para ver tu nota.</p>
+    <button class="btn" onclick="corregirTest()">✓ Corregir cuestionario</button>
+    <div id="result">Aún no has corregido.</div>
+  </header>
+
+  <form id="testForm">
+
+    <!-- P1 -->
+    <fieldset>
+      <legend>Pregunta 1</legend>
+      <p class="question-text">
+        El plan de sostenibilidad es (señala la respuesta más completa):
+      </p>
+      <label>
+        <input type="radio" name="p1" value="a">
+        a. Una herramienta de comunicación.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="b">
+        b. Una herramienta de planificación y evaluación.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p1" value="c">
+        c. Una herramienta de planificación y comunicación.
+      </label>
+      <label>
+        <input type="radio" name="p1" value="d">
+        d. Una herramienta de planificación.
+      </label>
+    </fieldset>
+
+    <!-- P2 -->
+    <fieldset>
+      <legend>Pregunta 2</legend>
+      <p class="question-text">
+        Indica cuál de las siguientes normas es española:
+      </p>
+      <label>
+        <input type="radio" name="p2" value="a">
+        a. Global Reporting Initiative (GRI).
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p2" value="b">
+        b. Ley de Información no Financiera y Diversidad.
+      </label>
+      <label>
+        <input type="radio" name="p2" value="c">
+        c. Directiva 2022/2464 de Informes de Sostenibilidad Empresarial (CSRD).
+      </label>
+      <label>
+        <input type="radio" name="p2" value="d">
+        d. NEIS.
+      </label>
+    </fieldset>
+
+    <!-- P3 -->
+    <fieldset>
+      <legend>Pregunta 3</legend>
+      <p class="question-text">
+        Para que un asunto tenga prioridad de primer nivel en la matriz de materialidad y relevancia, debe tener:
+      </p>
+      <label>
+        <input type="radio" name="p3" value="a">
+        a. Doble materialidad.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="b">
+        b. Elevada relevancia para la dirección de la organización, solamente.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p3" value="c">
+        c. Elevada relevancia para los grupos de interés internos y externos.
+      </label>
+      <label>
+        <input type="radio" name="p3" value="d">
+        d. Elevada relevancia y elevada factibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P4 -->
+    <fieldset>
+      <legend>Pregunta 4</legend>
+      <p class="question-text">
+        En el procedimiento administrativo de evaluación de impacto ambiental no interviene:
+      </p>
+      <label>
+        <input type="radio" name="p4" value="a">
+        a. El documento llamado estudio de impacto ambiental.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p4" value="b">
+        b. El documento llamado informe medioambiental.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="c">
+        c. La autoridad medioambiental.
+      </label>
+      <label>
+        <input type="radio" name="p4" value="d">
+        d. La entidad que promueve una obra, proyecto o acción de cierta importancia.
+      </label>
+    </fieldset>
+
+    <!-- P5 -->
+    <fieldset>
+      <legend>Pregunta 5</legend>
+      <p class="question-text">
+        Para una empresa agrícola, la mayor frecuencia de sequías es un asunto:
+      </p>
+      <label>
+        <input type="radio" name="p5" value="a">
+        a. Con materialidad de impacto.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="b">
+        b. Sin materialidad para la empresa.
+      </label>
+      <label>
+        <input type="radio" name="p5" value="c">
+        c. Con materialidad financiera.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p5" value="d">
+        d. Con doble materialidad.
+      </label>
+    </fieldset>
+
+    <!-- P6 -->
+    <fieldset>
+      <legend>Pregunta 6</legend>
+      <p class="question-text">
+        El documento que da cuenta a la autoridad de la evolución de determinados aspectos ASG, se denomina:
+      </p>
+      <label>
+        <input type="radio" name="p6" value="a">
+        a. Plan de sostenibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="b">
+        b. Informe de impacto ambiental.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p6" value="c">
+        c. Estado no financiero.
+      </label>
+      <label>
+        <input type="radio" name="p6" value="d">
+        d. Informe de sostenibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P7 -->
+    <fieldset>
+      <legend>Pregunta 7</legend>
+      <p class="question-text">
+        La declaración de impacto ambiental es redactada por:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p7" value="a">
+        a. La autoridad medioambiental.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="b">
+        b. La empresa que construye efectivamente el proyecto.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="c">
+        c. La oficina de prensa de la empresa.
+      </label>
+      <label>
+        <input type="radio" name="p7" value="d">
+        d. La empresa promotora del proyecto.
+      </label>
+    </fieldset>
+
+    <!-- P8 -->
+    <fieldset>
+      <legend>Pregunta 8</legend>
+      <p class="question-text">
+        El primer apartado de un plan de sostenibilidad debe ser:
+      </p>
+      <label>
+        <input type="radio" name="p8" value="a">
+        a. La identificación de impactos y dependencias.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="b">
+        b. La identificación de los ODS clave.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p8" value="c">
+        c. El análisis del contexto de la organización.
+      </label>
+      <label>
+        <input type="radio" name="p8" value="d">
+        d. El diseño de objetivos y acciones concretas.
+      </label>
+    </fieldset>
+
+    <!-- P9 -->
+    <fieldset>
+      <legend>Pregunta 9</legend>
+      <p class="question-text">
+        El plan de sostenibilidad:
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p9" value="a">
+        a. Voluntario, para periodos de 3 a 5 años.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="b">
+        b. Obligatorio para grandes empresas.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="c">
+        c. Obligatorio para grandes empresas (voluntario para el resto), anualmente.
+      </label>
+      <label>
+        <input type="radio" name="p9" value="d">
+        d. Voluntario, para periodos de 2 a 3 años.
+      </label>
+    </fieldset>
+
+    <!-- P10 -->
+    <fieldset>
+      <legend>Pregunta 10</legend>
+      <p class="question-text">
+        ¿Qué apartado no se incluye en un plan de sostenibilidad?
+      </p>
+      <label>
+        <input type="radio" name="p10" value="a">
+        a. Diseño del plan de comunicación.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p10" value="b">
+        b. Gestión de objetivos.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="c">
+        c. Diseño de objetivos y líneas estratégicas.
+      </label>
+      <label>
+        <input type="radio" name="p10" value="d">
+        d. Identificación de los ODS clave.
+      </label>
+    </fieldset>
+
+    <!-- P11 -->
+    <fieldset>
+      <legend>Pregunta 11</legend>
+      <p class="question-text">
+        Indica cuál de los siguientes estándares de información no financiera es más antiguo:
+      </p>
+      <label>
+        <input type="radio" name="p11" value="a">
+        a. Ley de Información no Financiera y Diversidad.
+      </label>
+      <label>
+        <input type="radio" name="p11" value="b">
+        b. Normas Europeas de Información sobre Sostenibilidad (NEIS).
+      </label>
+      <label>
+        <input type="radio" name="p11" value="c">
+        c. Directiva 2022/2464 de Informes de Sostenibilidad Empresarial (CSRD).
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p11" value="d">
+        d. Global Reporting Initiative (GRI).
+      </label>
+    </fieldset>
+
+    <!-- P12 -->
+    <fieldset>
+      <legend>Pregunta 12</legend>
+      <p class="question-text">
+        En relación con el estándar GRI, señala la afirmación falsa:
+      </p>
+      <label>
+        <input type="radio" name="p12" value="a">
+        a. La mayoría de las grandes empresas lo utiliza.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p12" value="b">
+        b. Fue creado por la Unión Europea.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="c">
+        c. Su primera versión es del año 2000.
+      </label>
+      <label>
+        <input type="radio" name="p12" value="d">
+        d. Es en realidad una familia de estándares.
+      </label>
+    </fieldset>
+
+    <!-- P13 -->
+    <fieldset>
+      <legend>Pregunta 13</legend>
+      <p class="question-text">
+        ¿Cuál de las siguientes técnicas es utilizada para el análisis del contexto de la organización de la estructura del plan de sostenibilidad?
+      </p>
+      <label>
+        <input type="radio" name="p13" value="a">
+        a. Normas NEIS.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p13" value="b">
+        b. Mapeo de grupos de interés.
+      </label>
+      <label>
+        <input type="radio" name="p13" value="c">
+        c. Análisis de doble materialidad.
+      </label>
+      <label>
+        <input type="radio" name="p13" value="d">
+        d. Modelos de planificación estratégica.
+      </label>
+    </fieldset>
+
+    <!-- P14 -->
+    <fieldset>
+      <legend>Pregunta 14</legend>
+      <p class="question-text">
+        A diferencia del estado de sostenibilidad, el informe o memoria de sostenibilidad:
+      </p>
+      <label>
+        <input type="radio" name="p14" value="a">
+        a. Informa sobre el desempeño de la organización en materia de sostenibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="b">
+        b. Habla solamente de los logros de la organización en materia de sostenibilidad.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p14" value="c">
+        c. Tiene gran utilidad como herramienta de comunicación de las políticas de sostenibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p14" value="d">
+        d. Se refiere a un periodo de tiempo definido (un año).
+      </label>
+    </fieldset>
+
+    <!-- P15 -->
+    <fieldset>
+      <legend>Pregunta 15</legend>
+      <p class="question-text">
+        El plan de sostenibilidad:
+      </p>
+      <label>
+        <input type="radio" name="p15" value="a">
+        a. Es un documento obligatorio para las empresas.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p15" value="b">
+        b. Sirve para guiar las acciones de la organización en materia de sostenibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p15" value="c">
+        c. Es un documento de planificación a corto plazo (un año o menos).
+      </label>
+      <label>
+        <input type="radio" name="p15" value="d">
+        d. Da cuenta de las actuaciones realizadas el año anterior en materia de sostenibilidad.
+      </label>
+    </fieldset>
+
+    <!-- P16 -->
+    <fieldset>
+      <legend>Pregunta 16</legend>
+      <p class="question-text">
+        La doble materialidad implica analizar:
+      </p>
+      <label>
+        <input type="radio" name="p16" value="a">
+        a. Solo los impactos de la empresa sobre el medio ambiente.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="b">
+        b. Solo los riesgos financieros de la empresa.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p16" value="c">
+        c. Cómo la empresa impacta en personas/medio ambiente y cómo esos temas impactan en sus finanzas.
+      </label>
+      <label>
+        <input type="radio" name="p16" value="d">
+        d. Únicamente los requisitos legales mínimos.
+      </label>
+    </fieldset>
+
+    <!-- P17 -->
+    <fieldset>
+      <legend>Pregunta 17</legend>
+      <p class="question-text">
+        El Estado de Información No Financiera (EINF):
+      </p>
+      <label>
+        <input type="radio" name="p17" value="a">
+        a. Es un documento voluntario que solo usan ONG.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p17" value="b">
+        b. Es obligatorio para grandes empresas y se incorpora al informe de gestión.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="c">
+        c. Solo recoge aspectos económicos.
+      </label>
+      <label>
+        <input type="radio" name="p17" value="d">
+        d. Solo habla de filantropía.
+      </label>
+    </fieldset>
+
+    <!-- P18 -->
+    <fieldset>
+      <legend>Pregunta 18</legend>
+      <p class="question-text">
+        Las Normas Europeas de Información sobre Sostenibilidad (NEIS/ESRS) se desarrollan en el marco de:
+      </p>
+      <label>
+        <input type="radio" name="p18" value="a">
+        a. El Pacto Verde Europeo.
+      </label>
+      <label>
+        <input type="radio" name="p18" value="b">
+        b. El estándar GRI.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p18" value="c">
+        c. La Directiva 2022/2464 de Informes de Sostenibilidad Empresarial (CSRD).
+      </label>
+      <label>
+        <input type="radio" name="p18" value="d">
+        d. La Ley 11/2018 únicamente.
+      </label>
+    </fieldset>
+
+    <!-- P19 -->
+    <fieldset>
+      <legend>Pregunta 19</legend>
+      <p class="question-text">
+        ¿Cuál de estas afirmaciones describe mejor una memoria de sostenibilidad?
+      </p>
+      <label>
+        <input type="radio" name="p19" value="a">
+        a. Documento interno para la dirección, sin difusión externa.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p19" value="b">
+        b. Informe anual, normalmente basado en estándares como GRI, que comunica los resultados ASG a los grupos de interés.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="c">
+        c. Informe que solo incluye información ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p19" value="d">
+        d. Documento que sustituye a las cuentas anuales.
+      </label>
+    </fieldset>
+
+    <!-- P20 -->
+    <fieldset>
+      <legend>Pregunta 20</legend>
+      <p class="question-text">
+        ¿Qué herramienta sirve para priorizar acciones de sostenibilidad según su impacto y facilidad de implantación?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p20" value="a">
+        a. La matriz de impacto y factibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="b">
+        b. La matriz DAFO.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="c">
+        c. Las normas NEIS.
+      </label>
+      <label>
+        <input type="radio" name="p20" value="d">
+        d. El estado no financiero.
+      </label>
+    </fieldset>
+
+    <!-- P21 -->
+    <fieldset>
+      <legend>Pregunta 21</legend>
+      <p class="question-text">
+        En la estructura del plan de sostenibilidad, ¿en qué apartado se definen las grandes orientaciones o “ejes” de actuación?
+      </p>
+      <label>
+        <input type="radio" name="p21" value="a">
+        a. Análisis del contexto.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="b">
+        b. Identificación de impactos y dependencias.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p21" value="c">
+        c. Líneas estratégicas.
+      </label>
+      <label>
+        <input type="radio" name="p21" value="d">
+        d. Seguimiento.
+      </label>
+    </fieldset>
+
+    <!-- P22 -->
+    <fieldset>
+      <legend>Pregunta 22</legend>
+      <p class="question-text">
+        ¿Quién elabora el Estudio de Impacto Ambiental (EIA) de un proyecto?
+      </p>
+      <label>
+        <input type="radio" name="p22" value="a">
+        a. La autoridad medioambiental.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p22" value="b">
+        b. La empresa promotora del proyecto.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="c">
+        c. Una agencia de calificación ASG.
+      </label>
+      <label>
+        <input type="radio" name="p22" value="d">
+        d. El Registro Mercantil.
+      </label>
+    </fieldset>
+
+    <!-- P23 -->
+    <fieldset>
+      <legend>Pregunta 23</legend>
+      <p class="question-text">
+        ¿Cuál es el horizonte temporal habitual de un plan de sostenibilidad?
+      </p>
+      <label>
+        <input type="radio" name="p23" value="a">
+        a. Menos de un año.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p23" value="b">
+        b. Entre 3 y 5 años.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="c">
+        c. Entre 10 y 15 años.
+      </label>
+      <label>
+        <input type="radio" name="p23" value="d">
+        d. No tiene horizonte temporal.
+      </label>
+    </fieldset>
+
+    <!-- P24 -->
+    <fieldset>
+      <legend>Pregunta 24</legend>
+      <p class="question-text">
+        ¿Qué combinación de documentos está más orientada a la planificación futura y no solo a informar del pasado?
+      </p>
+      <label data-correct="true">
+        <input type="radio" name="p24" value="a">
+        a. Plan de sostenibilidad y matriz de impacto–factibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="b">
+        b. Estado no financiero y memoria de sostenibilidad.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="c">
+        c. Estudio de impacto ambiental y declaración de impacto ambiental.
+      </label>
+      <label>
+        <input type="radio" name="p24" value="d">
+        d. Cuentas anuales y balance.
+      </label>
+    </fieldset>
+
+    <!-- P25 -->
+    <fieldset>
+      <legend>Pregunta 25</legend>
+      <p class="question-text">
+        ¿Qué grupo de interés suele tener un papel clave en la fase de análisis de contexto y mapeo en el plan de sostenibilidad?
+      </p>
+      <label>
+        <input type="radio" name="p25" value="a">
+        a. Únicamente los accionistas.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="b">
+        b. Solo los clientes.
+      </label>
+      <label data-correct="true">
+        <input type="radio" name="p25" value="c">
+        c. Los grupos de interés internos y externos relevantes para la organización.
+      </label>
+      <label>
+        <input type="radio" name="p25" value="d">
+        d. Exclusivamente la administración pública.
+      </label>
+    </fieldset>
+
+  </form>
+</div>
+
+<script>
+  function corregirTest() {
+    const form = document.getElementById("testForm");
+    const questions = form.querySelectorAll("fieldset");
+    let correctas = 0;
+
+    questions.forEach(q => {
+      const correct = q.querySelector("label[data-correct]");
+      const selected = q.querySelector("input[type=radio]:checked");
+
+      q.querySelectorAll("label").forEach(l => {
+        l.classList.remove("correct-answer", "incorrect-answer");
+      });
+
+      if (correct) correct.classList.add("correct-answer");
+
+      if (selected) {
+        if (selected.parentElement.hasAttribute("data-correct")) {
+          correctas++;
+        } else {
+          selected.parentElement.classList.add("incorrect-answer");
+        }
+      }
+    });
+
+    const nota = ((correctas / questions.length) * 10).toFixed(2);
+    document.getElementById("result").textContent =
+      `Has acertado ${correctas} de ${questions.length} preguntas. Nota final: ${nota}/10`;
+  }
+</script>
+
+</body>
+</html>

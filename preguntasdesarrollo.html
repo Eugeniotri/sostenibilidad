@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preguntas de desarrollo · Sostenibilidad</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ff3d81, #6149ff, #00c6ff);
+      background-size: 200% 200%;
+      animation: gradientMove 16s ease infinite;
+      color: #f5f5f7;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 20px;
+      background: radial-gradient(circle at top left, #27293d 0, #050816 45%);
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #d4d4f6;
+      margin-bottom: 20px;
+    }
+
+    .question-block {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    details {
+      margin: 0;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      outline: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .q-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .q-text {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .badge {
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    details[open] .q-text {
+      color: #a5b4ff;
+    }
+
+    .answer {
+      margin-top: 8px;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      color: #e5e5ff;
+    }
+
+    ul {
+      margin: 4px 0 4px 20px;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .tag {
+      font-weight: 600;
+      color: #facc6b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Preguntas de desarrollo · Sostenibilidad</h1>
+    <p class="subtitle">
+      Haz clic en cada pregunta para desplegar la respuesta. Formato pensado para repasar rápido antes del examen.
+    </p>
+
+    <!-- 1 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">1. ¿Qué es la sostenibilidad?</span>
+          <span class="badge">Definición básica</span>
+        </summary>
+        <div class="answer">
+          <p><span class="tag">Definición:</span> capacidad de satisfacer las necesidades del presente sin comprometer las de las generaciones futuras.</p>
+          <p>Se basa en el equilibrio entre:</p>
+          <ul>
+            <li>crecimiento económico,</li>
+            <li>equidad social,</li>
+            <li>protección ambiental.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 2 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">2. ¿Qué es un ecosistema?</span>
+          <span class="badge">Concepto clave</span>
+        </summary>
+        <div class="answer">
+          <p>Es un sistema biológico formado por una comunidad de seres vivos que habitan en un medio físico determinado.</p>
+          <p>Entre los organismos se dan relaciones de interdependencia que permiten que el sistema se mantenga en equilibrio.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 3 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">3. ¿Qué es un sumidero?</span>
+          <span class="badge">Fuentes / sumideros</span>
+        </summary>
+        <div class="answer">
+          <p>Es el lugar donde van a parar los residuos que genera la actividad humana.</p>
+          <p>Los ecosistemas degradan esos residuos y los transforman de nuevo en recursos (fuentes) que vuelven a quedar disponibles para la actividad económica.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 4 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">4. ¿Qué es la capacidad de carga o biocapacidad?</span>
+          <span class="badge">Indicadores globales</span>
+        </summary>
+        <div class="answer">
+          <p>Es la capacidad de un área para:</p>
+          <ul>
+            <li>producir recursos renovables, y</li>
+            <li>absorber o filtrar los desechos producidos,</li>
+          </ul>
+          <p>teniendo en cuenta las prácticas de manejo y extracción actualmente vigentes.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 5 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">5. ¿Qué es la huella ecológica?</span>
+          <span class="badge">Indicadores globales</span>
+        </summary>
+        <div class="answer">
+          <p>Es un indicador que mide el impacto ambiental de las actividades humanas, calculando la superficie ecológicamente productiva necesaria para:</p>
+          <ul>
+            <li>producir los recursos que consumimos, y</li>
+            <li>absorber los desechos que generamos.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 6 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">6. ¿Qué es la huella de carbono?</span>
+          <span class="badge">Indicadores globales</span>
+        </summary>
+        <div class="answer">
+          <p>Es un indicador que cuantifica las emisiones de gases de efecto invernadero generadas por un individuo, una empresa o una actividad concreta.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 7 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">7. ¿Qué es el cambio climático?</span>
+          <span class="badge">Clima</span>
+        </summary>
+        <div class="answer">
+          <p>Es una alteración del sistema climático de la Tierra que está provocando un aumento de las temperaturas medias del planeta, es decir, un calentamiento global.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 8 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">8. Tres retos sociales agravados por el cambio climático.</span>
+          <span class="badge">Retos sociales</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Aumento de las desigualdades.</li>
+            <li>Persistencia de la pobreza.</li>
+            <li>Fenómenos migratorios.</li>
+            <li>Subdesarrollo económico de buena parte del planeta.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 9 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">9. Tres retos medioambientales consecuencia del cambio climático.</span>
+          <span class="badge">Retos ambientales</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Deforestación.</li>
+            <li>Desertización.</li>
+            <li>Pérdida de biodiversidad.</li>
+            <li>Derretimiento de los polos.</li>
+            <li>Sequía y escasez de agua.</li>
+            <li>Fenómenos meteorológicos extremos.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 10 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">10. Una consecuencia del cambio climático para las empresas.</span>
+          <span class="badge">Empresas</span>
+        </summary>
+        <div class="answer">
+          <p>Ejemplos válidos:</p>
+          <ul>
+            <li><span class="tag">Agricultura menos productiva:</span> sequías y calor reducen rendimientos y elevan costes.</li>
+            <li><span class="tag">Infraestructuras inadecuadas:</span> edificios y redes no preparados para altas temperaturas o temporales.</li>
+            <li><span class="tag">Disponibilidad de energía:</span> cambios en oferta y demanda aumentan la incertidumbre y los costes.</li>
+            <li><span class="tag">Turismo afectado:</span> algunos destinos pierden atractivo por exceso de calor.</li>
+            <li><span class="tag">Encarecimiento de seguros:</span> más siniestros por fenómenos extremos elevan las primas.</li>
+            <li><span class="tag">Peores condiciones de trabajo al aire libre</span> (riesgos de salud laboral).</li>
+            <li><span class="tag">Normativa ambiental más estricta</span> que obliga a invertir y adaptarse.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 11 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">11. ¿Por qué el reciclaje es la opción “menos mala”?</span>
+          <span class="badge">Residuos</span>
+        </summary>
+        <div class="answer">
+          <p>Porque las plantas de reciclaje también generan contaminación (emisiones por tratamiento y transporte de residuos). Sin embargo, su huella ecológica es menor que la de no reciclar, por lo que se considera la opción menos dañina, pero no perfecta.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 12 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">12. Dos acciones clave para desandar el cambio climático.</span>
+          <span class="badge">Acciones</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Desmaterializar:</span> reducir las necesidades de materiales en la producción (ej.: usar menos material o material reciclado).</li>
+            <li><span class="tag">Descarbonizar:</span> reducir o eliminar las emisiones de gases de efecto invernadero (ej.: sustituir combustibles fósiles por energías renovables).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 13 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">13. ¿Qué es el Pacto Verde Europeo?</span>
+          <span class="badge">UE</span>
+        </summary>
+        <div class="answer">
+          <p>Es una estrategia de la Unión Europea, alineada con los ODS y la Agenda 2030, cuyo objetivo es que la UE sea <strong>neutral en carbono en 2050</strong>: las emisiones netas de carbono sean iguales a las que se capturan.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 14 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">14. ¿Qué son las metas y los indicadores de los ODS?</span>
+          <span class="badge">ODS</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Metas:</span> objetivos específicos en que se descompone cada ODS para facilitar su cumplimiento.</li>
+            <li><span class="tag">Indicadores:</span> medidas que permiten conocer la distancia a esas metas y el grado de cumplimiento de los ODS.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 15 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">15. Elige un ODS, explica una meta y un indicador.</span>
+          <span class="badge">ODS ejemplo</span>
+        </summary>
+        <div class="answer">
+          <p><strong>Ejemplo: ODS 8 – Trabajo decente y crecimiento económico</strong></p>
+          <ul>
+            <li><span class="tag">Objetivo:</span> promover el crecimiento económico sostenido, inclusivo y sostenible, el empleo pleno y productivo y el trabajo decente para todos.</li>
+            <li><span class="tag">Meta (ejemplo):</span> proteger los derechos laborales y promover entornos de trabajo seguros y saludables.</li>
+            <li><span class="tag">Indicador (ejemplo):</span> número de accidentes laborales por cada 100 000 trabajadores.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 16 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">16. Dos acciones para contribuir al ODS 6 “Agua limpia y saneamiento”.</span>
+          <span class="badge">ODS 6</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Cargar lavadora y lavavajillas solo cuando estén llenos.</li>
+            <li>Instalar economizadores de agua (perlizadores, reductores de caudal).</li>
+            <li>Mantener en buen estado las conducciones para evitar fugas.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 17 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">17. ¿Qué pretende la Estrategia de Movilidad Sostenible para Europa?</span>
+          <span class="badge">UE</span>
+        </summary>
+        <div class="answer">
+          <p>Avanzar hacia la neutralidad climática en el transporte. Ejemplos de objetivos:</p>
+          <ul>
+            <li>Neutralidad de emisiones en al menos 100 ciudades europeas para 2030.</li>
+            <li>Alrededor de 30 millones de vehículos híbridos o eléctricos (incluido hidrógeno) en la UE.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 18 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">18. ¿Qué son los grupos de interés de las empresas?</span>
+          <span class="badge">ASG</span>
+        </summary>
+        <div class="answer">
+          <p>Son colectivos humanos que tienen objetivos propios cuyo cumplimiento depende de las decisiones y resultados de la empresa.</p>
+          <p>Intentan influir en la empresa y, a la vez, las decisiones de la empresa les afectan a ellos.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 19 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">19. Principales grupos de interés de la empresa.</span>
+          <span class="badge">ASG</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Propietarios / accionistas.</li>
+            <li>Personas trabajadoras.</li>
+            <li>Proveedores.</li>
+            <li>Entidades financieras.</li>
+            <li>Clientela.</li>
+            <li>Competencia.</li>
+            <li>Sociedad en general.</li>
+            <li>Administraciones públicas.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 20 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">20. Grupo de interés: la clientela (intereses, aportaciones y riesgos).</span>
+          <span class="badge">ASG</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Intereses:</span> obtener el mejor producto posible al menor precio posible.</li>
+            <li><span class="tag">Qué aportan:</span> ingresos (compras) y opiniones/valoraciones.</li>
+            <li><span class="tag">Riesgos:</span> pueden dejar de comprar si no están satisfechos y generar mala reputación con opiniones negativas.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 23 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">21. Dos ventajas de incorporar aspectos ASG en la empresa.</span>
+          <span class="badge">ASG</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Eficiencia y ahorro de costes:</span> menor consumo de recursos y energía reduce el coste por unidad.</li>
+            <li><span class="tag">Modelo de negocio más sostenible:</span> menos dependencia de recursos escasos y contaminantes.</li>
+            <li><span class="tag">Fidelización de clientes y proveedores:</span> relaciones más estables y servicios posventa.</li>
+            <li><span class="tag">Satisfacción de la plantilla:</span> trabajar en una empresa sostenible motiva.</li>
+            <li><span class="tag">Mejor imagen de marca:</span> innovación en ética y sostenibilidad.</li>
+            <li><span class="tag">Menor riesgo legal:</span> alineación con normativa presente y futura.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 24 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">22. ¿Qué son las normas NEIS?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Son las <strong>Normas Europeas de Información sobre Sostenibilidad (NEIS)</strong>.</p>
+          <p>Regulan la información que las empresas europeas deben presentar sobre incidencias, riesgos y oportunidades relacionados con los aspectos ambientales, sociales y de gobernanza (ASG).</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 25 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">23. ¿Qué es el estado no financiero o de sostenibilidad?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Es la parte del informe de gestión en la que la empresa analiza los aspectos de sostenibilidad relevantes.</p>
+          <p>La UE indica cómo debe presentarse esta información en el <strong>estado no financiero</strong>, que forma parte del informe de gestión.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 26 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">24. ¿Qué es un modelo de producción y consumo lineal? Fases.</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <p>Es un modelo en el que el producto avanza por el ciclo de vida de forma lineal y cada fase se conecta solo con la anterior y la siguiente.</p>
+          <p>Fases básicas:</p>
+          <ul>
+            <li>Aprovisionamiento.</li>
+            <li>Diseño.</li>
+            <li>Producción.</li>
+            <li>Distribución.</li>
+            <li>Consumo.</li>
+            <li>Desecho.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 27 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">25. Riesgos de la economía lineal.</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Uso intensivo de recursos no renovables cada vez más escasos.</li>
+            <li>Prioridad por productos nuevos y de ciclo de vida corto (modelo “low cost”).</li>
+            <li>Falta de innovación y adaptación al mercado.</li>
+            <li>Falta de colaboración y comunicación con clientes.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 28 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">26. ¿Qué pretende la economía verde o circular?</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <p>Frente al modelo lineal pretende:</p>
+          <ul>
+            <li>conservar el valor de productos y materiales durante todas las fases del ciclo de vida,</li>
+            <li>hacer que ese valor dure lo máximo posible generando la menor cantidad de residuos,</li>
+            <li>mejorar el bienestar y la equidad social,</li>
+            <li>reducir riesgos ambientales y escaseces ecológicas.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 29 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">27. Dos beneficios para las empresas de la economía verde y circular.</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Eficiencia:</span> menor consumo de recursos y energía reduce costes por unidad.</li>
+            <li><span class="tag">Modelo de negocio más estable:</span> menor dependencia de recursos escasos y contaminantes.</li>
+            <li><span class="tag">Fidelización de clientes y proveedores:</span> relaciones más estables.</li>
+            <li><span class="tag">Mayor motivación del personal:</span> trabajar en una empresa sostenible.</li>
+            <li><span class="tag">Mejor imagen de marca y menor riesgo legal.</span></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 30 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">28. Fases en la evaluación de una producción limpia.</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Recogida y análisis de datos.</li>
+            <li>Generación de opciones.</li>
+            <li>Análisis de viabilidad (técnica, económica y ambiental).</li>
+            <li>Implementación.</li>
+            <li>Evaluación y control.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 31 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">29. ¿Qué es el ecodiseño?</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <p>Es el diseño de productos integrando criterios medioambientales para minimizar los impactos a lo largo de todo su ciclo de vida, desde la extracción de materias primas hasta el desecho.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 32 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">30. Dos principios del ecodiseño.</span>
+          <span class="badge">UF4</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Desmaterialización:</span> ofrecer la misma función usando menos materiales.</li>
+            <li><span class="tag">Multifuncionalidad:</span> un producto sirve para varias funciones.</li>
+            <li><span class="tag">Uso de materiales renovables y locales.</span></li>
+            <li><span class="tag">Libre de sustancias tóxicas.</span></li>
+            <li><span class="tag">Facilidad de desmontaje y separación</span> para reparar y reciclar.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 33 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">31. Cuatro fases para incorporar un indicador de desempeño al SGA.</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li>Definir el indicador.</li>
+            <li>Establecer la fórmula de cálculo.</li>
+            <li>Fijar el nivel o valor objetivo.</li>
+            <li>Realizar el seguimiento periódico del indicador.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 35 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">32. ¿Qué es una ecoetiqueta?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Es una licencia de sostenibilidad desarrollada por instituciones externas a la empresa. Autoriza a usar una etiqueta en productos considerados preferibles para el medio ambiente según indicadores basados en su ciclo de vida.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 36 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">33. ¿Qué son las autodeclaraciones ambientales?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Son declaraciones que hacen las propias empresas sobre algún aspecto medioambiental de sus productos, sin verificación por una entidad externa.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 37 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">34. ¿Qué es la inversión medioambiental y socialmente responsable (ISR)?</span>
+          <span class="badge">ISR</span>
+        </summary>
+        <div class="answer">
+          <p>Es la inversión que valora de forma conjunta:</p>
+          <ul>
+            <li>rentabilidad, riesgo y liquidez de la inversión, y</li>
+            <li>impacto de la empresa en aspectos ambientales, sociales y de gobernanza (ASG).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 38 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">35. Cuatro documentos importantes de las empresas en sostenibilidad.</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <ul>
+            <li><span class="tag">Plan de sostenibilidad.</span></li>
+            <li><span class="tag">Estado no financiero o de sostenibilidad.</span></li>
+            <li><span class="tag">Informes o memorias de sostenibilidad/impacto.</span></li>
+            <li><span class="tag">Estudios de impacto ambiental u otros informes técnicos relacionados.</span></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 39 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">36. ¿Qué es el plan de sostenibilidad y qué pretende?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Es un documento de planificación estratégica que guía las acciones de la organización en sostenibilidad a medio y largo plazo (normalmente 2–4 años).</p>
+          <p>Pretende:</p>
+          <ul>
+            <li>comunicar al equipo interno las decisiones y facilitar su implantación,</li>
+            <li>informar a los grupos de interés externos sobre los compromisos de la empresa.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 40 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">37. ¿Qué es el análisis de la doble materialidad?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Un aspecto es material (significativo) cuando cumple al menos una de estas condiciones:</p>
+          <ul>
+            <li><span class="tag">Materialidad de impacto:</span> el aspecto afecta de forma relevante a las personas o al medio ambiente (impacto de la empresa hacia fuera).</li>
+            <li><span class="tag">Materialidad financiera:</span> el aspecto afecta al desempeño financiero de la organización (impacto del entorno sobre la empresa).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- 41 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">38. ¿Para qué se usa la matriz de impacto / factibilidad?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Se utiliza, una vez identificados los temas relevantes, para:</p>
+          <ul>
+            <li>valorar el impacto de cada medida en la organización, y</li>
+            <li>evaluar si es factible implantarla (recursos, tiempo, coste).</li>
+          </ul>
+          <p>Sirve para priorizar acciones de sostenibilidad.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 42 -->
+    <div class="question-block">
+      <details>
+        <summary class="q-title">
+          <span class="q-text">39. ¿Qué es un estudio de impacto ambiental y quién lo valora?</span>
+          <span class="badge">UF5</span>
+        </summary>
+        <div class="answer">
+          <p>Es un documento elaborado por el promotor de un proyecto, obra o actividad que recoge la información necesaria para valorar sus posibles impactos ambientales y decidir cómo evitarlos, minimizarlos o compensarlos.</p>
+          <p>Lo valora la <strong>autoridad medioambiental competente</strong>, que emite una <strong>declaración de impacto ambiental</strong> con su decisión.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</body>
+</html>
