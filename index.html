@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sostenibilidad · Índice</title>
-  <meta name="description" content="Menú de unidades formativas y cuestionarios de la asignatura de Sostenibilidad" />
+  <meta name="description" content="Menú de unidades formativas, cuestionarios y material de repaso de la asignatura de Sostenibilidad" />
   <style>
     :root{
       --bg: #0f0f14;
@@ -15,7 +15,6 @@
       --radius: 18px;
       --focus: 0 0 0 3px rgba(255,255,255,.4), 0 0 0 6px rgba(0,0,0,.25);
     }
-    /* Fondo con orgullo 🌈 colorido, vibrante y alegre */
     body{
       margin:0;
       color:var(--text);
@@ -51,20 +50,20 @@
     }
     h1{ font-size:1.25rem; margin:0; letter-spacing:.3px; }
     .tag{
-      font-size:.85rem; color:var(--bg); background: #fff; padding:6px 10px; border-radius:999px; font-weight:700;
+      font-size:.85rem; color:var(--bg); background:#fff; padding:6px 10px;
+      border-radius:999px; font-weight:700;
     }
 
-    /* Tabs */
     .tabs{ display:flex; gap:8px; padding:12px; }
     .tab{
       appearance:none; border:0; background:var(--card); color:var(--text); font-weight:600;
-      padding:10px 14px; border-radius:999px; cursor:pointer; transition: transform .1s ease, background .2s;
+      padding:10px 14px; border-radius:999px; cursor:pointer;
+      transition: transform .1s ease, background .2s;
     }
     .tab[aria-selected="true"]{ background:#ffffff; color:#111; }
     .tab:focus-visible{ outline:none; box-shadow: var(--focus); }
     .tab:hover{ transform: translateY(-1px); }
 
-    /* Grid de enlaces */
     .grid{
       display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:16px;
       padding: 0 16px 24px 16px;
@@ -78,20 +77,33 @@
       box-shadow: var(--shadow);
       transition: transform .12s ease, background .2s ease, border-color .2s ease;
     }
-    .card:hover{ transform: translateY(-3px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+    .card:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.3);
+    }
     .card a{ color:inherit; text-decoration:none; font-weight:700; }
-    .badge{ font-size:.75rem; color:#111; background:#fff; padding:4px 10px; border-radius:999px; width:max-content; }
+    .badge{
+      font-size:.75rem; color:#111; background:#fff;
+      padding:4px 10px; border-radius:999px; width:max-content;
+    }
     .desc{ color:var(--muted); font-size:.9rem; line-height:1.3; }
 
-    footer{ padding:16px 24px; border-top:1px solid rgba(255,255,255,.15); color:var(--muted); font-size:.9rem; }
+    footer{
+      padding:16px 24px;
+      border-top:1px solid rgba(255,255,255,.15);
+      color:var(--muted);
+      font-size:.9rem;
+    }
 
-    /* Secciones ocultables */
     section[hidden]{ display:none; }
 
-    /* Accesibilidad prefer-reduced-motion */
     @media (prefers-reduced-motion: no-preference){
       .card{ animation: pop .3s ease both; }
-      @keyframes pop{ from{ transform: scale(.98); opacity:0 } to{ transform: scale(1); opacity:1 } }
+      @keyframes pop{
+        from{ transform: scale(.98); opacity:0 }
+        to{ transform: scale(1); opacity:1 }
+      }
     }
   </style>
 </head>
@@ -102,7 +114,7 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <h1>Asignatura de Sostenibilidad</h1>
-          <div class="desc">Índice general — Unidades formativas, cuestionarios y repaso</div>
+          <div class="desc">Índice general — Unidades, cuestionarios y material de repaso</div>
         </div>
       </div>
       <span class="tag" title="Diseño con orgullo">🌈 Orgullo</span>
@@ -110,7 +122,7 @@
 
     <nav class="tabs" role="tablist" aria-label="Cambiar entre Unidades y Cuestionarios">
       <button class="tab" id="tab-unidades" role="tab" aria-controls="panel-unidades" aria-selected="true">Unidades</button>
-      <button class="tab" id="tab-cuestionarios" role="tab" aria-controls="panel-cuestionarios" aria-selected="false">Cuestionarios</button>
+      <button class="tab" id="tab-cuestionarios" role="tab" aria-controls="panel-cuestionarios" aria-selected="false">Cuestionarios / Repaso</button>
     </nav>
 
     <!-- Panel: Unidades -->
@@ -149,7 +161,7 @@
       </div>
     </section>
 
-    <!-- Panel: Cuestionarios -->
+    <!-- Panel: Cuestionarios / Repaso -->
     <section id="panel-cuestionarios" role="tabpanel" aria-labelledby="tab-cuestionarios" hidden>
       <div class="grid">
         <article class="card">
@@ -187,6 +199,11 @@
           <a href="preguntasdesarrollo.html">Preguntas de desarrollo</a>
           <p class="desc">Preguntas largas de teoría que entran en el examen.</p>
         </article>
+        <article class="card">
+          <span class="badge">CH</span>
+          <a href="chuleta_memorizarexamen.html">Chuleta para memorizar</a>
+          <p class="desc">Resumen ultra-corto con todas las definiciones clave del examen.</p>
+        </article>
       </div>
     </section>
 
@@ -196,7 +213,6 @@
   </main>
 
   <script>
-    // Toggle accesible entre pestañas
     const tabUnidades = document.getElementById('tab-unidades');
     const tabCuestionarios = document.getElementById('tab-cuestionarios');
     const panelUnidades = document.getElementById('panel-unidades');
@@ -213,7 +229,7 @@
     tabUnidades.addEventListener('click', ()=>activar('u'));
     tabCuestionarios.addEventListener('click', ()=>activar('q'));
 
-    // Teclado: flechas para cambiar pestañas
+    // Navegación por teclado con flechas entre pestañas
     document.querySelectorAll('.tab').forEach(btn=>{
       btn.addEventListener('keydown', (e)=>{
         if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
